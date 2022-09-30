@@ -13,11 +13,12 @@ import './config/passport-config';
 import mainRouter from './routers/main.router';
 import authRouter from './routers/auth.router';
 import recipesRouter from './routers/recipes.router';
+import { MONGO_URL, PORT } from './utils/environment-variables';
 import { connectDB } from './DB/mongoose';
-//example : npm install --save--dev  @types/passport
 
-const url: string = 'mongodb://127.0.0.1:27017/cook-site';
-connectDB(url);
+if (process.env.NODE_ENV !== 'test') {
+    connectDB(MONGO_URL);
+}
 
 const app = express();
 
@@ -56,7 +57,6 @@ app.use(
     }
 );
 
-const port: number = 3001;
-app.listen(port, () => {
-    console.log(`listening on port ${port}`);
+app.listen(PORT, () => {
+    console.log(`listening on port ${PORT}`);
 });
