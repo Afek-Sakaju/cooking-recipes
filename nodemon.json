@@ -1,0 +1,6 @@
+{
+    "watch": "back-end-practice/cook-site/**/*.ts",
+    "execMap": {
+        "ts": "ts-node"
+    }
+}
