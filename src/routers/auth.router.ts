@@ -12,7 +12,7 @@ const router = express.Router();
 router.post(
     '/login',
     passport.authenticate('local', {
-        successRedirect: '/success',
+        successRedirect: '/auth/success',
         failureRedirect: '/recipe/green-salad',
     })
 );
@@ -21,7 +21,7 @@ router.get(
     '/success',
     isAuthenticatedMW,
     (req: Request, res: Response, next: NextFunction) => {
-        res.send('success');
+        res.send('successfuly logged in ');
     }
 );
 
