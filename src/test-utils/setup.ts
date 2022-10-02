@@ -6,7 +6,7 @@ import {
 } from './envirnoment-test-variables';
 
 if (JEST_TIMEOUT) jest.setTimeout(JEST_TIMEOUT);
-
+0
 let mongo: any;
 
 beforeAll(async () => {
