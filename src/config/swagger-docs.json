@@ -1,0 +1,31 @@
+{
+    "swaggerDefinition": {
+        "openapi": "3.0.3",
+        "info": {
+            "version": "1.0.0",
+            "title": "Cook-Recipes-Site REST API",
+            "description": "A REST API built with Express and MongoDB. \nThis API provides cooking recipes data",
+            "contact": {
+                "name": "Afek",
+                "url": "https://github.com/afekTheMiniLearner/cook-recipes-site"
+            }
+        },
+        "basePath": "/swagger",
+        "tags": [
+            { "name": "Main routers" },
+            { "name": "Auth routers" },
+            { "name": "Recipes CRUD routers" }
+        ],
+        "components": {
+            "schemas": null,
+            "securitySchemes": {
+                "cookieAuth": {
+                    "in": "cookie",
+                    "type": "apiKey",
+                    "name": "connect.sid"
+                }
+            }
+        }
+    },
+    "apis": ["**/*.ts"]
+}
