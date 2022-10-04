@@ -18,7 +18,7 @@ import recipesRouter from './routers/recipes.router';
 import { MONGO_URL, PORT } from './utils/environment-variables';
 import { connectDB } from './DB/mongoose';
 import swaggerDocument from './config/swagger-docs.json';
-import schemes from './models/swaggerSchemes';
+import schemes from './models/swaggerSchemas';
 
 if (process.env.NODE_ENV !== 'test') {
     connectDB(MONGO_URL);
