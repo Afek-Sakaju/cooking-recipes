@@ -6,5 +6,5 @@ export function isAuthenticatedMW(
     next: NextFunction
 ): void {
     if (req.isAuthenticated()) next();
-    else res.redirect('/lock.jpg');
+    else res.status(400).send("you hav'nt logged in successfuly");
 }

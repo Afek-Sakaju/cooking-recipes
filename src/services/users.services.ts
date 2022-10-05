@@ -29,7 +29,7 @@ export async function updateUserData(
         { new: true, omitUndefined: true, upsert: true }
     );
 
-    return result;
+    return result.toJSON();
 }
 
 export async function getUserPasswordByEmail(

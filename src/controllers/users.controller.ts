@@ -25,12 +25,13 @@ export async function updateUserDataCtrl(
     next: NextFunction
 ) {
     const userData = {
+        _id: req.body.id,
+        email: req.body.email,
         password: req.body.password,
         phoneNumber: req.body.phoneNumber,
         fullName: req.body.fullName,
     } as unknown as IUser;
 
-    //fix me
     const result = await updateUserData(userData);
 
     res.json(result);
