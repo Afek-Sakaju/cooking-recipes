@@ -28,7 +28,7 @@ const router = express.Router();
  *                          type: String
  *                          example: "tempexample@somemail.com"
  *                      password:
- *                          type: string
+ *                          type: String
  *                          example: "somePassword123"
  *     responses:
  *       200:
@@ -86,7 +86,7 @@ router.get(
  *                  required: [ "username", "password" ]
  *                  properties:
  *                      email:
- *                          type: String
+ *                          type: string
  *                          example: "tempexample@somemail.com"
  *                      password:
  *                          type: string
@@ -124,9 +124,9 @@ router.post('/register', registerUserCtrl);
  *                  required: [ "id" ]
  *                  properties:
  *                      id:
- *                          type: String
+ *                          type: string
  *                      email:
- *                          type: String
+ *                          type: string
  *                          example: "tempexample@somemail.com"
  *                      password:
  *                          type: string
