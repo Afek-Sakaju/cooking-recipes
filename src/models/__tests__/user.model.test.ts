@@ -1,5 +1,5 @@
-import { registerUser } from '../services/users.services';
-import { IUser } from '../interfaces/user.interface';
+import { registerUser } from '../../services/users.services';
+import { IUser } from '../../interfaces/user.interface';
 
 describe('user model tests', () => {
     test('isAdmin flag not set', async () => {
