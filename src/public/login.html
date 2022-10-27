@@ -1,85 +1,159 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {font-family: Arial, Helvetica, sans-serif;}
-        form {border: 3px solid #f1f1f1;}
-
-        input[type=text], input[type=password] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #04AA6D;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        button:hover {
-            opacity: 0.8;
-        }
-
-        .cancelbtn {
-            width: auto;
-            padding: 10px 18px;
-            background-color: #f44336;
-        }
-
-        .imgcontainer {
-            text-align: center;
-            margin: 24px 0 12px 0;
-        }
-
-        img.avatar {
-            width: 40%;
-            border-radius: 50%;
-        }
-
-        .container {
-            padding: 16px;
-        }
-
-        span.psw {
-            float: right;
-            padding-top: 16px;
-        }
-
-        /* Change styles for span and cancel button on extra small screens */
-        @media screen and (max-width: 300px) {
-            span.psw {
-                display: block;
-                float: none;
+<html lang="en">
+    <head>
+        <style>
+            body {
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode',
+                    'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             }
-            .cancelbtn {
+
+            form {
+                border: 4px solid #e8e7e7;
+            }
+
+            input[type='text'],
+            input[type='password'] {
+                width: 100%;
+                padding: 13px 20px;
+                margin: 20px 0 15px 0;
+                display: ruby-base-container;
+                border: 3px solid #3341e2;
+                box-sizing: border-box;
+            }
+
+            h1 {
+                text-align: center;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode',
+                    'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-size: 60px;
+                margin-bottom: 100px;
+                animation: rainbowColor 11s;
+                animation-delay: 0.2s;
+                animation-iteration-count: infinite;
+                position: absolute;
+            }
+
+            img.logo {
+                position: relative;
+            }
+
+            @keyframes rainbowColor {
+                0% {
+                    color: rgb(1, 75, 21);
+                }
+                7% {
+                    color: rgb(46, 174, 0);
+                }
+                14% {
+                    color: rgb(83, 248, 0);
+                }
+                21% {
+                    color: rgb(149, 255, 0);
+                }
+                29% {
+                    color: rgb(229, 255, 0);
+                }
+                36% {
+                    color: rgb(255, 247, 0);
+                }
+                43% {
+                    color: rgb(251, 188, 0);
+                }
+                51% {
+                    color: rgb(255, 136, 0);
+                }
+                58% {
+                    color: rgb(255, 47, 0);
+                }
+                65% {
+                    color: rgb(255, 0, 115);
+                }
+                72% {
+                    color: rgb(255, 0, 204);
+                }
+                79% {
+                    color: rgb(200, 0, 255);
+                }
+                86% {
+                    color: rgb(1, 81, 255);
+                }
+                93% {
+                    color: rgb(0, 4, 246);
+                }
+                100% {
+                    color: rgb(3, 13, 123);
+                }
+            }
+
+            @keyframes rainbow2 {
+                0% {
+                    background-color: red;
+                    left: 0px;
+                    top: 0px;
+                }
+                25% {
+                    background-color: yellow;
+                    left: 200px;
+                    top: 0px;
+                }
+                50% {
+                    background-color: blue;
+                    left: 200px;
+                    top: 200px;
+                }
+                75% {
+                    background-color: green;
+                    left: 0px;
+                    top: 200px;
+                }
+                100% {
+                    background-color: red;
+                    left: 0px;
+                    top: 0px;
+                }
+            }
+
+            button {
+                background-color: #3341e2;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: #f44336;
+                cursor: pointer;
                 width: 100%;
             }
-        }
-    </style>
-    <script src="/static/index.js"></script>
-</head>
-<body>
 
-<h2>Login Form</h2>
+            input[type='text']:hover,
+            input[type='password']:hover {
+                opacity: 0.75;
+            }
 
-<div class="container">
-    <label for="username"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="username" required>
+            button:hover {
+                opacity: 0.5;
+            }
 
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
+            img.avatar {
+                width: 40%;
+                border-radius: 50%;
+            }
 
-    <button onclick="loginUser()">Login</button>
-</div>
-
-</body>
+            .container {
+                padding-top: 20px;
+                padding-left: 50px;
+                padding-right: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <title>Afek's cook recipes site</title>
+    </head>
+    <body>
+        <h1>Welcome to Afek's site, please log-in</h1>
+    </body>
+    <form class="container" action="/auth/login" method="post">
+        <p><strong>Username:</strong></p>
+        <input type="text" id="username" name="username" />
+        <p><strong>Password:</strong></p>
+        <input type="password" id="password" name="password" />
+        <button type="submit">Login</button>
+    </form>
 </html>

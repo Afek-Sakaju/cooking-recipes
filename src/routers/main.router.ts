@@ -2,9 +2,18 @@ import express, { Request, Response, NextFunction } from 'express';
 
 const router = express.Router();
 
-router.use((req: Request, res: Response, next: NextFunction) => {
-    console.log(`user visit from url:${req.originalUrl}`);
-    next();
+/**
+ * @swagger
+ * /:
+ *   get:
+ *     tags: ['Main routers']
+ *     description: Redirect the user to a login page
+ *     responses:
+ *       302:
+ *
+ */
+router.get('/', (req: Request, res: Response, next: NextFunction) => {
+    res.redirect('/login.html');
 });
 
 /**
