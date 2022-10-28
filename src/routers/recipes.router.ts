@@ -10,6 +10,27 @@ import { isAuthenticatedMW } from '../middleware/auth-middleware';
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * /recipe/all:
+ *   get:
+ *     tags: ['Recipes CRUD routers']
+ *     description: Get all recipes list data
+ *     responses:
+ *       200:
+ *         description: Returns all recipes list.
+ *         content:
+ *           application/json:
+ *               schema:
+ *                  type: array
+ *                  items:
+ *                      $ref: "#/components/schemas/recipe"
+ *       401:
+ *          description:Unauthorized user
+ *       500:
+ *         description: Server Error
+ *
+ */
 router.get('/all', isAuthenticatedMW, sendAllRecipesCtrl);
 
 /**
