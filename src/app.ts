@@ -11,6 +11,7 @@ import passport from 'passport';
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 import logger from './utils/logger';
+import RequestID from './middleware/requestID.middleware';
 
 import './config/passport-config';
 import mainRouter from './routers/main.router';
@@ -27,6 +28,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 const app = express();
 
+app.use(RequestID());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -73,7 +75,7 @@ app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 if (process.env.NODE_ENV !== 'test') {
     app.listen(PORT, () => {
         //logger.info(REQUEST_ID, `server is up`, {url: `http://localhost:${PORT}`,port: PORT,});
-        logger.info(`server is up`, {
+        logger.info('data', `server is up`, {
             url: `http://localhost:${PORT}`,
             port: PORT,
         });
