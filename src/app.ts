@@ -10,6 +10,7 @@ import session from 'express-session';
 import passport from 'passport';
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
+import logger from './utils/logger';
 
 import './config/passport-config';
 import mainRouter from './routers/main.router';
@@ -71,7 +72,11 @@ app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 if (process.env.NODE_ENV !== 'test') {
     app.listen(PORT, () => {
-        console.log(`listening on port ${PORT}`);
+        //logger.info(REQUEST_ID, `server is up`, {url: `http://localhost:${PORT}`,port: PORT,});
+        logger.info(`server is up`, {
+            url: `http://localhost:${PORT}`,
+            port: PORT,
+        });
     });
 }
 
