@@ -45,7 +45,7 @@ router.post(
     '/login',
     passport.authenticate('local', {
         successRedirect: '/auth/success',
-        failureRedirect: '/recipe/green-salad',
+        failureRedirect: '/public/login.html',
     })
 );
 

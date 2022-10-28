@@ -15,8 +15,9 @@ export const getRecipeByNameCtrl = async (
     _next: NextFunction
 ) => {
     const recipe = await findRecipeByName(req.params.recipeName);
+    const status = !recipe ? 400 : 200;
 
-    res.status(200).json(recipe);
+    res.status(status).json(recipe);
 };
 
 export const createRecipeCtrl = async (

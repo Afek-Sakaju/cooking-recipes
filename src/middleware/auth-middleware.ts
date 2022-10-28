@@ -6,5 +6,5 @@ export function isAuthenticatedMW(
     next: NextFunction
 ): void {
     if (req.isAuthenticated()) next();
-    else res.status(400).send("you hav'nt logged in successfuly");
+    else res.status(401).send('You must login order to complete the operation');
 }

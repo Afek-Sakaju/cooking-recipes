@@ -14,7 +14,7 @@ router.get('/all', isAuthenticatedMW, sendAllRecipesCtrl);
 
 /**
  * @swagger
- * /recipe/:query:
+ * /recipe/:
  *   get:
  *     tags: ['Recipes CRUD routers']
  *     description: get recipes list data by filtering with query parameters
@@ -91,9 +91,56 @@ router.get('/', isAuthenticatedMW, filteredRecipeListCtrl); //(by query string)
  */
 router.post('/new-recipe', isAuthenticatedMW, createRecipeCtrl);
 
-router
-    .route('/:recipeName')
-    .get(getRecipeByNameCtrl)
-    .delete(isAuthenticatedMW, deleteRecipeByNameCtrl);
+/**
+ * @swagger
+ * /recipe/find/{recipeName}:
+ *   get:
+ *     tags: ['Recipes CRUD routers']
+ *     description: get recipe data by his name
+ *     parameters:
+ *      - in: path
+ *        name: recipeName
+ *        required: true
+ *        type: string
+ *        description: The recipes name.
+ *     responses:
+ *       200:
+ *         description: return the recipe's data.
+ *         content:
+ *           application/json:
+ *               schema:
+ *                      $ref: "#/components/schemas/recipe"
+ *       400:
+ *         description: Invalid data provided
+ *       500:
+ *         description: Server Error
+ *
+ */
+router.get('/find/:recipeName', getRecipeByNameCtrl);
+
+/**
+ * @swagger
+ * /recipe/{recipeName}:
+ *   delete:
+ *     tags: ['Recipes CRUD routers']
+ *     description: Delete recipe data by his name
+ *     parameters:
+ *      - in: path
+ *        name: recipeName
+ *        required: true
+ *        type: string
+ *        description: The recipes name.
+ *     responses:
+ *       200:
+ *         description: Recipe deleted successfully.
+ *       400:
+ *         description: Invalid data provided
+ *       401:
+ *         description: Unauthorized user
+ *       500:
+ *         description: Server Error
+ *
+ */
+router.delete('/:recipeName', isAuthenticatedMW, deleteRecipeByNameCtrl);
 
 export default router;
