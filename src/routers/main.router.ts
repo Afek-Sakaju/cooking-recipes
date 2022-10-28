@@ -18,7 +18,7 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  *
  */
 router.get('/', (req: Request, res: Response, next: NextFunction) => {
-    res.redirect('/login.html');
+    res.redirect('/login-page/login.html');
 });
 
 /**
