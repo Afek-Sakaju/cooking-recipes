@@ -44,30 +44,9 @@ const router = express.Router();
 router.post(
     '/login',
     passport.authenticate('local', {
-        successRedirect: '/auth/success',
-        failureRedirect: '/public/login.html',
+        successRedirect: '/success-page/success.html',
+        failureRedirect: '/login-page/login.html',
     })
-);
-
-/**
- * @swagger
- * /auth/success:
- *   get:
- *     tags: ['Auth routers']
- *     description: respond with message to the user that finished logging in
- *     responses:
- *       200:
- *         description: short message to the user that finished logging in
- *       302:
- *         description: the user haven't logged in successfuly
- *
- */
-router.get(
-    '/success',
-    isAuthenticatedMW,
-    (req: Request, res: Response, next: NextFunction) => {
-        res.status(200).send('successfuly logged in ');
-    }
 );
 
 /**
