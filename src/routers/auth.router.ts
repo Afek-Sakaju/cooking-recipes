@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import passport from 'passport';
 
+import logger from '../utils/logger';
 import {
     registerUserCtrl,
     updateUserDataCtrl,
@@ -8,6 +9,15 @@ import {
 import { isAuthenticatedMW } from '../middleware/auth-middleware';
 
 const router = express.Router();
+
+router.use((req: Request, res: Response, next: NextFunction) => {
+    logger.debug(req.id, 'Call to API', {
+        method: req.method,
+        originalUrl: req.originalUrl,
+        body: req.body,
+    });
+    next();
+});
 
 /**
  * @swagger
@@ -43,6 +53,9 @@ const router = express.Router();
  */
 router.post(
     '/login',
+    (req: Request) => {
+        logger.info(req.id, 'Request to user login API');
+    },
     passport.authenticate('local', {
         successRedirect: '/success-page/success.html',
         failureRedirect: '/login-page/login.html',

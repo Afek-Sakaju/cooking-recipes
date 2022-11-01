@@ -1,5 +1,6 @@
 import { Response, Request, NextFunction } from 'express';
 import { v4 as uuidv4 } from 'uuid';
+import logger from '../utils/logger';
 
 function generateV4UUID(_request: any) {
     return uuidv4();
@@ -7,7 +8,7 @@ function generateV4UUID(_request: any) {
 
 const ATTRIBUTE_NAME = 'id';
 
-export default function requestID({
+export function requestID({
     generator = generateV4UUID,
     headerName = 'X-Request-Id',
     setHeader = true,
@@ -24,4 +25,12 @@ export default function requestID({
 
         next();
     };
+}
+
+export function logAPI(req: Request, res: Response, next: NextFunction) {
+    logger.debug(req.id, 'call to api', {
+        method: req.method,
+        originalUrl: req.originalUrl,
+    });
+    next();
 }

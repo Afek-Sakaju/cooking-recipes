@@ -10,8 +10,6 @@ import session from 'express-session';
 import passport from 'passport';
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import logger from './utils/logger';
-import RequestID from './middleware/requestID.middleware';
 
 import './config/passport-config';
 import mainRouter from './routers/main.router';
@@ -19,8 +17,12 @@ import authRouter from './routers/auth.router';
 import recipesRouter from './routers/recipes.router';
 import { MONGO_URL, PORT } from './utils/environment-variables';
 import { connectDB } from './DB/mongoose';
+import { SYSTEM_REQ_ID } from './utils/consts';
 import swaggerDocument from './config/swagger-docs.json';
 import schemes from './models/swaggerSchemas';
+import logger from './utils/logger';
+import { requestID } from './middleware/requestID-middleware';
+import { logAPI } from './middleware/requestID-middleware';
 
 if (process.env.NODE_ENV !== 'test') {
     connectDB(MONGO_URL);
@@ -28,7 +30,9 @@ if (process.env.NODE_ENV !== 'test') {
 
 const app = express();
 
-app.use(RequestID());
+app.use(requestID());
+app.use(logAPI);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -57,9 +61,11 @@ app.use(
         _res: Response,
         next: NextFunction
     ) => {
-        console.error(
-            `${req.method}:${req.originalUrl}, failed with error:${err}`
-        );
+        logger.error(SYSTEM_REQ_ID, 'Error occured in the server', {
+            error: err,
+            method: req.method,
+            originalUrl: req.originalUrl,
+        });
         next(err);
     }
 );
@@ -74,8 +80,7 @@ app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 if (process.env.NODE_ENV !== 'test') {
     app.listen(PORT, () => {
-        //logger.info(REQUEST_ID, `server is up`, {url: `http://localhost:${PORT}`,port: PORT,});
-        logger.info('data', `server is up`, {
+        logger.info(SYSTEM_REQ_ID, `Server is up`, {
             url: `http://localhost:${PORT}`,
             port: PORT,
         });

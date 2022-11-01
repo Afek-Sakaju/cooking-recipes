@@ -1,4 +1,5 @@
-import express from 'express';
+import express, { Request, Response, NextFunction } from 'express';
+import logger from '../utils/logger';
 import {
     getRecipeByNameCtrl,
     deleteRecipeByNameCtrl,
@@ -9,6 +10,15 @@ import {
 import { isAuthenticatedMW } from '../middleware/auth-middleware';
 
 const router = express.Router();
+
+router.use((req: Request, res: Response, next: NextFunction) => {
+    logger.debug(req.id, 'Call to API', {
+        method: req.method,
+        originalUrl: req.originalUrl,
+        body: req.body,
+    });
+    next();
+});
 
 /**
  * @swagger
