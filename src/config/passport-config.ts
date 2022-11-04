@@ -4,21 +4,36 @@ import bcrypt from 'bcrypt';
 import { UserModel } from '../models/user.model';
 import { getUserPasswordByEmail } from '../services/users.services';
 import { IUser, passportConfigUser } from '../interfaces/user.interface';
+import { SYSTEM_REQ_ID } from '../utils/consts';
+import logger from '../utils/logger';
 // note: postman should send in body only {username:"..", password:".."}
 // (not allowed to write email ect..)
 
 passport.use(
     new LocalStrategy(async (userEmail, password, done) => {
-        const user: IUser | undefined = await getUserPasswordByEmail(userEmail);
+        const user: IUser | undefined = await getUserPasswordByEmail(
+            userEmail,
+            SYSTEM_REQ_ID
+        );
 
-        if (!user) return done('user not found', null);
+        if (!user) {
+            logger.info(SYSTEM_REQ_ID, 'Username not found');
+            return done('user not found', null);
+        }
 
         const matchedPassword = await bcrypt.compare(password, user.password);
 
         if (!matchedPassword) {
+            logger.info(SYSTEM_REQ_ID, "Username's password not matched", {
+                username: userEmail,
+                password: password,
+            });
             return done('user not match password', null);
         }
 
+        logger.info(SYSTEM_REQ_ID, 'Username login successfully', {
+            username: userEmail,
+        });
         done(null, user);
     })
 );
@@ -28,7 +43,7 @@ passport.serializeUser((user: passportConfigUser | null, done: Function) => {
 });
 
 passport.deserializeUser(async (id: string, done: Function) => {
-    const user = await UserModel.findById(id);
+    const user = await UserModel.findById(id, SYSTEM_REQ_ID);
     if (!user) done('user not found', null);
     else done(null, user);
 });

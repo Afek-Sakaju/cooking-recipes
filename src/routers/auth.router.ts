@@ -53,9 +53,6 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  */
 router.post(
     '/login',
-    (req: Request) => {
-        logger.info(req.id, 'Request to user login API');
-    },
     passport.authenticate('local', {
         successRedirect: '/success-page/success.html',
         failureRedirect: '/login-page/login.html',

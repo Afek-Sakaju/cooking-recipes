@@ -8,13 +8,21 @@ import {
     findAllRecipe,
     filterRecipes,
 } from '../services/recipes.services';
+import logger from '../utils/logger';
 
 export const getRecipeByNameCtrl = async (
     req: Request,
     res: Response,
     _next: NextFunction
 ) => {
-    const recipe = await findRecipeByName(req.params.recipeName);
+    logger.info(req.id, 'Getting recipe by name', {
+        recipeName: req.params.recipeName,
+    });
+
+    const recipe = await findRecipeByName(req.params.recipeName, req.id);
+
+    logger.info(req.id, 'Recipe getting by name results', { recipe: recipe });
+
     const status = !recipe ? 400 : 200;
 
     res.status(status).json(recipe);
@@ -33,7 +41,15 @@ export const createRecipeCtrl = async (
         difficulityLevel: req.body.difficulityLevel,
     };
 
-    const result = await createRecipe(recipe);
+    logger.info(req.id, 'Creating new recipe', {
+        recipeData: recipe,
+    });
+
+    const result = await createRecipe(recipe, req.id);
+
+    logger.info(req.id, 'Recipe creation results', {
+        recipeData: recipe,
+    });
 
     res.sendStatus(result ? 200 : 400);
 };
@@ -43,17 +59,31 @@ export const deleteRecipeByNameCtrl = async (
     res: Response,
     _next: NextFunction
 ) => {
-    const status = (await deleteRecipe(req.params.recipeName)) ? 200 : 400;
+    logger.info(req.id, 'Deleting recipe by his name', {
+        recipeName: req.params.recipeName,
+    });
+
+    const result = await deleteRecipe(req.params.recipeName, req.id);
+
+    logger.info(req.id, 'Deleting recipe results', {
+        isDeleted: result,
+    });
+
+    const status = result ? 200 : 400;
 
     res.sendStatus(status);
 };
 
 export const sendAllRecipesCtrl = async (
-    _req: Request,
+    req: Request,
     res: Response,
     _next: NextFunction
 ) => {
-    const allRecipes = await findAllRecipe();
+    logger.info(req.id, 'Getting all recipes list');
+
+    const allRecipes = await findAllRecipe(req.id);
+
+    logger.info(req.id, 'Get all recipes list results');
 
     res.json(allRecipes);
 };
@@ -63,7 +93,15 @@ export const filteredRecipeListCtrl = async (
     res: Response,
     _next: NextFunction
 ) => {
-    const filteredList = await filterRecipes(req.query);
+    logger.info(req.id, 'Getting filtered recipes list by query', {
+        query: req.query,
+    });
+
+    const filteredList = await filterRecipes(req.query, req.id);
+
+    logger.info(req.id, 'Get filtered recipes list results', {
+        list: filteredList,
+    });
 
     res.json(filteredList);
 };

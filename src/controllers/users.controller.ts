@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { registerUser, updateUserData } from '../services/users.services';
 import { IUser } from '../interfaces/user.interface';
+import logger from '../utils/logger';
 
 export async function registerUserCtrl(
     req: Request,
@@ -14,7 +15,15 @@ export async function registerUserCtrl(
         fullName: req.body.fullName,
     } as unknown as IUser;
 
-    const result = await registerUser(user);
+    logger.info(req.id, 'Registering new user', {
+        userData: user,
+    });
+
+    const result = await registerUser(user, req.id);
+
+    logger.info(req.id, 'Registeration of new user results', {
+        user: result,
+    });
 
     res.json(result);
 }
@@ -32,7 +41,15 @@ export async function updateUserDataCtrl(
         fullName: req.body.fullName,
     } as unknown as IUser;
 
-    const result = await updateUserData(userData);
+    logger.info(req.id, "Updating user's data", {
+        newData: userData,
+    });
+
+    const result = await updateUserData(userData, req.id);
+
+    logger.info(req.id, "Updating of user's data results", {
+        user: result,
+    });
 
     res.json(result);
 }
