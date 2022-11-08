@@ -54,7 +54,7 @@ router.use((req: Request, res: Response, next: NextFunction) => {
 router.post(
     '/login',
     passport.authenticate('local', {
-        successRedirect: '/success-page/success.html',
+        successRedirect: '/home-page/home.html',
         failureRedirect: '/login-page/login.html',
     })
 );
