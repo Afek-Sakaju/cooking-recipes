@@ -1,59 +1,45 @@
 @keyframes rainbowColor {
     7% {
-        color: rgb(46, 174, 0);
-        -webkit-text-stroke: 2px rgb(255, 123, 0);
+        color: rgb(174, 210, 161);
     }
     14% {
-        color: rgb(83, 248, 0);
-        -webkit-text-stroke: 2px rgb(255, 123, 0);
+        color: rgb(102, 189, 109);
     }
     21% {
-        color: rgb(149, 255, 0);
-        -webkit-text-stroke: 2px rgb(108, 32, 0);
+        color: rgb(47, 186, 56);
     }
     29% {
         color: rgb(229, 255, 0);
-        -webkit-text-stroke: 2px black;
     }
     36% {
         color: rgb(255, 247, 0);
-        -webkit-text-stroke: 2px black;
     }
     43% {
         color: rgb(251, 188, 0);
-        -webkit-text-stroke: 2px black;
     }
     51% {
         color: rgb(255, 136, 0);
-        -webkit-text-stroke: 2px black;
     }
     58% {
         color: rgb(255, 47, 0);
-        -webkit-text-stroke: 2px black;
     }
     65% {
         color: rgb(255, 0, 115);
-        -webkit-text-stroke: 2px rgb(0, 121, 14);
     }
     72% {
         color: rgb(255, 0, 204);
-        -webkit-text-stroke: 2px rgb(25, 66, 0);
     }
     79% {
         color: rgb(200, 0, 255);
-        -webkit-text-stroke: 2px rgb(108, 32, 0);
     }
     86% {
-        color: rgb(1, 81, 255);
-        -webkit-text-stroke: 2px rgb(255, 123, 0);
+        color: rgb(19, 83, 221);
     }
     93% {
-        color: rgb(0, 4, 246);
-        -webkit-text-stroke: 2px rgb(255, 179, 0);
+        color: rgb(147, 149, 219);
     }
     100% {
-        color: rgb(3, 13, 123);
-        -webkit-text-stroke: 2px rgb(191, 255, 0);
+        color: rgb(200, 202, 224);
     }
 }
 
