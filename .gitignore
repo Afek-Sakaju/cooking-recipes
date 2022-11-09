@@ -5,3 +5,4 @@ html-report/report.html
 dist
 coverage
 logs
+output-css

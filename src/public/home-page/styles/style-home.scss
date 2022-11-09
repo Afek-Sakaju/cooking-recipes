@@ -12,8 +12,9 @@ body {
 }
 
 .buttonsContainer {
+    border: 3px solid $primary-color;
     padding: 35px;
-    background: $primary-color;
+    background: white;
     width: $main-container-width;
     margin: 65px auto;
     display: flex;

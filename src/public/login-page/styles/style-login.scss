@@ -1,0 +1,89 @@
+@import './keyframes-login.scss';
+
+$font-main: Trebuchet MS, Lucida Sans Unicode, Lucida Grande;
+$primary-color: #ababab;
+$primary-color-weak: #ababab67;
+$main-container-width: 500px;
+$project-radius: 10px;
+$h1-font-size: 60px;
+$h1-margin-bottom: 50px;
+
+body {
+    font: $font-main;
+    background-image: url('../../../src/public/pictures/grill-man.jpg');
+    background-size: 100%;
+}
+
+h1 {
+    text-shadow: 0 2px 5px rgb(255, 255, 255);
+    color: white;
+    text-align: center;
+    font-size: $h1-font-size;
+    margin-bottom: $h1-margin-bottom;
+    animation: rainbowColor 15s;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+    -webkit-text-stroke: 2px rgb(0, 0, 0);
+}
+
+img.logo {
+    margin-top: 40px;
+    position: relative;
+    background-color: $primary-color-weak;
+    animation: move 15s;
+    animation-delay: 0.2s;
+    animation-iteration-count: infinite;
+    width: 57px;
+    height: 57px;
+}
+
+img.logo:hover {
+    cursor: pointer;
+    background-color: $primary-color;
+}
+
+.container {
+    padding: 30px;
+    margin: 1px auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 3px 20px rgb(255, 255, 255);
+    width: 700px;
+    background-color: #abababc8;
+    border: 4px solid $primary-color;
+    padding: 20px 80px 20px 80px;
+}
+
+input[type='text'],
+input[type='password'] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 20px 0 15px 0;
+    display: ruby-base-container;
+    border: 3px solid $primary-color;
+    box-sizing: border-box;
+}
+
+.whiteText {
+    color: #e8e7e7;
+}
+
+input[type='text']:hover,
+input[type='password']:hover {
+    opacity: 0.75;
+}
+
+button {
+    background-color: white;
+    color: #d77300;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 2px double #d77300;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.5;
+}
