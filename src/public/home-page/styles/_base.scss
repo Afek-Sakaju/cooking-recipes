@@ -1,0 +1,17 @@
+$font-main: Trebuchet MS, Lucida Sans Unicode, Lucida Grande;
+$h1-font-size: 60px;
+$h1-margin-bottom: 50px;
+$h1-min-height: 120px;
+
+body {
+    font: 100% $font-main;
+}
+
+h1 {
+    position: static;
+    text-align: center;
+    font-size: $h1-font-size;
+    margin-bottom: $h1-margin-bottom;
+    text-shadow: 0 2px 5px rgba(255, 255, 255, 0.871);
+    min-height: $h1-min-height;
+}

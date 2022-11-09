@@ -1,0 +1,17 @@
+$primary-color: #ababab;
+
+img.logo {
+    margin-top: 40px;
+    position: relative;
+    background-color: #abababaa;
+    animation: move 15s;
+    animation-delay: 0.2s;
+    animation-iteration-count: infinite;
+    width: 57px;
+    height: 57px;
+}
+
+img.logo:hover {
+    cursor: pointer;
+    background-color: $primary-color;
+}
