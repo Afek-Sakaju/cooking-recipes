@@ -1,0 +1,31 @@
+@import './keyframes-home.scss';
+
+$font-main: Trebuchet MS, Lucida Sans Unicode, Lucida Grande;
+$primary-color: #ababab;
+$main-container-width: 500px;
+$project-radius: 10px;
+$h1-font-size: 60px;
+$h1-margin-bottom: 50px;
+
+body {
+    font: 100% $font-main;
+}
+
+.buttonsContainer {
+    padding: 35px;
+    background: $primary-color;
+    width: $main-container-width;
+    margin: 65px auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: $project-radius;
+    box-shadow: 0 3px 25px rgb(39 36 36 / 52%);
+}
+
+h1 {
+    position: static;
+    text-align: center;
+    font-size: $h1-font-size;
+    margin-bottom: $h1-margin-bottom;
+    text-shadow: 0 2px 5px rgba(255, 255, 255, 0.871);
+}

@@ -2,6 +2,8 @@
     "scripts": {
         "start": "",
         "dev": "nodemon src/app.ts",
+        "scss-watch-folder": "sass --watch src/public:src/public/stylesheets",
+        "scss-watch": "sass --watch src/public/home-page/styles/style-home.scss ./output-css/output.css",
         "build:watch": "tsc -w",
         "jest-init": "jest --init",
         "test": "jest"
@@ -39,6 +41,7 @@
         "passport": "^0.6.0",
         "passport-local": "^1.0.0",
         "path": "^0.12.7",
+        "sass": "^1.56.1",
         "swagger-jsdoc": "^6.2.5",
         "swagger-ui-express": "^4.5.0",
         "uuid": "^9.0.0",
