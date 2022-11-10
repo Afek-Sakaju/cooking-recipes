@@ -2,6 +2,7 @@ $font-main: 100% Trebuchet MS, Lucida Sans Unicode, Lucida Grande;
 $h1-font-size: 60px;
 $h1-margin-bottom: 50px;
 $h1-min-height: 120px;
+$text-shadow: 0 2px 5px rgb(0, 0, 0);
 
 body {
     font: $font-main;
@@ -10,7 +11,7 @@ body {
 }
 
 h1 {
-    text-shadow: 0 2px 5px rgb(255, 255, 255);
+    text-shadow: $text-shadow;
     color: white;
     text-align: center;
     font-size: $h1-font-size;
