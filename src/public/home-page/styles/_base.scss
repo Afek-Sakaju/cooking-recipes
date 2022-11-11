@@ -1,3 +1,4 @@
+$main-background-image: url('../../../src/public/pictures/grill-man.jpg');
 $font-main: Trebuchet MS, Lucida Sans Unicode, Lucida Grande;
 $h1-font-size: 60px;
 $h1-margin-bottom: 50px;
@@ -5,6 +6,8 @@ $h1-min-height: 120px;
 
 body {
     font: 100% $font-main;
+    background-image: $main-background-image;
+    background-size: 100%;
 }
 
 h1 {

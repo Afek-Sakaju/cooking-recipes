@@ -1,36 +1,5 @@
 @use 'base';
 @use 'keyframes';
-
-$primary-color: #ababab;
-$main-container-width: 650px;
-$project-radius: 10px;
-$linking-color: blue;
-
-.buttonsContainer {
-    padding: 20px 80px 20px 80px;
-    margin: 1px auto;
-    display: flex;
-    flex-direction: column;
-    width: $main-container-width;
-    background-color: white;
-    border: 3px solid $primary-color;
-    border-radius: $project-radius;
-    box-shadow: 0 3px 25px rgba(70, 64, 64, 0.52);
-}
-
-.subTitle {
-    font-size: 30px;
-}
-
-.redirectButton {
-    background-color: white;
-    color: $linking-color;
-    padding: 14px 20px;
-    margin: auto;
-    border: 3px solid $primary-color;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    width: 50%;
-    outline-style: none;
-}
+@use 'containers';
+@use 'buttons';
+@use 'texts';

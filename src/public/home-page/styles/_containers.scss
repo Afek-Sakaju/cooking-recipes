@@ -1,0 +1,16 @@
+$primary-color: #ababab;
+$main-container-width: 650px;
+$project-radius: 10px;
+$background-half-visible-color: #ffffff08;
+
+.buttonsContainer {
+    padding: 20px 80px 20px 80px;
+    margin: 1px auto;
+    display: flex;
+    flex-direction: column;
+    width: $main-container-width;
+    background-color: $background-half-visible-color;
+    border: 3px solid $primary-color;
+    border-radius: $project-radius;
+    box-shadow: 0 3px 25px rgba(70, 64, 64, 0.52);
+}

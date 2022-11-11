@@ -1,0 +1,15 @@
+$primary-color: #ababab;
+$linking-color: blue;
+
+.redirectButton {
+    background-color: white;
+    color: $linking-color;
+    padding: 14px 20px;
+    margin: auto;
+    border: 3px solid $primary-color;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    outline-style: none;
+}
