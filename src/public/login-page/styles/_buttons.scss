@@ -1,12 +1,18 @@
 $fire-orange: #d77300;
 
-button {
+@mixin button-base-display {
     background-color: white;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    cursor: pointer;
+}
+
+button {
+    @include button-base-display;
     color: $fire-orange;
     padding: 14px 20px;
-    margin: 8px 0;
     border: 2px solid $fire-orange;
-    cursor: pointer;
     width: 100%;
 }
 

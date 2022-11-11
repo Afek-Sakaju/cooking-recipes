@@ -1,0 +1,13 @@
+$primary-color: #ababab;
+
+img.logo {
+    animation: poundHeart 3s;
+    animation-iteration-count: infinite;
+    width: 130px;
+    height: 130px;
+}
+
+img.logo:hover {
+    cursor: pointer;
+    opacity: 0.75;
+}
