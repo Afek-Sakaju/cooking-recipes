@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import logger from '../utils/logger';
+import path from 'path';
 
 const router = express.Router();
 
@@ -24,7 +25,9 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  */
 router.get('/', (req: Request, res: Response, next: NextFunction) => {
     logger.info(req.id, 'User redirected to login page');
-    res.redirect('/login-page/login.html');
+    res.sendFile(
+        path.resolve(__dirname, '../..', 'client', 'htmls', 'home.html')
+    );
 });
 
 /**
@@ -38,8 +41,12 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
  *
  */
 router.get('/health', (req: Request, res: Response, next: NextFunction) => {
-    logger.info(req.id, 'User redirected to server\'s health page');
-    res.redirect('https://youtu.be/t2NgsJrrAyM?t=101');
+    logger.info(req.id, "User redirected to server's health page");
+    res.sendFile(
+        path.resolve(__dirname, '../..', 'client', 'htmls', 'health.html')
+    );
 });
+// add health-status - for file
+// change health to return status 200
 
 export default router;

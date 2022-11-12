@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import passport from 'passport';
+import path from 'path';
 
 import logger from '../utils/logger';
 import {
@@ -54,10 +55,17 @@ router.use((req: Request, res: Response, next: NextFunction) => {
 router.post(
     '/login',
     passport.authenticate('local', {
-        successRedirect: '/home-page/home.html',
-        failureRedirect: '/login-page/login.html',
+        successRedirect: '/',
+        failureRedirect: '/login',
     })
 );
+
+//add logger
+router.get('/login', (req: Request, res: Response, next: NextFunction) => {
+    res.sendFile(
+        path.resolve(__dirname, '../..', 'client', 'htmls', 'login.html')
+    );
+});
 
 /**
  * @swagger
