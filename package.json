@@ -2,7 +2,7 @@
     "scripts": {
         "start": "",
         "dev": "nodemon src/app.ts",
-        "scss-watch-folder": "sass --watch src/public:src/output-css/",
+        "scss-watch-folder": "sass --watch src/public:src/css",
         "scss-watch": "sass --watch src/public/home-page/styles/style-home.scss src/output-css/output.css",
         "build:watch": "tsc -w",
         "jest-init": "jest --init",
