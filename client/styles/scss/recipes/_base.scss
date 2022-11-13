@@ -1,0 +1,10 @@
+h1 {
+    @include main-title-big-center;
+    @include main-title-orange-animation;
+    @include main-title-black-shadow;
+    color: white;
+}
+
+body {
+    @include body-background-and-font;
+}
