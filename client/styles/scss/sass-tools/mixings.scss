@@ -1,0 +1,65 @@
+@use 'variables';
+
+@mixin main-title-big-center {
+    position: static;
+    text-align: center;
+    font-size: 60px;
+    min-height: 100px;
+    margin-bottom: 50px;
+}
+
+@mixin main-title-black-shadow {
+    -webkit-text-stroke: 2px rgb(0, 0, 0);
+    text-shadow: 0 2px 5px rgb(0, 0, 0);
+}
+
+@mixin main-title-orange-animation {
+    animation: orangeRotation 5s;
+    animation-delay: 0.5s;
+    animation-iteration-count: infinite;
+}
+
+@mixin body-background-and-font {
+    font: 100% 'Trebuchet MS, Lucida Sans Unicode, Lucida Grande';
+    background-image: url('../../../assets/grill-man.jpg');
+    background-size: 100%;
+}
+
+@mixin button-centered {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    cursor: pointer;
+    padding: 14px 20px;
+    width: 100%;
+    :hover {
+        opacity: 0.5;
+    }
+}
+
+@mixin button-orange-design {
+    color: $fire-orange;
+    background-color: white;
+    border: 2px solid $fire-orange;
+}
+
+@mixin button-redirect-blue-design {
+    color: $link-color;
+    background-color: white;
+    border: 3px solid $primary-color;
+}
+
+@mixin container-centered-medium {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 650px;
+    padding: 20px 80px 20px 80px;
+}
+
+@mixin container-designed {
+    background-color: $almost-invisible-color;
+    border: 4px solid $primary-color;
+    border-radius: 10px;
+    box-shadow: 0 3px 20px rgb(1, 1, 1);
+}

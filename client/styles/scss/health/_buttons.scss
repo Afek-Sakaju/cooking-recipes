@@ -1,23 +1,6 @@
-$primary-color: #ababab;
-$linking-color: blue;
-
-@mixin button-base-display {
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    cursor: pointer;
-}
-
 .redirectButton {
-    @include button-base-display;
-    border: 3px solid $primary-color;
-    color: $linking-color;
-    padding: 14px 20px;
+    @include button-centered;
+    @include button-redirect-blue-design;
     margin-top: 10px;
     width: 50%;
-}
-
-a:hover {
-    opacity: 0.5;
 }

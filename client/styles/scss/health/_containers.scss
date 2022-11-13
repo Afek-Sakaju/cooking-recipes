@@ -1,30 +1,10 @@
-$primary-color: #ababab;
-$main-container-width: 650px;
-$project-radius: 10px;
-$box-shadow: 0 3px 20px rgb(1, 1, 1);
-$background-half-visible-color: #ffffff08;
-
-@mixin center-container-content {
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-}
-
 .buttonsContainer {
-    @include center-container-content;
-    padding: 20px 80px 20px 80px;
-    width: $main-container-width;
-    background-color: $background-half-visible-color;
-    border: 4px solid $primary-color;
-    border-radius: $project-radius;
-    box-shadow: $box-shadow;
+    @include container-centered-medium;
+    @include container-designed;
 }
 
 .imgContainer {
-    @include center-container-content;
-    flex-direction: unset;
-    justify-content: center;
-    width: $main-container-width;
+    @include container-centered-medium;
     padding: 10px 0 20px 0;
     min-height: 140px;
 }

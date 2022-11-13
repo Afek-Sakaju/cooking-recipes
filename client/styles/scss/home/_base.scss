@@ -1,28 +1,10 @@
-$main-background-image: url('../../../assets/grill-man.jpg');
-$font-main: Trebuchet MS, Lucida Sans Unicode, Lucida Grande;
-$h1-margin-bottom: 50px;
-$text-shadow: 0 2px 5px rgb(0, 0, 0);
-
-@mixin title-design-and-place {
-    text-shadow: $text-shadow;
-    margin-bottom: $h1-margin-bottom;
-    -webkit-text-stroke: 2px rgb(0, 0, 0);
-    position: static;
-    text-align: center;
-    font-size: 60px;
-    min-height: 120px;
-}
-
 h1 {
-    @include title-design-and-place;
+    @include main-title-big-center;
+    @include main-title-black-shadow;
+    @include main-title-orange-animation;
     color: white;
-    animation: orangeRotation 5s;
-    animation-delay: 0.5s;
-    animation-iteration-count: infinite;
 }
 
 body {
-    font: 100% $font-main;
-    background-image: $main-background-image;
-    background-size: 100%;
+    @include body-background-and-font;
 }

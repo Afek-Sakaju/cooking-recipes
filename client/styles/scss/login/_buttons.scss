@@ -1,22 +1,4 @@
-$fire-orange: #d77300;
-
-@mixin button-base-display {
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    cursor: pointer;
-    box-shadow: $text-shadow;
-}
-
-button {
-    @include button-base-display;
-    color: $fire-orange;
-    padding: 14px 20px;
-    border: 2px solid $fire-orange;
-    width: 100%;
-}
-
-button:hover {
-    opacity: 0.5;
+.submitButton {
+    @include button-centered;
+    @include button-orange-design;
 }
