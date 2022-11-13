@@ -1,7 +1,3 @@
-$fire-orange: #d77300;
-
 .subTitle {
-    font-size: 30px;
-    text-align: center;
-    color: $fire-orange;
+    @include text-orange-small;
 }

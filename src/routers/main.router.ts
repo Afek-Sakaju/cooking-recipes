@@ -18,7 +18,7 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  * /:
  *   get:
  *     tags: ['Main routers']
- *     description: Redirect the user to a login page
+ *     description: Send the home page to the user
  *     responses:
  *       302:
  *
@@ -32,21 +32,53 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
 
 /**
  * @swagger
+ * /health-status:
+ *   get:
+ *     tags: ['Main routers']
+ *     description: Send the health-status page to the user
+ *     responses:
+ *       302:
+ *
+ */
+router.get(
+    '/health-status',
+    (req: Request, res: Response, next: NextFunction) => {
+        logger.info(req.id, 'Server sent user to health-status page');
+        res.sendFile(
+            path.resolve(__dirname, '../..', 'client', 'htmls', 'health.html')
+        );
+    }
+);
+
+/**
+ * @swagger
+ * /login:
+ *   get:
+ *     tags: ['Main routers']
+ *     description: Send the login page to the user
+ *     responses:
+ *       302:
+ *
+ */
+router.get('/login', (req: Request, res: Response, next: NextFunction) => {
+    res.sendFile(
+        path.resolve(__dirname, '../..', 'client', 'htmls', 'login.html')
+    );
+});
+
+/**
+ * @swagger
  * /health:
  *   get:
  *     tags: ['Main routers']
- *     description: Respond with message that give server status
+ *     description: Send the server's status to the user
  *     responses:
  *       302:
  *
  */
 router.get('/health', (req: Request, res: Response, next: NextFunction) => {
-    logger.info(req.id, "User redirected to server's health page");
-    res.sendFile(
-        path.resolve(__dirname, '../..', 'client', 'htmls', 'health.html')
-    );
+    logger.info(req.id, 'Server sent health status to user');
+    res.sendStatus(200);
 });
-// add health-status - for file
-// change health to return status 200
 
 export default router;

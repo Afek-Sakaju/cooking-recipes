@@ -5,6 +5,8 @@
 
 .imgContainer {
     @include container-centered-medium;
+    flex-direction: unset;
+    justify-content: center;
     padding: 10px 0 20px 0;
     min-height: 140px;
 }

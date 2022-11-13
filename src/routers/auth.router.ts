@@ -60,12 +60,7 @@ router.post(
     })
 );
 
-//add logger
-router.get('/login', (req: Request, res: Response, next: NextFunction) => {
-    res.sendFile(
-        path.resolve(__dirname, '../..', 'client', 'htmls', 'login.html')
-    );
-});
+//todo : check all statuses in swagger
 
 /**
  * @swagger
