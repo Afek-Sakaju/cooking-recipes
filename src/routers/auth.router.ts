@@ -1,6 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
 import passport from 'passport';
-import path from 'path';
 
 import logger from '../utils/logger';
 import {
@@ -60,7 +59,7 @@ router.post(
     })
 );
 
-//todo : check all statuses in swagger
+
 
 /**
  * @swagger
