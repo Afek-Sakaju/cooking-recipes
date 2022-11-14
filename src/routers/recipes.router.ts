@@ -37,12 +37,14 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  *                  items:
  *                      $ref: "#/components/schemas/recipe"
  *       401:
- *          description:Unauthorized user
+ *         description: Unauthorized user
  *       500:
  *         description: Server Error
  *
  */
-router.get('/all', isAuthenticatedMW, sendAllRecipesCtrl);
+router.get('/all', sendAllRecipesCtrl);
+//router.get('/all', isAuthenticatedMW, sendAllRecipesCtrl);
+
 
 /**
  * @swagger

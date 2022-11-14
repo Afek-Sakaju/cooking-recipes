@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "start": "",
+        "start": "node dist/app.js",
         "dev": "nodemon src/app.ts",
         "build:watch": "tsc -w",
         "jest-init": "jest --init",

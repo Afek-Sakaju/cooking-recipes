@@ -30,6 +30,16 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
     );
 });
 
+router.get(
+    '/recipes-list',
+    (req: Request, res: Response, next: NextFunction) => {
+        logger.info(req.id, 'User redirected to recipes page');
+        res.sendFile(
+            path.resolve(__dirname, '../..', 'client', 'htmls', 'recipes.html')
+        );
+    }
+);
+
 /**
  * @swagger
  * /health-status:

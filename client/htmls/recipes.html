@@ -3,16 +3,12 @@
     <head>
         <link rel="stylesheet" href="../styles/css/recipes/style-recipes.css" />
         <title>Recipes</title>
+        <script src="../scripts/recipes.js"></script>
     </head>
     <body>
         <h1>Feel free to use our recipes</h1>
-        <form class="mainContainer" action="/auth/login" method="post">
-            <p class="descriptionText"><strong>Username:</strong></p>
-            <input type="text" id="username" name="username" />
-            <p class="descriptionText"><strong>Password:</strong></p>
-            <input type="password" id="password" name="password" />
-            <button class="submitButton" type="submit">Login</button>
-        </form>
+        <div id="recipes-container"></div>
+
         <div>
             <container class="buttonsContainer">
                 <p class="subTitle">Looking for the home page?</p>
