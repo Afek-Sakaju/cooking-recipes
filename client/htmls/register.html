@@ -10,6 +10,12 @@
     <body>
         <h1>Join our site friend!</h1>
     </body>
+    <div>
+        <container class="recipesContainer" id="recipesContainer">
+            Get all recipes here:
+            <button class="submitButton" id="recipesButton">get recipes</button>
+        </container>
+    </div>
     <form class="mainContainer" action="/auth/register" method="post">
         <p class="descriptionText"><strong>Username:</strong></p>
         <input type="text" id="username" name="username" />
@@ -17,4 +23,5 @@
         <input type="password" id="password" name="password" />
         <button class="submitButton" type="submit">Register</button>
     </form>
+    <script src="../scripts/recipes.js"></script>
 </html>

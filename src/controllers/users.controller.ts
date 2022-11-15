@@ -19,13 +19,18 @@ export async function registerUserCtrl(
         userData: user,
     });
 
-    const result = await registerUser(user, req.id);
+    try {
+        const result = await registerUser(user, req.id);
 
-    logger.info(req.id, 'Registeration of new user results', {
-        user: result,
-    });
+        logger.info(req.id, 'Registeration of new user results', {
+            user: result,
+        });
 
-    res.json(result);
+        res.json(result);
+    } catch (e: any) {
+        next(e);
+        // error can pull the server down if there is email that already exists
+    }
 }
 
 export async function updateUserDataCtrl(

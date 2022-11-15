@@ -30,6 +30,16 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
     );
 });
 
+/**
+ * @swagger
+ * /recipes-list:
+ *   get:
+ *     tags: ['Main routers']
+ *     description: Send the recipes page to the user
+ *     responses:
+ *       302:
+ *
+ */
 router.get(
     '/recipes-list',
     (req: Request, res: Response, next: NextFunction) => {
@@ -73,6 +83,22 @@ router.get(
 router.get('/login', (req: Request, res: Response, next: NextFunction) => {
     res.sendFile(
         path.resolve(__dirname, '../..', 'client', 'htmls', 'login.html')
+    );
+});
+
+/**
+ * @swagger
+ * /register:
+ *   get:
+ *     tags: ['Main routers']
+ *     description: Send the register page to the user
+ *     responses:
+ *       302:
+ *
+ */
+router.get('/register', (req: Request, res: Response, next: NextFunction) => {
+    res.sendFile(
+        path.resolve(__dirname, '../..', 'client', 'htmls', 'register.html')
     );
 });
 

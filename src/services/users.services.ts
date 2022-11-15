@@ -10,6 +10,7 @@ export async function registerUser(
     logger.verbose(requestId, 'Running request to create new user to DB');
 
     const userDoc = new UserModel(user);
+
     const result: any = await userDoc.save();
 
     return result.toJSON();

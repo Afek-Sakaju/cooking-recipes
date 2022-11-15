@@ -1,35 +1,27 @@
-let recipes = [];
+const recipesList = fetchRecipes();
+const getRecipesButton = document.getElementById('recipesButton');
+const container = document.getElementById('recipesContainer');
 
 function fetchRecipes() {
-    return new Promise((resolve, reject) => {
-        fetch('/recipe/all')
+    return new Promise(async (res, rej) => {
+        await fetch('/recipe/all')
             .then((res) => res.json())
             .then((data) => {
-                console.log('fetchRecipes', data);
-                resolve(data);
+                res(data);
             })
             .catch((err) => reject(err));
     });
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-    console.log('Hello World!');
-    recipes = await fetchRecipes();
-    renderRecipes(recipes);
-});
-
-function renderRecipes(recipes) {
-    const elements = recipes.map((r) => {
-        const element = document.createElement('p');
-        element.innerHTML = r.name;
-        element.addEventListener('click', () =>
-            alert(JSON.stringify(r, null, 4))
-        );
-        return element;
-    });
-    const container = document.getElementById('recipes-container');
-
-    elements.forEach((e) => {
-        container.append(e);
+function insertRecipes(recipes, element) {
+    Array.from(recipes).forEach((recipe) => {
+        const p = document.createElement('p');
+        p.appendChild(recipe.name);
     });
 }
+
+getRecipesButton.addEventListener('click', () => {
+    console.log(1);
+    insertRecipes(recipesList, container);
+    console.log(2);
+});
