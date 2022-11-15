@@ -1,6 +1,5 @@
-.redirectButton {
+.recipesButton {
     @include button-centered;
-    @include button-redirect-blue-design;
-    margin-top: 10px;
-    width: 50%;
+    @include button-orange-design;
+    width: 60%;
 }

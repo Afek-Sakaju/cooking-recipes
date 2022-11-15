@@ -1,4 +1,10 @@
-.buttonsContainer {
+.mainContainer {
     @include container-centered-medium;
     @include container-designed;
+    width: 800px;
+    height: 500px;
+}
+
+.recipesContainer {
+    @include container-large-data-designed;
 }

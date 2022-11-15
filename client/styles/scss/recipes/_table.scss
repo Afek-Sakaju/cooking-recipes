@@ -1,0 +1,15 @@
+th {
+    @include th-aligned-designed;
+}
+
+table {
+    @include table-aligned-designed;
+}
+
+tr {
+    @include tr-aligned-designed;
+}
+
+td {
+    @include td-aligned-designed;
+}

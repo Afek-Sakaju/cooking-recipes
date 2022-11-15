@@ -49,6 +49,24 @@
     border: 3px solid $primary-color;
 }
 
+@mixin container-mini-link-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 630px;
+    padding: 10px 8px;
+}
+
+@mixin container-large-data-designed {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    width: 100%;
+    height: 400px;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+
 @mixin container-centered-medium {
     display: flex;
     flex-direction: column;
@@ -64,16 +82,47 @@
     box-shadow: 0 3px 20px rgb(1, 1, 1);
 }
 
-@mixin container-mini-link-bottom {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 630px;
-    padding: 10px 8px;
-}
-
 @mixin text-orange-small {
     font-size: 30px;
     text-align: center;
     color: $fire-orange;
+}
+
+@mixin table-aligned-designed {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+}
+
+@mixin th-aligned-designed {
+    height: 70px;
+    color: white;
+    background-color: $fire-orange;
+    border: 0.01px solid black;
+    -webkit-text-stroke: 0.1px rgb(0, 0, 0);
+}
+
+@mixin tr-aligned-designed {
+    height: 40px;
+    &:nth-child(odd) {
+        color: white;
+        background-color: $primary-color;
+        -webkit-text-stroke: 0.05px rgb(0, 0, 0);
+    }
+}
+
+@mixin td-aligned-designed {
+    border: 0.01px solid black;
+}
+
+@mixin text-table-designed-aligned {
+    font-size: 19px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+@mixin text-head-table-designed-aligned {
+    font-size: 24px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
