@@ -1,5 +1,4 @@
 .recipesButton {
-    @include button-centered;
+    @include button-of-buttons-line;
     @include button-orange-design;
-    width: 60%;
 }

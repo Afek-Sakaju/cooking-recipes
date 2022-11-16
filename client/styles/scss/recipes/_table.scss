@@ -1,5 +1,6 @@
 th {
     @include th-aligned-designed;
+    overflow-x: unset !important;
 }
 
 table {
@@ -12,4 +13,14 @@ tr {
 
 td {
     @include td-aligned-designed;
+}
+
+.ingredients {
+    min-width: 450px;
+    max-width: 450px;
+}
+
+.recipeName {
+    min-width: 200px;
+    max-width: 200px;
 }

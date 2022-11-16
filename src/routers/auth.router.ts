@@ -59,8 +59,6 @@ router.post(
     })
 );
 
-
-
 /**
  * @swagger
  * /auth/register:

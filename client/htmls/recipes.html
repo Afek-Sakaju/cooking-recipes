@@ -8,29 +8,29 @@
         <h1>Feel free to use our recipes!</h1>
     </body>
     <div class="mainContainer">
-        <button class="recipesButton" id="recipesButton">
+        <button class="recipesButton" id="allRecipesButton">
             Get all recipes
         </button>
-        <div class="recipesContainer" id="recipesContainer">
-            <table>
+        <button class="recipesButton" id="recipeByNameButton">
+            Find recipe by name
+        </button>
+        <div class="recipesContainer">
+            <table id="recipesTable">
                 <tr>
-                    <th class="tableTextHead">Company</th>
-                    <th class="tableTextHead">Contact</th>
-                    <th class="tableTextHead">Country</th>
-                </tr>
-                <tr>
-                    <td class="tableText">Alfreds Futterkiste</td>
-                    <td class="tableText">Maria Anders</td>
-                    <td class="tableText">Germany</td>
-                </tr>
-                <tr>
-                    <td class="tableText">Centro comercial Moctezuma</td>
-                    <td class="tableText">Francisco Chang</td>
-                    <td class="tableText">Mexico</td>
+                    <th class="recipeName">
+                        <p class="tableTextHead">Recipe</p>
+                    </th>
+                    <th class="ingredients">
+                        <p class="tableTextHead">Ingredients</p>
+                    </th>
+                    <th><p class="tableTextHead">Cooking</br>time</p></th>
+                    <th><p class="tableTextHead">Difficulity</p></th>
+                    <th><p class="tableTextHead">Creator</p></th>
                 </tr>
             </table>
         </div>
     </div>
     <script type="text/javascript" src="https://livejs.com/live.js"></script>
     <script src="../scripts/recipes.js"></script>
+    <script src="../scripts/common-variables.js"></script>
 </html>
