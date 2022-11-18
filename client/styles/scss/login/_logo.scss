@@ -1,11 +1,13 @@
 img.logo {
     margin-top: 20px;
     position: relative;
-    animation: move 15s;
+    animation: 15s move linear;
     animation-delay: 0.2s;
     animation-iteration-count: infinite;
+    animation-direction: alternate;
     width: 57px;
     height: 57px;
+    top: 85px;
 }
 
 img.logo:hover {
