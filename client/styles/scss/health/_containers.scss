@@ -1,12 +1,7 @@
-.buttonsContainer {
-    @include container-centered-medium;
-    @include container-designed;
-}
-
 .imgContainer {
     @include container-centered-medium;
     flex-direction: unset;
     justify-content: center;
-    padding: 10px 0 20px 0;
-    min-height: 140px;
+    padding: 50px 0 5px 0;
+    min-height: 300px;
 }

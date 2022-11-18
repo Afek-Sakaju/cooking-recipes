@@ -1,6 +1,9 @@
-.redirectButton {
-    @include button-centered;
+.topRedirectButton {
+    @include button-link-tiny-top;
     @include button-redirect-blue-design;
-    margin-top: 10px;
-    width: 50%;
+    border: 1px solid $primary-color;
+    font-size: 16px;
+    background: inherit;
+    width: 136.5px;
+    top: -135px;
 }

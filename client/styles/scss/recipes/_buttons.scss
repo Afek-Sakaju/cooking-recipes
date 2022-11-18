@@ -1,4 +1,13 @@
 .recipesButton {
     @include button-of-buttons-line;
     @include button-orange-design;
+    width: 33%;
+}
+
+.topRedirectButton {
+    @include button-link-tiny-top;
+    @include button-redirect-blue-design;
+    border: 1px solid $primary-color;
+    font-size: 16px;
+    background: inherit;
 }

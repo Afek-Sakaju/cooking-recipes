@@ -47,6 +47,17 @@
     }
 }
 
+@mixin button-link-tiny-top {
+    position: relative;
+    top: -130px;
+    cursor: pointer !important;
+    padding: 10px 20px;
+    width: 138px;
+    &:hover {
+        opacity: 0.5;
+    }
+}
+
 @mixin button-orange-design {
     color: $fire-orange;
     background-color: white;
@@ -55,6 +66,7 @@
 
 @mixin button-redirect-blue-design {
     color: $link-color;
+    font-weight: lighter;
     background-color: white;
     border: 3px solid $primary-color;
 }

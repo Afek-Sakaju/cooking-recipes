@@ -3,6 +3,7 @@ h1 {
     @include main-title-black-shadow;
     @include main-title-orange-animation;
     color: white;
+    margin-bottom: 20px;
 }
 
 body {

@@ -4,16 +4,26 @@
         <link rel="stylesheet" href="../styles/css/recipes/style-recipes.css" />
         <title>Afek's recipes site register page</title>
     </head>
-    <body>
+    <body>        
         <h1>Feel free to use our recipes!</h1>
     </body>
+    <div>
+        <a class="topRedirectButton" href="/">
+           Back to home page
+        </a>
+    </div>
     <div class="mainContainer">
-        <button class="recipesButton" id="allRecipesButton">
+        <div>
+            <button class="recipesButton" id="allRecipesButton">
             Get all recipes
+        </button>
+        <button class="recipesButton" id="recipeByNameButton">
+            Get recipe list using filters
         </button>
         <button class="recipesButton" id="recipeByNameButton">
             Find recipe by name
         </button>
+    </div>    
         <div class="recipesContainer">
             <table id="recipesTable">
                 <tr>

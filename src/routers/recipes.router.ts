@@ -45,7 +45,6 @@ router.use((req: Request, res: Response, next: NextFunction) => {
 router.get('/all', sendAllRecipesCtrl);
 //router.get('/all', isAuthenticatedMW, sendAllRecipesCtrl);
 
-
 /**
  * @swagger
  * /recipe/:
