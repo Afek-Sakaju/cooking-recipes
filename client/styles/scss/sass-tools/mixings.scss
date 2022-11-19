@@ -104,6 +104,19 @@
     box-shadow: 0 3px 20px rgb(1, 1, 1);
 }
 
+@mixin container-pop-invisible {
+    position: absolute;
+    height: 550px;
+    width: 800px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $fire-orange;
+    color: #fff;
+    text-align: center;
+    border: 3px solid $primary-color;
+}
+
 @mixin text-orange-small {
     font-size: 30px;
     text-align: center;
@@ -151,4 +164,12 @@
     font-size: 24px;
     padding-right: 10px;
     padding-left: 10px;
+}
+
+@mixin textbox-designed {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 20px 0 15px 0;
+    border: 3px solid $primary-color;
+    box-sizing: border-box;
 }

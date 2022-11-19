@@ -117,4 +117,11 @@ router.get('/health', (req: Request, res: Response, next: NextFunction) => {
     res.sendStatus(200);
 });
 
+router.get('/pop', (req: Request, res: Response, next: NextFunction) => {
+    logger.info(req.id, 'Server sent user to health-status page');
+    res.sendFile(
+        path.resolve(__dirname, '../..', 'client', 'htmls', 'popup.html')
+    );
+});
+
 export default router;

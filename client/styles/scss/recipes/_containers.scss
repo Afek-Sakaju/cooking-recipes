@@ -1,10 +1,21 @@
 .mainContainer {
     @include container-centered-medium;
     @include container-designed;
+    position: relative;
     width: 1300px;
-    height: 700px;
+    height: 670px;
 }
 
 .recipesContainer {
     @include container-large-data-designed;
+}
+
+.popupContainter {
+    @include container-pop-invisible;
+    border-radius: 10px;
+}
+
+.show {
+    visibility: visible;
+    animation: fadeIn 1s;
 }
