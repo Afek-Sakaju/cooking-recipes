@@ -9,7 +9,7 @@
         "migrate-mongo:up": "migrate-mongo up",
         "migrate-mongo:down": "migrate-mongo down",
         "migrate-mongo:status": "migrate-mongo status",
-        "migrate-mongo:create": "migrate-mongo create init-admin-user"
+        "migrate-mongo:create": "migrate-mongo create init-recipes"
     },
     "author": "afek",
     "license": "ISC",

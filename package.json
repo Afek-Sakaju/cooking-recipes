@@ -1,9 +1,11 @@
 {
     "scripts": {
-        "start": "node dist/app.js",
-        "dev": "nodemon src/app.ts",
+        "start": "npm run migrateDB && npm run build && node dist/app.js",
+        "dev": "npm run migrateDB && nodemon src/app.ts",
+        "dev-no-migrations": "nodemon src/app.ts",
+        "migrate-DB": "cd ./mongo-migrations && npm run migrate-mongo:up",
+        "build": "tsc",
         "build:watch": "tsc -w",
-        "jest-init": "jest --init",
         "test": "jest"
     },
     "devDependencies": {
