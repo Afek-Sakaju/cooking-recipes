@@ -19,7 +19,7 @@ import { MONGO_URL, PORT } from './utils/env-variables';
 import { connectDB } from './DB/mongoose';
 import { SYSTEM_REQ_ID } from './utils/consts';
 import swaggerDocument from './config/swagger-docs.json';
-import schemes from './models/swaggerSchemas';
+import schemas from './models/swaggerSchemas';
 import logger from './utils/logger';
 import { requestID } from './middleware/requestID-middleware';
 import { logAPI } from './middleware/requestID-middleware';
@@ -72,7 +72,7 @@ app.use(
 
 if (process.env.NODE_ENV !== 'production') {
     //@ts-ignore
-    swaggerDocument.swaggerDefinition.components.schemas = schemes;
+    swaggerDocument.swaggerDefinition.components.schemas = schemas;
 }
 
 const swaggerDocs = swaggerJsDoc(swaggerDocument);

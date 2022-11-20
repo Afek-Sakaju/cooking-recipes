@@ -43,7 +43,7 @@ passport.serializeUser((user: passportConfigUser | null, done: Function) => {
 });
 
 passport.deserializeUser(async (id: string, done: Function) => {
-    const user = await UserModel.findById(id, SYSTEM_REQ_ID);
+    const user = await UserModel.findById(id);
     if (!user) done('user not found', null);
     else done(null, user);
 });
