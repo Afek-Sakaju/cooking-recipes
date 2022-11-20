@@ -13,6 +13,7 @@
 .popupContainter {
     @include container-pop-invisible;
     border-radius: 10px;
+    visibility: hidden;
 }
 
 .show {
