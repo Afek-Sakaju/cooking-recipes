@@ -15,7 +15,7 @@ import './config/passport-config';
 import mainRouter from './routers/main.router';
 import authRouter from './routers/auth.router';
 import recipesRouter from './routers/recipes.router';
-import { MONGO_URL, PORT } from './utils/environment-variables';
+import { MONGO_URL, PORT } from './utils/env-variables';
 import { connectDB } from './DB/mongoose';
 import { SYSTEM_REQ_ID } from './utils/consts';
 import swaggerDocument from './config/swagger-docs.json';

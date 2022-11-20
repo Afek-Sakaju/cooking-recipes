@@ -1,5 +1,5 @@
 // In this file you can configure migrate-mongo
-const { MONGO_URL } = require('./env-variables');
+const { MONGO_URL } = require('./src/utils/env-variables-mirgate');
 
 const config = {
     mongodb: {

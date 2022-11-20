@@ -1,6 +1,6 @@
 import winston from 'winston';
 import winstonDailyRotateFile from 'winston-daily-rotate-file';
-import { LOGGING_LINE_TRACE, LOGGING_MODE } from './environment-variables';
+import { LOGGING_LINE_TRACE, LOGGING_MODE } from './env-variables';
 import { LOG_DIR_PATH } from './paths';
 const colorizer = winston.format.colorize();
 
