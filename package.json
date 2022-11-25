@@ -1,7 +1,7 @@
 {
     "scripts": {
         "start": "npm run migrateDB && npm run build && node dist/app.js",
-        "dev": "npm run migrat eDB && nodemon src/app.ts",
+        "dev": "npm run migrate DB && nodemon src/app.ts",
         "dev-no-migrations": "nodemon src/app.ts",
         "migrate-DB": "npm run migrate-mongo:up",
         "build": "tsc",
