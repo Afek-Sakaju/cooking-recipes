@@ -17,7 +17,7 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  * @swagger
  * /:
  *   get:
- *     tags: ['Main operations']
+ *     tags: ['Main routers']
  *     description: Default api
  *     responses:
  *       200:
@@ -36,7 +36,7 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
  * @swagger
  * /success:
  *   get:
- *     tags: ['Main operations']
+ *     tags: ['Main routers']
  *     description: Success login api
  *     responses:
  *       202:
@@ -55,7 +55,7 @@ router.get(
  * @swagger
  * /health:
  *   get:
- *     tags: ['Main operations']
+ *     tags: ['Main routers']
  *     description: Get health server status
  *     responses:
  *       200:

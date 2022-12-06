@@ -63,7 +63,7 @@ router.post(
  * @swagger
  * /auth/logout:
  *   post:
- *     tags: ['Auth operations']
+ *     tags: ['Auth routers']
  *     description: Logout from the application
  *     responses:
  *       200:
