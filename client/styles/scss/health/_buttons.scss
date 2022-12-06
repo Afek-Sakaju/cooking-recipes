@@ -1,9 +1,0 @@
-.topRedirectButton {
-    @include button-link-tiny-top;
-    @include button-redirect-blue-design;
-    border: 1px solid $primary-color;
-    font-size: 16px;
-    background: inherit;
-    width: 136.5px;
-    top: -135px;
-}

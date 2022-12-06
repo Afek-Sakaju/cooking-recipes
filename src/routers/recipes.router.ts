@@ -18,6 +18,7 @@ router.use((req: Request, res: Response, next: NextFunction) => {
         originalUrl: req.originalUrl,
         body: req.body,
     });
+
     next();
 });
 
@@ -43,7 +44,6 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  *
  */
 router.get('/all', sendAllRecipesCtrl);
-//router.get('/all', isAuthenticatedMW, sendAllRecipesCtrl);
 
 /**
  * @swagger
