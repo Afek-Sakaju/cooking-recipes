@@ -61,6 +61,25 @@ router.post(
 
 /**
  * @swagger
+ * /auth/logout:
+ *   post:
+ *     tags: ['Auth operations']
+ *     description: Logout from the application
+ *     responses:
+ *       200:
+ *           description: Logout successfully
+ *       500:
+ *          description: Error in the logout  procces
+ */
+router.post('/logout', (req, res, next) => {
+    req.logout(() => {
+        logger.debug(req.id, 'Logout API request redirected to home page');
+        res.redirect('/');
+    });
+});
+
+/**
+ * @swagger
  * /auth/register:
  *   post:
  *     tags: ['Auth routers']
@@ -87,7 +106,7 @@ router.post(
  *                          type: string
  *                          example: "+888 88 888 8888"
  *     responses:
- *       200:
+ *       201:
  *         description: Returns the registered user
  *         content:
  *           application/json:
@@ -102,7 +121,7 @@ router.post('/register', registerUserCtrl);
  * /auth/update:
  *   put:
  *     tags: ['Auth routers']
- *     description: update of user's information
+ *     description: update of user's information by id
  *     requestBody:
  *        description: the user information for updating
  *        required: true

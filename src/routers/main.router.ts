@@ -1,4 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
+import { isAuthenticatedMW } from '../middleware/auth-middleware';
 import logger from '../utils/logger';
 
 const router = express.Router();
@@ -41,10 +42,14 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
  *       202:
  *         description: Return login success message
  */
-router.get('/success', (req: Request, res: Response, next: NextFunction) => {
-    logger.info(req.id, 'User visiting login success page');
-    res.sendStatus(202).send('Logged in successfuly');
-});
+router.get(
+    '/success',
+    isAuthenticatedMW,
+    (req: Request, res: Response, next: NextFunction) => {
+        logger.info(req.id, 'User visiting login success page');
+        res.status(202).send('Logged in successfuly');
+    }
+);
 
 /**
  * @swagger
@@ -58,7 +63,7 @@ router.get('/success', (req: Request, res: Response, next: NextFunction) => {
  */
 router.get('/health', (req: Request, res: Response, next: NextFunction) => {
     logger.info(req.id, 'Server sent health status to user');
-    res.sendStatus(200).send('OK');
+    res.status(200).send('OK');
 });
 
 export default router;

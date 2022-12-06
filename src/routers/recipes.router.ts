@@ -118,8 +118,10 @@ router.get('/', isAuthenticatedMW, filteredRecipeListCtrl); //(by query string)
  *           application/json:
  *             schema:
  *               $ref: "#/components/schemas/recipe"
- *       400:
- *         description: return error message, can't continue the recipe creation
+ *       401:
+ *         description: Unauthorized user
+ *       500:
+ *         description: Server Error
  *
  */
 router.post('/new-recipe', isAuthenticatedMW, createRecipeCtrl);

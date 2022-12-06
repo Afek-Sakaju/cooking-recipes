@@ -51,7 +51,7 @@ export const createRecipeCtrl = async (
         recipeData: recipe,
     });
 
-    res.sendStatus(result ? 200 : 400);
+    res.sendStatus(result ? 201 : 500);
 };
 
 export const deleteRecipeByNameCtrl = async (
