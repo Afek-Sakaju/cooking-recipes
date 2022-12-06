@@ -16,11 +16,11 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  * @swagger
  * /:
  *   get:
- *     tags: ['Main routers']
- *     description: Send the home page to the user
+ *     tags: ['Main operations']
+ *     description: Default api
  *     responses:
- *       302:
- *
+ *       200:
+ *         description: Returns welcome message
  */
 router.get('/', (req: Request, res: Response, next: NextFunction) => {
     logger.debug(req.id, 'call to API', {
@@ -28,22 +28,22 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
         originalUrl: req.originalUrl,
     });
 
-    res.send('welcome everyone');
+    res.status(200).send('welcome my friend');
 });
 
 /**
  * @swagger
  * /health:
  *   get:
- *     tags: ['Main routers']
- *     description: Send the server's status to the user
+ *     tags: ['Main operations']
+ *     description: Get health server status
  *     responses:
  *       200:
- *
+ *         description: Returns OK
  */
 router.get('/health', (req: Request, res: Response, next: NextFunction) => {
     logger.info(req.id, 'Server sent health status to user');
-    res.sendStatus(200);
+    res.sendStatus(200).send('OK');
 });
 
 export default router;
