@@ -33,6 +33,21 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
 
 /**
  * @swagger
+ * /success:
+ *   get:
+ *     tags: ['Main operations']
+ *     description: Success login api
+ *     responses:
+ *       202:
+ *         description: Return login success message
+ */
+router.get('/success', (req: Request, res: Response, next: NextFunction) => {
+    logger.info(req.id, 'User visiting login success page');
+    res.sendStatus(202).send('Logged in successfuly');
+});
+
+/**
+ * @swagger
  * /health:
  *   get:
  *     tags: ['Main operations']
