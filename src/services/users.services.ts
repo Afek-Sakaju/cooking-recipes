@@ -41,7 +41,7 @@ export async function updateUserData(
     return result.toJSON();
 }
 
-export async function getUserPasswordByEmail(
+export async function getUserWithPassword(
     mail: string,
     requestId: string
 ): Promise<IUser | undefined> {

@@ -2,14 +2,14 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import bcrypt from 'bcrypt';
 import { UserModel } from '../models/user.model';
-import { getUserPasswordByEmail } from '../services/users.services';
+import { getUserWithPassword } from '../services/users.services';
 import { IUser, passportConfigUser } from '../interfaces/user.interface';
 import { SYSTEM_REQ_ID } from '../utils/consts';
 import logger from '../utils/logger';
 
 passport.use(
     new LocalStrategy(async (userEmail, password, done) => {
-        const user: IUser | undefined = await getUserPasswordByEmail(
+        const user: IUser | undefined = await getUserWithPassword(
             userEmail,
             SYSTEM_REQ_ID
         );
