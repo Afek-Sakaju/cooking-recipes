@@ -6,8 +6,6 @@ import { getUserPasswordByEmail } from '../services/users.services';
 import { IUser, passportConfigUser } from '../interfaces/user.interface';
 import { SYSTEM_REQ_ID } from '../utils/consts';
 import logger from '../utils/logger';
-// note: postman should send in body only {username:"..", password:".."}
-// (not allowed to write email ect..)
 
 passport.use(
     new LocalStrategy(async (userEmail, password, done) => {
