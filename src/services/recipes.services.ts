@@ -1,5 +1,6 @@
 import { RecipeModel } from '../models/recipe.model';
 import { IRecipe, IRecipeQuery } from '../interfaces/recipe.interface';
+import { filterRecipesAggregation } from '../aggregations/recipes.aggregation';
 import logger from '../utils/logger';
 
 export const findRecipeByName = async (
@@ -36,41 +37,17 @@ export const createRecipe = async (recipe: IRecipe, requestId: string) => {
 };
 
 export const filterRecipes = async (query: IRecipeQuery, requestId: string) => {
-    const { name, creator, difficulityLevel } = query;
+    const aggregation = filterRecipesAggregation(query);
 
     logger.verbose(
         requestId,
-        'Running request to get recipes filtered list from DB'
+        'Running request to get recipes filtered list from DB',
+        { aggregation }
     );
 
-    const filteredRecipes = await RecipeModel.aggregate([
-        {
-            $match: {
-                ...(name !== undefined && {
-                    name: {
-                        $regex: name,
-                        $options: 'i',
-                    },
-                }),
-                ...(creator !== undefined && {
-                    creator: creator,
-                }),
-                ...(difficulityLevel !== undefined && {
-                    difficulityLevel: difficulityLevel,
-                }),
-            },
-        },
-        {
-            $project: {
-                recipeName: '$name', // destruction
-                ingredients: 1,
-                cookingTime: 1,
-                difficulityLevel: 1,
-            },
-        },
-    ]);
+    const [result] = await RecipeModel.aggregate(aggregation);
 
-    return filteredRecipes;
+    return result;
 };
 
 export const deleteRecipe = async function (

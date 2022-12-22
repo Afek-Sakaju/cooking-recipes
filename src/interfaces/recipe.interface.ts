@@ -2,13 +2,14 @@ export interface IRecipe {
     name: string;
     creator: string;
     ingredients: string;
-    cookingTime: string;
+    cookingTime: number;
     difficulityLevel: string;
 }
 
 export interface IRecipeQuery {
     name?: string;
     creator?: string;
+    difficulityLevel?: string;
     // todos:
     // change cooking time to number\arr of numbers [hrs,mins]
     // maxCookingTime?: string;
@@ -16,6 +17,4 @@ export interface IRecipeQuery {
     // change ingredients to string[]
     // maxIngredientsAmount:number;
     // minIngredientsAmount:number;
-
-    difficulityLevel?: string;
 }

@@ -106,8 +106,8 @@ router.get('/', isAuthenticatedMW, filteredRecipeListCtrl); //(by query string)
  *                          type: string
  *                          example: "angos-meat, olive-oil, salt, black-pepper"
  *                      cookingTime:
- *                          type: string
- *                          example: "01:45"
+ *                          type: number
+ *                          example: "45"
  *                      difficulityLevel:
  *                          type: string
  *                          example: "easy"
