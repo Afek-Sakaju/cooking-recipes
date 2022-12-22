@@ -51,6 +51,9 @@ router.get('/all', sendAllRecipesCtrl);
  *   get:
  *     tags: ['Recipes CRUD routers']
  *     description: get recipes list data by filtering with query parameters
+ *     security:
+ *        cookieAuth:
+ *          - connect.sid
  *     parameters:
  *      - in: query
  *        name: name
@@ -62,6 +65,21 @@ router.get('/all', sendAllRecipesCtrl);
  *        schema:
  *          type: string
  *          description: filter by recipe's creator name.
+ *      - in: query
+ *        name: difficulityLevel
+ *        schema:
+ *          type: string
+ *          description: filter by recipe's difficulity level.
+ *      - in: query
+ *        name: maxCookingTime
+ *        schema:
+ *          type: number
+ *          description: filter by recipe's maximum cooking time.
+ *      - in: query
+ *        name: minCookingTime
+ *        schema:
+ *          type: number
+ *          description: filter by recipe's minimux cooking time.
  *     responses:
  *       200:
  *         description: return the recipes filtered list.
@@ -78,8 +96,7 @@ router.get('/all', sendAllRecipesCtrl);
  *         description: Server Error
  *
  */
-router.get('/', isAuthenticatedMW, filteredRecipeListCtrl); //(by query string)
-//to do improve this route by adding pagination and more queries
+router.get('/', isAuthenticatedMW, filteredRecipeListCtrl);
 
 /**
  * @swagger
@@ -87,6 +104,9 @@ router.get('/', isAuthenticatedMW, filteredRecipeListCtrl); //(by query string)
  *   post:
  *     tags: ['Recipes CRUD routers']
  *     description: create new recipe to the app
+ *     security:
+ *        cookieAuth:
+ *          - connect.sid
  *     requestBody:
  *        description: the recipe's information
  *        required: true
@@ -159,6 +179,9 @@ router.get('/find/:recipeName', getRecipeByNameCtrl);
  *   delete:
  *     tags: ['Recipes CRUD routers']
  *     description: Delete recipe data by his name
+ *     security:
+ *        cookieAuth:
+ *          - connect.sid
  *     parameters:
  *      - in: path
  *        name: recipeName

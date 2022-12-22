@@ -17,7 +17,9 @@ const recipeSchema = new Schema(
             required: [true, 'missing ingredients to the recipe'],
         }, //todo : change to array of strings (string[])
         cookingTime: {
-            type: { type: Number, min: 0, max: 480 },
+            type: Number,
+            min: 0,
+            max: 480,
             required: [true, 'missing cooking time in minutes'],
         },
         difficulityLevel: { type: String, default: 'unknown' },

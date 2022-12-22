@@ -38,6 +38,9 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
  *   get:
  *     tags: ['Main routers']
  *     description: Success login api
+ *     security:
+ *        cookieAuth:
+ *          - connect.sid
  *     responses:
  *       202:
  *         description: Return login success message

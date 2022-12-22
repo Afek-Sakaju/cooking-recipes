@@ -30,6 +30,7 @@ export function filterRecipesAggregation(query: IRecipeQuery) {
         },
         {
             $project: {
+                _id: 0,
                 recipeName: '$name',
                 ingredients: 1,
                 cookingTime: 1,
