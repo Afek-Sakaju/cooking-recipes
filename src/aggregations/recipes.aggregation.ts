@@ -1,7 +1,8 @@
 import { IRecipeQuery } from '../interfaces/recipe.interface';
 
 export function filterRecipesAggregation(query: IRecipeQuery) {
-    const { name, creator, difficulityLevel } = query;
+    const { name, creator, difficulityLevel, maxCookingTime, minCookingTime } =
+        query;
 
     return [
         {
@@ -17,6 +18,13 @@ export function filterRecipesAggregation(query: IRecipeQuery) {
                 }),
                 ...(difficulityLevel !== undefined && {
                     difficulityLevel,
+                }),
+                ...((minCookingTime !== undefined ||
+                    maxCookingTime !== undefined) && {
+                    cookingTime: {
+                        ...(minCookingTime && { $gte: minCookingTime }),
+                        ...(maxCookingTime && { $lte: maxCookingTime }),
+                    },
                 }),
             },
         },
