@@ -45,9 +45,9 @@ export const filterRecipes = async (query: IRecipeQuery, requestId: string) => {
         { aggregation }
     );
 
-    const [result]: any = await RecipeModel.aggregate(aggregation);
+    const result: any = await RecipeModel.aggregate(aggregation);
 
-    return result;
+    return [result];
 };
 
 export async function updateRecipeData(

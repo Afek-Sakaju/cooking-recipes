@@ -10,10 +10,14 @@ export interface IRecipeQuery {
     name?: string;
     creator?: string;
     difficulityLevel?: string;
-    maxCookingTime?: number;
-    minCookingTime?: number;
+
+    /* type: "any" is neccesary in order to allow using the "+" operator inside the
+    aggregation in case that the query recieve numeric string such as : '1' */
+    maxCookingTime?: number | any;
+    minCookingTime?: number | any;
+    page?: number | any;
+    itemsPerPage?: number | any;
     // todos:
-    // change cooking time to number\arr of numbers [hrs,mins]
     // change ingredients to string[]
     // maxIngredientsAmount:number;
     // minIngredientsAmount:number;

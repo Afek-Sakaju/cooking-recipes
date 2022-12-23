@@ -124,11 +124,15 @@ export const filteredRecipeListCtrl = async (
         query: req.query,
     });
 
-    const filteredList = await filterRecipes(req.query, req.id);
+    try {
+        const filteredList = await filterRecipes(req.query, req.id);
 
-    logger.info(req.id, 'Get filtered recipes list results', {
-        list: filteredList,
-    });
+        logger.info(req.id, 'Get filtered recipes list results', {
+            list: filteredList,
+        });
 
-    res.json(filteredList);
+        res.json(filteredList);
+    } catch (e) {
+        next(e);
+    }
 };

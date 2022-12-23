@@ -81,6 +81,21 @@ router.get('/all', sendAllRecipesCtrl);
  *        schema:
  *          type: number
  *          description: filter by recipe's minimux cooking time.
+ *      - in: query
+ *        name: page
+ *        required: true
+ *        schema:
+ *          type: integer
+ *          minimum: 1
+ *        description: Get result from speciefic page
+ *      - in: query
+ *        name: itemsPerPage
+ *        required: true
+ *        schema:
+ *          type: integer
+ *          minimum: 1
+ *          maximum: 100
+ *        description: Modify results count inside the page
  *     responses:
  *       200:
  *         description: return the recipes filtered list.
@@ -97,7 +112,9 @@ router.get('/all', sendAllRecipesCtrl);
  *         description: Server Error
  *
  */
-router.get('/', isAuthenticatedMW, filteredRecipeListCtrl);
+router.get('/', filteredRecipeListCtrl);
+
+//router.get('/', isAuthenticatedMW, filteredRecipeListCtrl);
 
 /**
  * @swagger
