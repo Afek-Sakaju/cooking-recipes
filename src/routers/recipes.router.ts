@@ -112,9 +112,7 @@ router.get('/all', sendAllRecipesCtrl);
  *         description: Server Error
  *
  */
-router.get('/', filteredRecipeListCtrl);
-
-//router.get('/', isAuthenticatedMW, filteredRecipeListCtrl);
+router.get('/', isAuthenticatedMW, filteredRecipeListCtrl);
 
 /**
  * @swagger
@@ -141,8 +139,8 @@ router.get('/', filteredRecipeListCtrl);
  *                          type: string
  *                          example: "arnold-schwarzeneggerr"
  *                      ingredients:
- *                          type: string
- *                          example: "angos-meat, olive-oil, salt, black-pepper"
+ *                          type: array
+ *                          example: ["angos-meat", "olive-oil", "salt", "black-pepper"]
  *                      cookingTime:
  *                          type: number
  *                          example: "45"
@@ -211,13 +209,15 @@ router.get('/find/:recipeName', getRecipeByNameCtrl);
  *                  properties:
  *                      name:
  *                          type: string
- *                          example: "beef-sandwich"
+ *                          example: "steak-angos"
  *                      creator:
  *                          type: string
  *                          example: "harry-mcguiore"
  *                      ingredients:
- *                          type: string
- *                          example: "salt-pepper-meat-bread"
+ *                          type: array
+ *                          items:
+ *                              type: string
+ *                          example: ["angos-meat", "olive-oil", "salt", "black-pepper"]
  *                      cookingTime:
  *                          type: number
  *                          example: 15

@@ -1,7 +1,7 @@
 export interface IRecipe {
     name: string;
     creator: string;
-    ingredients: string;
+    ingredients: string[];
     cookingTime: number;
     difficulityLevel: string;
 }
@@ -17,8 +17,4 @@ export interface IRecipeQuery {
     minCookingTime?: number | any;
     page?: number | any;
     itemsPerPage?: number | any;
-    // todos:
-    // change ingredients to string[]
-    // maxIngredientsAmount:number;
-    // minIngredientsAmount:number;
 }

@@ -13,8 +13,8 @@ const recipeSchema = new Schema(
             default: 'anonymous',
         }, //todo : change to id
         ingredients: {
-            type: String,
-            required: [true, 'missing ingredients to the recipe'],
+            type: [String],
+            required: [true, 'missing ingredients of the recipe'],
         }, //todo : change to array of strings (string[])
         cookingTime: {
             type: Number,
