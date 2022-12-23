@@ -45,10 +45,30 @@ export const filterRecipes = async (query: IRecipeQuery, requestId: string) => {
         { aggregation }
     );
 
-    const [result] = await RecipeModel.aggregate(aggregation);
+    const [result]: any = await RecipeModel.aggregate(aggregation);
 
     return result;
 };
+
+export async function updateRecipeData(
+    recipeData: IRecipe,
+    requestId: string
+): Promise<IRecipe | undefined> {
+    logger.verbose(requestId, 'Running request to update recipe data in DB');
+
+    const result: any = await RecipeModel.findOneAndUpdate(
+        { name: recipeData.name },
+        {
+            creator: recipeData.creator,
+            ingredients: recipeData.ingredients,
+            cookingTime: recipeData.cookingTime,
+            difficulityLevel: recipeData.difficulityLevel,
+        },
+        { new: true, omitUndefined: true, upsert: true }
+    );
+
+    return result.toJSON();
+}
 
 export const deleteRecipe = async function (
     recipeName: string,

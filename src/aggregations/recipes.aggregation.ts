@@ -14,16 +14,20 @@ export function filterRecipesAggregation(query: IRecipeQuery) {
                     },
                 }),
                 ...(creator !== undefined && {
-                    creator,
+                    creator: creator,
                 }),
                 ...(difficulityLevel !== undefined && {
-                    difficulityLevel,
+                    difficulityLevel: difficulityLevel,
                 }),
                 ...((minCookingTime !== undefined ||
                     maxCookingTime !== undefined) && {
                     cookingTime: {
-                        ...(minCookingTime && { $gte: minCookingTime }),
-                        ...(maxCookingTime && { $lte: maxCookingTime }),
+                        ...(minCookingTime !== undefined && {
+                            $gte: +minCookingTime,
+                        }),
+                        ...(maxCookingTime !== undefined && {
+                            $lte: +maxCookingTime,
+                        }),
                     },
                 }),
             },

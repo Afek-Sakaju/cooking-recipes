@@ -7,6 +7,7 @@ import {
     sendAllRecipesCtrl,
     filteredRecipeListCtrl,
     createRecipeCtrl,
+    updateRecipeDataCtrl,
 } from '../controllers/recipes.controller';
 import { isAuthenticatedMW } from '../middleware/auth-middleware';
 
@@ -172,6 +173,52 @@ router.post('/new-recipe', isAuthenticatedMW, createRecipeCtrl);
  *
  */
 router.get('/find/:recipeName', getRecipeByNameCtrl);
+
+/**
+ * @swagger
+ * /recipe/update:
+ *   put:
+ *     tags: ['Recipes CRUD routers']
+ *     description: update of recipe's data by name
+ *     security:
+ *        cookieAuth:
+ *          - connect.sid
+ *     requestBody:
+ *        description: the user information for updating
+ *        required: true
+ *        content:
+ *           application/json:
+ *               schema:
+ *                  type: object
+ *                  required: [ "name" ]
+ *                  properties:
+ *                      name:
+ *                          type: string
+ *                          example: "beef-sandwich"
+ *                      creator:
+ *                          type: string
+ *                          example: "harry-mcguiore"
+ *                      ingredients:
+ *                          type: string
+ *                          example: "salt-pepper-meat-bread"
+ *                      cookingTime:
+ *                          type: number
+ *                          example: 15
+ *                      difficulityLevel:
+ *                          type: string
+ *                          example: "easy"
+ *     responses:
+ *       200:
+ *         description: Returns the updated recipe
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/recipe"
+ *       400:
+ *         description: Return message of the error that occured in the updating procces
+ *
+ */
+router.put('/update', isAuthenticatedMW, updateRecipeDataCtrl);
 
 /**
  * @swagger

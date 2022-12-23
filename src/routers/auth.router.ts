@@ -121,7 +121,7 @@ router.post('/register', registerUserCtrl);
  * /auth/update:
  *   put:
  *     tags: ['Auth routers']
- *     description: update of user's information by id
+ *     description: update of user's data by id
  *     security:
  *        cookieAuth:
  *          - connect.sid

@@ -25,7 +25,7 @@ export async function updateUserData(
         userData.password = bcrypt.hashSync(userData.password, salt);
     }
 
-    logger.verbose(requestId, "Running request to update user' data in DB");
+    logger.verbose(requestId, 'Running request to update user data in DB');
 
     const result: any = await UserModel.findOneAndUpdate(
         { _id: userData._id },

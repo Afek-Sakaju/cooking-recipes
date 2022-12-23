@@ -7,13 +7,14 @@ import {
     deleteRecipe,
     findAllRecipe,
     filterRecipes,
+    updateRecipeData,
 } from '../services/recipes.services';
 import logger from '../utils/logger';
 
 export const getRecipeByNameCtrl = async (
     req: Request,
     res: Response,
-    _next: NextFunction
+    next: NextFunction
 ) => {
     logger.info(req.id, 'Getting recipe by name', {
         recipeName: req.params.recipeName,
@@ -31,7 +32,7 @@ export const getRecipeByNameCtrl = async (
 export const createRecipeCtrl = async (
     req: Request,
     res: Response,
-    _next: NextFunction
+    next: NextFunction
 ) => {
     const recipe: IRecipe = {
         name: req.body.name,
@@ -54,10 +55,36 @@ export const createRecipeCtrl = async (
     res.sendStatus(result ? 201 : 500);
 };
 
+export const updateRecipeDataCtrl = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    const recipeData = {
+        name: req.body.name,
+        creator: req.body.creator,
+        ingredients: req.body.ingredients,
+        cookingTime: req.body.cookingTime,
+        difficulityLevel: req.body.difficulityLevel,
+    } as unknown as IRecipe;
+
+    logger.info(req.id, "Updating recipe's data", {
+        newData: recipeData,
+    });
+
+    const result = await updateRecipeData(recipeData, req.id);
+
+    logger.info(req.id, "Updating of recipe's data results", {
+        recipe: result,
+    });
+
+    res.json(result);
+};
+
 export const deleteRecipeByNameCtrl = async (
     req: Request,
     res: Response,
-    _next: NextFunction
+    next: NextFunction
 ) => {
     logger.info(req.id, 'Deleting recipe by his name', {
         recipeName: req.params.recipeName,
@@ -77,7 +104,7 @@ export const deleteRecipeByNameCtrl = async (
 export const sendAllRecipesCtrl = async (
     req: Request,
     res: Response,
-    _next: NextFunction
+    next: NextFunction
 ) => {
     logger.info(req.id, 'Getting all recipes list');
 
@@ -91,7 +118,7 @@ export const sendAllRecipesCtrl = async (
 export const filteredRecipeListCtrl = async (
     req: Request,
     res: Response,
-    _next: NextFunction
+    next: NextFunction
 ) => {
     logger.info(req.id, 'Getting filtered recipes list by query', {
         query: req.query,
