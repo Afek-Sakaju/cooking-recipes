@@ -40,12 +40,31 @@ export function filterRecipesAggregation(query: IRecipeQuery) {
             },
         },
         {
+            $lookup: {
+                let: { creatorId: '$creator' },
+                from: 'users',
+                as: 'creatorData',
+                pipeline: [
+                    {
+                        $match: {
+                            $expr: {
+                                $eq: ['$_id', '$$creatorId'],
+                            },
+                        },
+                    },
+                    { $project: { fullName: 1, _id: 0 } },
+                ],
+            },
+        },
+        {
             $project: {
                 _id: 0,
                 name: 1,
                 ingredients: 1,
                 cookingTime: 1,
                 difficulityLevel: 1,
+                creator: '$creatorData.fullName',
+                //creator data always returns []
             },
         },
         {

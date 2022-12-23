@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+
 const Schema = mongoose.Schema;
 
 const recipeSchema = new Schema(
@@ -9,13 +10,14 @@ const recipeSchema = new Schema(
             unique: true,
         },
         creator: {
-            type: String,
+            type: mongoose.Types.ObjectId,
+            ref: 'users',
             default: 'anonymous',
-        }, //todo : change to id
+        },
         ingredients: {
             type: [String],
             required: [true, 'missing ingredients of the recipe'],
-        }, //todo : change to array of strings (string[])
+        },
         cookingTime: {
             type: Number,
             min: 0,
