@@ -85,14 +85,14 @@ router.get('/all', sendAllRecipesCtrl);
  *        name: page
  *        required: true
  *        schema:
- *          type: integer
+ *          type: number
  *          minimum: 1
  *        description: Get result from speciefic page
  *      - in: query
  *        name: itemsPerPage
  *        required: true
  *        schema:
- *          type: integer
+ *          type: number
  *          minimum: 1
  *          maximum: 100
  *        description: Modify results count inside the page

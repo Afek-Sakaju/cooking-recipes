@@ -1,16 +1,17 @@
 import { IRecipeQuery } from '../interfaces/recipe.interface';
+import mongoose from 'mongoose';
 
-export function filterRecipesAggregation(query: IRecipeQuery) {
-    const {
-        name,
-        creator,
-        difficulityLevel,
-        maxCookingTime,
-        minCookingTime,
-        page,
-        itemsPerPage,
-    } = query;
+const ObjectId = id => new mongoose.Types.ObjectId(id);
 
+export function filterRecipesAggregation({
+    name,
+    creator,
+    difficulityLevel,
+    maxCookingTime,
+    minCookingTime,
+    page,
+    itemsPerPage,
+}: IRecipeQuery) {
     return [
         {
             $match: {
@@ -21,7 +22,7 @@ export function filterRecipesAggregation(query: IRecipeQuery) {
                     },
                 }),
                 ...(creator !== undefined && {
-                    creator: creator,
+                    creator: ObjectId(creator),
                 }),
                 ...(difficulityLevel !== undefined && {
                     difficulityLevel: difficulityLevel,
@@ -56,6 +57,7 @@ export function filterRecipesAggregation(query: IRecipeQuery) {
                 ],
             },
         },
+        {$unwind:"$creatorData"},
         {
             $project: {
                 _id: 0,
