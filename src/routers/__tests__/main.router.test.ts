@@ -43,9 +43,10 @@ describe('main router tests', () => {
             const res = await request(app)
                 .get('/success')
                 .set('Cookie', [cookie])
-                .expect(202);
-
-            expect(res).toHaveProperty('text', 'logged in successfuly');
+                .expect(202)
+                .then((res) => {
+                    expect(res).toHaveProperty('text', 'logged in successfuly');
+                });
         } catch (e) {}
     });
 
