@@ -50,7 +50,7 @@ router.get(
     isAuthenticatedMW,
     (req: Request, res: Response, next: NextFunction) => {
         logger.info(req.id, 'User visiting login success page');
-        res.status(202).send('Logged in successfuly');
+        res.status(202).send('logged in successfuly');
     }
 );
 
