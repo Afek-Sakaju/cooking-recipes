@@ -5,7 +5,10 @@ describe('main router tests', () => {
     let cookie: string;
 
     beforeAll(async () => {
-        const userData = {};
+        const userData = {
+            username: 'adminafek@walla.co.il',
+            password: 'admin',
+        };
 
         const result = await request(app)
             .post('/auth/login')
@@ -43,11 +46,12 @@ describe('main router tests', () => {
             const res = await request(app)
                 .get('/success')
                 .set('Cookie', [cookie])
-                .expect(202)
-                .then((res) => {
-                    expect(res).toHaveProperty('text', 'logged in successfuly');
-                });
-        } catch (e) {}
+                .expect(202);
+
+            expect(res).toHaveProperty('text', 'logged in successfuly');
+        } catch (e) {
+            console.log('hey');
+        }
     });
 
     test('responds health API with OK and status 200', (done) => {
