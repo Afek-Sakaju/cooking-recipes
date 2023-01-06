@@ -1,57 +1,90 @@
+const ISODate = (date) => new Date(date);
+const NumberInt = (num) => num;
+
+/* Dont change\add-to this recipes data! 
+the tests built with this speciefic data */
 module.exports = {
     async up(db, client) {
-        await db.collection('users').instertMany([
+        /* const adminUser = await db
+            .collection('users')
+            .findOne({ username: 'admin' });
+
+        const ObjectId = (id) => ownerUser._id; */
+        await db.collection('recipes').insertMany([
             {
                 name: 'roasted-salmon',
-                creator: 'george',
-                ingredients: 'salmon,kale,olive-oil,salt,pepper',
+                creator: null,
+                ingredients: ['salmon', 'kale', 'olive-oil', 'salt', 'pepper'],
                 cookingTime: 60,
                 difficulityLevel: 'medium',
-                createdAt: Date.now(),
-                updatedAt: null,
+                createdAt: ISODate('2023-01-06T17:00:45.774+0000'),
+                updatedAt: ISODate('2023-01-06T17:00:45.774+0000'),
+                __v: NumberInt(0),
             },
             {
                 name: 'chicken-burger',
-                creator: 'gordon-ram-z',
-                ingredients:
-                    'grinded-chicken-breast,lattuce,canola-oil,salt,chilli',
+                creator: null,
+                ingredients: [
+                    'grinded-chicken-breast',
+                    'lattuce',
+                    'canola-oil',
+                    'salt',
+                    'chilli',
+                ],
                 cookingTime: 50,
                 difficulityLevel: 'hard',
-                createdAt: Date.now(),
-                updatedAt: null,
+                createdAt: ISODate('2023-01-06T17:00:45.774+0000'),
+                updatedAt: ISODate('2023-01-06T17:00:45.774+0000'),
+                __v: NumberInt(0),
             },
             {
                 name: 'simple-salad',
-                creator: 'noel',
-                ingredients: 'cucumber,tomato,red-onion,pepper,salt,olive-oil',
+                creator: null,
+                ingredients: [
+                    'cucumber',
+                    'tomato',
+                    'red-onion',
+                    'pepper',
+                    'salt',
+                    'olive-oil',
+                ],
                 cookingTime: 30,
                 difficulityLevel: 'easy',
-                createdAt: Date.now(),
-                updatedAt: null,
+                createdAt: ISODate('2023-01-06T17:00:45.774+0000'),
+                updatedAt: ISODate('2023-01-06T17:00:45.774+0000'),
+                __v: NumberInt(0),
             },
             {
                 name: 'vegan-hamburger',
-                creator: 'george',
-                ingredients:
-                    'portabelo-mushrooms,red-pepper,olive-oil,salt,egg,bread',
+                creator: null,
+                ingredients: [
+                    'portabelo-mushrooms',
+                    'red-pepper',
+                    'olive-oil',
+                    'salt',
+                    'egg',
+                    'bread',
+                ],
                 cookingTime: 5,
                 difficulityLevel: 'hard',
-                createdAt: Date.now(),
-                updatedAt: null,
+                createdAt: ISODate('2023-01-06T17:00:45.774+0000'),
+                updatedAt: ISODate('2023-01-06T17:00:45.774+0000'),
+                __v: NumberInt(0),
             },
             {
                 name: 'omlette',
-                creator: 'danny',
-                ingredients: 'eggs,black-pepper,salt,coconut-oil',
+                creator: null,
+                ingredients: ['eggs', 'black-pepper', 'salt', 'coconut-oil'],
                 cookingTime: 120,
                 difficulityLevel: 'medium',
-                createdAt: Date.now(),
-                updatedAt: null,
+                createdAt: ISODate('2023-01-06T17:00:45.774+0000'),
+                updatedAt: ISODate('2023-01-06T17:00:45.774+0000'),
+                __v: NumberInt(0),
             },
         ]);
     },
 
     async down(db, client) {
-        await db.collection('users').deleteMany({});
+        await db.collection('recipes').deleteMany({});
     },
 };
