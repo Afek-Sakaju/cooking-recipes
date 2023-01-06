@@ -20,7 +20,6 @@
         "@types/express-session": "^1.17.5",
         "@types/jest": "^29.1.1",
         "@types/migrate-mongo": "^8.2.0",
-        "@types/mongodb": "^4.0.7",
         "@types/passport": "^1.0.11",
         "@types/passport-local": "^1.0.34",
         "@types/supertest": "^2.0.12",

@@ -10,7 +10,7 @@ module.exports = {
             .findOne({ username: 'admin' });
 
         const ObjectId = (id) => ownerUser._id; */
-        await db.collection('recipes').instertMany([
+        await db.collection('recipes').insertMany([
             {
                 name: 'roasted-salmon',
                 creator: null,

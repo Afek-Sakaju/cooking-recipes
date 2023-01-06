@@ -23,6 +23,7 @@ beforeAll(async () => {
         changelogCollectionName: 'changelog',
         migrationFileExtension: '.js',
     });
+    
     const { db, client } = await database.connect();
     await up(db, client);
 });

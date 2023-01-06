@@ -49,9 +49,7 @@ describe('main router tests', () => {
                 .expect(202);
 
             expect(res).toHaveProperty('text', 'logged in successfuly');
-        } catch (e) {
-            console.log('hey');
-        }
+        } catch (e) {}
     });
 
     test('responds health API with OK and status 200', (done) => {
