@@ -42,7 +42,7 @@ export const filterRecipes = async (query: IRecipeQuery, requestId: string) => {
     logger.verbose(
         requestId,
         'Running request to get recipes filtered list from DB',
-        { aggregation }
+        { aggregation: JSON.stringify(aggregation, null, 4) }
     );
 
     const result: any = await RecipeModel.aggregate(aggregation);

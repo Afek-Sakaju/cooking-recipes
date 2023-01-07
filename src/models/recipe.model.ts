@@ -12,7 +12,7 @@ const recipeSchema = new Schema(
         creator: {
             type: mongoose.Types.ObjectId,
             ref: 'users',
-            default: 'anonymous',
+            default: null,
         },
         ingredients: {
             type: [String],

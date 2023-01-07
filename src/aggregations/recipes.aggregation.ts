@@ -1,7 +1,7 @@
 import { IRecipeQuery } from '../interfaces/recipe.interface';
 import mongoose from 'mongoose';
 
-const ObjectId = id => new mongoose.Types.ObjectId(id);
+const ObjectId = (id) => new mongoose.Types.ObjectId(id);
 
 export function filterRecipesAggregation({
     name,
@@ -57,7 +57,7 @@ export function filterRecipesAggregation({
                 ],
             },
         },
-        {$unwind:"$creatorData"},
+        { $unwind: '$creatorData' },
         {
             $project: {
                 _id: 0,

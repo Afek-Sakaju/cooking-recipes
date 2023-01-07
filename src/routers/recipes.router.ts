@@ -137,7 +137,7 @@ router.get('/', isAuthenticatedMW, filteredRecipeListCtrl);
  *                          example: "steak-angos"
  *                      creator:
  *                          type: string
- *                          example: "arnold-schwarzeneggerr"
+ *                          example: "632ef3ad40c4dca948a003fc"
  *                      ingredients:
  *                          type: array
  *                          example: ["angos-meat", "olive-oil", "salt", "black-pepper"]
