@@ -1,4 +1,20 @@
 {
+    "name": "cook-recipes-site",
+    "description": "Backend project for cook recipes site that includes a RESTful API and user authentication features",
+    "author": "afek-sakaju",
+    "homepage": "https://github.com/afekTheMiniLearner/cook-recipes-site",
+    "keywords": [
+        "cook-site",
+        "recipes",
+        "recipes-site",
+        "express"
+    ],
+    "version": "1.0.0",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/afekTheMiniLearner/cook-recipes-site"
+    },
     "scripts": {
         "start": "npm run migrateDB && npm run build && node dist/app.js",
         "dev": "npm run migrate DB && nodemon src/app.ts",
@@ -12,6 +28,25 @@
         "migrate-mongo:down": "migrate-mongo down",
         "migrate-mongo:status": "migrate-mongo status",
         "migrate-mongo:create": "migrate-mongo create init-recipes"
+    },
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "body-parser": "^1.20.0",
+        "dotenv": "^16.0.3",
+        "dotenv-expand": "^9.0.0",
+        "express": "^4.18.1",
+        "express-session": "^1.17.3",
+        "mongoose": "^6.6.2",
+        "mongoose-to-swagger": "^1.4.0",
+        "passport": "^0.6.0",
+        "passport-local": "^1.0.0",
+        "path": "^0.12.7",
+        "sass": "^1.56.1",
+        "swagger-jsdoc": "^6.2.5",
+        "swagger-ui-express": "^4.5.0",
+        "uuid": "^9.0.0",
+        "winston": "^3.8.2",
+        "winston-daily-rotate-file": "^4.7.1"
     },
     "devDependencies": {
         "@types/bcrypt": "^5.0.0",
@@ -35,24 +70,5 @@
         "ts-jest": "^29.0.3",
         "ts-node": "^10.9.1",
         "typescript": "^4.8.4"
-    },
-    "dependencies": {
-        "bcrypt": "^5.0.1",
-        "body-parser": "^1.20.0",
-        "dotenv": "^16.0.3",
-        "dotenv-expand": "^9.0.0",
-        "express": "^4.18.1",
-        "express-session": "^1.17.3",
-        "mongoose": "^6.6.2",
-        "mongoose-to-swagger": "^1.4.0",
-        "passport": "^0.6.0",
-        "passport-local": "^1.0.0",
-        "path": "^0.12.7",
-        "sass": "^1.56.1",
-        "swagger-jsdoc": "^6.2.5",
-        "swagger-ui-express": "^4.5.0",
-        "uuid": "^9.0.0",
-        "winston": "^3.8.2",
-        "winston-daily-rotate-file": "^4.7.1"
     }
 }
