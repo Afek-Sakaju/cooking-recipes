@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
-import logger from '../utils/logger';
+
 import { SYSTEM_REQ_ID } from '../utils/consts';
+import logger from '../utils/logger';
 
 export async function connectDB(url: string) {
     await mongoose

@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+
 import { registerUser, updateUserData } from '../services/users.services';
 import { IUser } from '../interfaces/user.interface';
 import logger from '../utils/logger';

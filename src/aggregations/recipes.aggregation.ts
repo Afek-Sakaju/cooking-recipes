@@ -1,5 +1,6 @@
-import { IRecipeQuery } from '../interfaces/recipe.interface';
 import mongoose from 'mongoose';
+
+import { IRecipeQuery } from '../interfaces/recipe.interface';
 
 const ObjectId = (id) => new mongoose.Types.ObjectId(id);
 

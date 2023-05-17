@@ -1,9 +1,10 @@
 import winston from 'winston';
 import winstonDailyRotateFile from 'winston-daily-rotate-file';
+
 import { LOGGING_LINE_TRACE, LOGGING_MODE } from './env-variables';
 import { LOG_DIR_PATH } from './paths';
-const colorizer = winston.format.colorize();
 
+const colorizer = winston.format.colorize();
 const enum LEVELS {
     error = 'error',
     warn = 'warn',

@@ -1,5 +1,4 @@
 import express, { Request, Response, NextFunction } from 'express';
-import logger from '../utils/logger';
 
 import {
     getRecipeByNameCtrl,
@@ -10,6 +9,7 @@ import {
     updateRecipeDataCtrl,
 } from '../controllers/recipes.controller';
 import { isAuthenticatedMW } from '../middleware/auth-middleware';
+import logger from '../utils/logger';
 
 const router = express.Router();
 
