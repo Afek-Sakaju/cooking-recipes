@@ -26,7 +26,7 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  *     tags: ['Auth routers']
  *     description: login with user to the site
  *     requestBody:
- *        description: the user information for loginng in
+ *        description: the user information for logging in
  *        required: true
  *        content:
  *           application/json:
@@ -69,7 +69,7 @@ router.post(
  *       200:
  *           description: Logout successfully
  *       500:
- *          description: Error in the logout  procces
+ *          description: Error in the logout process
  */
 router.post('/logout', (req, res, next) => {
     req.logout(() => {
@@ -156,7 +156,7 @@ router.post('/register', registerUserCtrl);
  *             schema:
  *               $ref: "#/components/schemas/user"
  *       400:
- *         description: Return message of the error that occured in the updating procces
+ *         description: Return message of the error that occurred in the updating process
  *
  */
 router.put('/update', isAuthenticatedMW, updateUserDataCtrl);

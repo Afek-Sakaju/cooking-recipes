@@ -61,7 +61,7 @@ app.use(
         _res: Response,
         next: NextFunction
     ) => {
-        logger.error(SYSTEM_REQ_ID, 'Error occured in the server', {
+        logger.error(SYSTEM_REQ_ID, 'Error occurred in the server', {
             error: err,
             method: req.method,
             originalUrl: req.originalUrl,

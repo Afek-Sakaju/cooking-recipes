@@ -11,8 +11,8 @@ export interface IRecipeQuery {
     creator?: string;
     difficulityLevel?: string;
 
-    /* type: "any" is neccesary in order to allow using the "+" operator inside the
-    aggregation in case that the query recieve numeric string such as : '1' */
+    /* type: "any" is necessary in order to allow using the "+" operator inside the
+    aggregation in case that the query receive numeric string such as : '1' */
     maxCookingTime?: number | any;
     minCookingTime?: number | any;
     page?: number | any;

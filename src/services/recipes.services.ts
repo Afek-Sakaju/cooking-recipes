@@ -28,7 +28,7 @@ export const createRecipe = async (recipe: IRecipe, requestId: string) => {
     const result = await new RecipeModel(recipe).save().catch((err: Error) => {
         logger.error(
             requestId,
-            'Error occcured during creation of new recipe',
+            'Error occurred during creation of new recipe',
             { error: err }
         );
     });

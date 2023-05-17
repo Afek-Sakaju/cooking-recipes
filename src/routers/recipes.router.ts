@@ -80,14 +80,14 @@ router.get('/all', sendAllRecipesCtrl);
  *        name: minCookingTime
  *        schema:
  *          type: number
- *          description: filter by recipe's minimux cooking time.
+ *          description: filter by recipe's minimum cooking time.
  *      - in: query
  *        name: page
  *        required: true
  *        schema:
  *          type: number
  *          minimum: 1
- *        description: Get result from speciefic page
+ *        description: Get result from specific page
  *      - in: query
  *        name: itemsPerPage
  *        required: true
@@ -232,7 +232,7 @@ router.get('/find/:recipeName', getRecipeByNameCtrl);
  *             schema:
  *               $ref: "#/components/schemas/recipe"
  *       400:
- *         description: Return message of the error that occured in the updating procces
+ *         description: Return message of the error that occurred in the updating process
  *
  */
 router.put('/update', isAuthenticatedMW, updateRecipeDataCtrl);

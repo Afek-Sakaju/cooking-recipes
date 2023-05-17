@@ -23,7 +23,7 @@ export async function registerUserCtrl(
     try {
         const result = await registerUser(user, req.id);
 
-        logger.info(req.id, 'Registeration of new user results', {
+        logger.info(req.id, 'Registration of new user results', {
             user: result,
         });
 
