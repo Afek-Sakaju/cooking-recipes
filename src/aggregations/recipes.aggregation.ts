@@ -67,7 +67,6 @@ export function filterRecipesAggregation({
                 cookingTime: 1,
                 difficulityLevel: 1,
                 creator: '$creatorData.fullName',
-                //creator data always returns []
             },
         },
         {

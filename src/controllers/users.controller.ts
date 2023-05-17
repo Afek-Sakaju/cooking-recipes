@@ -30,7 +30,6 @@ export async function registerUserCtrl(
         res.status(201).json(result);
     } catch (e: any) {
         next(e);
-        // error can pull the server down if there is email that already exists
     }
 }
 
