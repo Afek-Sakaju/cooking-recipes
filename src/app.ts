@@ -15,12 +15,10 @@ import './config/passport-config';
 import mainRouter from './routers/main.router';
 import authRouter from './routers/auth.router';
 import recipesRouter from './routers/recipes.router';
-import { MONGO_URL, PORT } from './utils/env-variables';
+import { MONGO_URL, PORT, logger, SYSTEM_REQ_ID } from './utils';
 import { connectDB } from './DB/mongoose';
-import { SYSTEM_REQ_ID } from './utils/consts';
 import swaggerDocument from './config/swagger-docs.json';
 import schemas from './models/swaggerSchemas';
-import logger from './utils/logger';
 import { requestID } from './middleware/requestID-middleware';
 import { logAPI } from './middleware/requestID-middleware';
 

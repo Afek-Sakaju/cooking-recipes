@@ -1,6 +1,6 @@
 import { registerUser } from '../../services/users.services';
 import { IUser } from '../../interfaces/user.interface';
-import { SYSTEM_REQ_ID } from '../../utils/consts';
+import { SYSTEM_REQ_ID } from '../../utils';
 
 describe('user model tests', () => {
     test('isAdmin flag not set', async () => {

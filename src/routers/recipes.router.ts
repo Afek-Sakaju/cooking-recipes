@@ -9,7 +9,7 @@ import {
     updateRecipeDataCtrl,
 } from '../controllers/recipes.controller';
 import { isAuthenticatedMW } from '../middleware/auth-middleware';
-import logger from '../utils/logger';
+import { logger } from '../utils';
 
 const router = express.Router();
 

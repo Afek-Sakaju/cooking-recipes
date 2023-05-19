@@ -5,8 +5,7 @@ import bcrypt from 'bcrypt';
 import { UserModel } from '../models/user.model';
 import { getUserWithPassword } from '../services/users.services';
 import { IUser, passportConfigUser } from '../interfaces/user.interface';
-import { SYSTEM_REQ_ID } from '../utils/consts';
-import logger from '../utils/logger';
+import { logger, SYSTEM_REQ_ID } from '../utils';
 
 passport.use(
     new LocalStrategy(async (userEmail, password, done) => {

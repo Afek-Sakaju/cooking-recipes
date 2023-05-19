@@ -9,7 +9,7 @@ import {
     filterRecipes,
     updateRecipeData,
 } from '../services/recipes.services';
-import logger from '../utils/logger';
+import { logger } from '../utils';
 
 export const getRecipeByNameCtrl = async (
     req: Request,

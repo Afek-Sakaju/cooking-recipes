@@ -1,7 +1,7 @@
 import { Response, Request, NextFunction } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 
-import logger from '../utils/logger';
+import { logger } from '../utils';
 
 function generateV4UUID(_request: any) {
     return uuidv4();

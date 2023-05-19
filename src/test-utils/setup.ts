@@ -3,7 +3,7 @@ import { database, config, up } from 'migrate-mongo';
 
 import { connectDB } from '../DB/mongoose';
 import { JEST_TIMEOUT } from './environment-test-variables';
-import { MIGRATIONS_DIR_PATH } from '../utils/paths';
+import { MIGRATIONS_DIR_PATH } from '../utils';
 
 if (JEST_TIMEOUT) jest.setTimeout(JEST_TIMEOUT);
 

@@ -1,7 +1,7 @@
 import { RecipeModel } from '../models/recipe.model';
 import { IRecipe, IRecipeQuery } from '../interfaces/recipe.interface';
 import { filterRecipesAggregation } from '../aggregations/recipes.aggregation';
-import logger from '../utils/logger';
+import { logger } from '../utils';
 
 export const findRecipeByName = async (
     recipeName: string,
