@@ -1,3 +1,4 @@
+/* eslint-disable no-empty */
 import request from 'supertest';
 import app from '../../app';
 
@@ -20,6 +21,7 @@ describe('main router tests', () => {
 
         [cookie] = result.headers['set-cookie'];
     });
+
     test('responds home page API with welcome message and status 200', (done) => {
         request(app)
             .get('/')
