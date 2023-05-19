@@ -1,29 +1,32 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "jest/globals": true
-    },
-    "ignorePatterns": ["node_modules", "build", "dist", "migrations"],
-    "plugins": ["prettier", "jest"],
-    "extends": [
-        "eslint:recommended",
-        "airbnb-base",
-        "plugin:prettier/recommended",
-        "standard-with-typescript"
-    ],
-    "overrides": [],
+    "root": true,
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": "latest",
+        "ecmaVersion": 2018,
         "sourceType": "module"
     },
+    "env": {
+        "node": true,
+        "jest": true
+    },
+    "plugins": ["@typescript-eslint", "node", "jest", "prettier"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:node/recommended",
+        "plugin:jest/recommended",
+        "plugin:prettier/recommended"
+    ],
     "rules": {
+        "@typescript-eslint/indent": "off",
+        "node/no-unsupported-features/es-syntax": [
+            "error",
+            { "ignores": ["modules"] }
+        ],
+        "@typescript-eslint/no-explicit-any": ["off"],
+        "@typescript-eslint/ban-ts-comment": "off",
         "camelcase": 0,
         "consistent-return": 0,
-        "import/no-extraneous-dependencies": [
-            "error",
-            { "devDependencies": true }
-        ],
         "prettier/prettier": 0,
         "linebreak-style": 0,
         "no-param-reassign": 0,
