@@ -117,7 +117,7 @@ class Logger {
         message: string,
         options: any = {}
     ) {
-        if (Object?.hasOwn(options, 'message')) {
+        if (options?.hasOwnProperty('message')) {
             options.$message = options.message;
             delete options.message;
         }
