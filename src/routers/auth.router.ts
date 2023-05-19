@@ -6,7 +6,7 @@ import {
     registerUserCtrl,
     updateUserDataCtrl,
 } from '../controllers/users.controller';
-import { isAuthenticatedMW } from '../middleware/auth-middleware';
+import { isAuthenticatedMW } from '../middleware';
 
 const router = express.Router();
 

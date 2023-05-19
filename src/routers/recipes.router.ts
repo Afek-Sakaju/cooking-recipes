@@ -8,7 +8,7 @@ import {
     createRecipeCtrl,
     updateRecipeDataCtrl,
 } from '../controllers/recipes.controller';
-import { isAuthenticatedMW } from '../middleware/auth-middleware';
+import { isAuthenticatedMW } from '../middleware';
 import { logger } from '../utils';
 
 const router = express.Router();
