@@ -1,5 +1,6 @@
 /* eslint-disable no-empty */
 import request from 'supertest';
+
 import app from '../../app';
 
 describe('main router tests', () => {

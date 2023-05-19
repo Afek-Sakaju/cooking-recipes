@@ -1,5 +1,6 @@
 import { registerUser } from '../../services/users.services';
 import { IUser } from '../../interfaces/user.interface';
+import { SYSTEM_REQ_ID } from '../../utils/consts';
 
 describe('user model tests', () => {
     test('isAdmin flag not set', async () => {
@@ -8,7 +9,7 @@ describe('user model tests', () => {
             password: 'admin123',
         } as IUser;
 
-        const res = await registerUser(userTest);
+        const res = await registerUser(userTest, SYSTEM_REQ_ID);
 
         expect(res).toHaveProperty('isAdmin', false);
     });
@@ -19,7 +20,7 @@ describe('user model tests', () => {
             password: 'admin123',
         } as IUser;
 
-        const res = await registerUser(userTest);
+        const res = await registerUser(userTest, SYSTEM_REQ_ID);
 
         expect(res).toHaveProperty('phoneNumber', 'empty');
     });
