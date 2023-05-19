@@ -1,5 +1,5 @@
 import { RecipeModel } from '../models/recipe.model';
-import { IRecipe, IRecipeQuery } from '../interfaces/recipe.interface';
+import { IRecipe, IRecipeQuery } from '../interfaces';
 import { filterRecipesAggregation } from '../aggregations/recipes.aggregation';
 import { logger } from '../utils';
 

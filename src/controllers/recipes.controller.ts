@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import { IRecipe } from '../interfaces/recipe.interface';
+import { IRecipe } from '../interfaces';
 import {
     createRecipe,
     findRecipeByName,

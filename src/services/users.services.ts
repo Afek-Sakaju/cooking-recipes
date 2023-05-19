@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 
 import { UserModel } from '../models/user.model';
-import { IUser } from '../interfaces/user.interface';
+import { IUser } from '../interfaces';
 import { logger } from '../utils';
 
 export async function registerUser(

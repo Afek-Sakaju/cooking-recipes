@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 
 import { UserModel } from '../models/user.model';
 import { getUserWithPassword } from '../services/users.services';
-import { IUser, passportConfigUser } from '../interfaces/user.interface';
+import { IUser, passportConfigUser } from '../interfaces';
 import { logger, SYSTEM_REQ_ID } from '../utils';
 
 passport.use(

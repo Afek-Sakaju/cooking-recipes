@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 import { registerUser, updateUserData } from '../services/users.services';
-import { IUser } from '../interfaces/user.interface';
+import { IUser } from '../interfaces';
 import { logger } from '../utils';
 
 export async function registerUserCtrl(
