@@ -14,7 +14,7 @@ import logger from '../utils/logger';
 export const getRecipeByNameCtrl = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) => {
     logger.info(req.id, 'Getting recipe by name', {
         recipeName: req.params.recipeName,
@@ -32,7 +32,7 @@ export const getRecipeByNameCtrl = async (
 export const createRecipeCtrl = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) => {
     const recipe: IRecipe = {
         name: req.body.name,
@@ -58,7 +58,7 @@ export const createRecipeCtrl = async (
 export const updateRecipeDataCtrl = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) => {
     const recipeData = {
         name: req.body.name,
@@ -84,7 +84,7 @@ export const updateRecipeDataCtrl = async (
 export const deleteRecipeByNameCtrl = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) => {
     logger.info(req.id, 'Deleting recipe by his name', {
         recipeName: req.params.recipeName,
@@ -104,7 +104,7 @@ export const deleteRecipeByNameCtrl = async (
 export const sendAllRecipesCtrl = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) => {
     logger.info(req.id, 'Getting all recipes list');
 

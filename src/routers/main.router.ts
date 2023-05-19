@@ -5,7 +5,7 @@ import logger from '../utils/logger';
 
 const router = express.Router();
 
-router.use((req: Request, res: Response, next: NextFunction) => {
+router.use((req: Request, _res: Response, next: NextFunction) => {
     logger.debug(req.id, 'Call to API', {
         method: req.method,
         originalUrl: req.originalUrl,
@@ -24,7 +24,7 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  *       200:
  *         description: Returns welcome message
  */
-router.get('/', (req: Request, res: Response, next: NextFunction) => {
+router.get('/', (req: Request, res: Response, _next: NextFunction) => {
     logger.debug(req.id, 'call to API', {
         method: req.method,
         originalUrl: req.originalUrl,
@@ -49,7 +49,7 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
 router.get(
     '/success',
     isAuthenticatedMW,
-    (req: Request, res: Response, next: NextFunction) => {
+    (req: Request, res: Response, _next: NextFunction) => {
         logger.info(req.id, 'User visiting login success page');
         res.status(202).send('logged in successfully');
     }
@@ -65,7 +65,7 @@ router.get(
  *       200:
  *         description: Returns OK
  */
-router.get('/health', (req: Request, res: Response, next: NextFunction) => {
+router.get('/health', (req: Request, res: Response, _next: NextFunction) => {
     logger.info(req.id, 'Server sent health status to user');
     res.status(200).send('OK');
 });

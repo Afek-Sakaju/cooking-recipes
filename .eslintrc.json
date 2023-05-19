@@ -31,7 +31,8 @@
             "error",
             { "ignores": ["modules"] }
         ],
-        "@typescript-eslint/no-explicit-any": ["off"],
+        "@typescript-eslint/no-unused-vars": 0,
+        "@typescript-eslint/no-explicit-any": 0,
         "@typescript-eslint/ban-ts-comment": 0,
         "node/no-unpublished-import": 0,
         "node/no-missing-import": 0,

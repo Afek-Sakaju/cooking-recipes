@@ -28,7 +28,7 @@ export function requestID({
     };
 }
 
-export function logAPI(req: Request, res: Response, next: NextFunction) {
+export function logAPI(req: Request, _res: Response, next: NextFunction) {
     logger.debug(req.id, 'call to api', {
         method: req.method,
         originalUrl: req.originalUrl,
