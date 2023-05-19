@@ -18,7 +18,7 @@ import recipesRouter from './routers/recipes.router';
 import { MONGO_URL, PORT, logger, SYSTEM_REQ_ID } from './utils';
 import { connectDB } from './DB/mongoose';
 import swaggerDocument from './config/swagger-docs.json';
-import schemas from './models/swaggerSchemas';
+import { schemas } from './models';
 import { requestID } from './middleware/requestID-middleware';
 import { logAPI } from './middleware/requestID-middleware';
 

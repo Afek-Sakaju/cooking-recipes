@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 
-import { UserModel } from '../models/user.model';
+import { UserModel } from '../models';
 import { IUser } from '../interfaces';
 import { logger } from '../utils';
 
