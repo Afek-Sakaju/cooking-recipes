@@ -2,7 +2,6 @@ import winston from 'winston';
 import winstonDailyRotateFile from 'winston-daily-rotate-file';
 
 import { LOGGING_LINE_TRACE, LOGGING_MODE } from './env-variables';
-// eslint-disable-next-line node/no-missing-import
 import { LOG_DIR_PATH } from './paths';
 
 const colorizer = winston.format.colorize();
