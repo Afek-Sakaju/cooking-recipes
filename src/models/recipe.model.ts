@@ -23,7 +23,7 @@ const recipeSchema = new Schema(
             max: 480,
             required: [true, 'missing cooking time in minutes'],
         },
-        difficulityLevel: { type: String, default: 'unknown' },
+        difficultyLevel: { type: String, default: 'unknown' },
     },
     { timestamps: true }
 );

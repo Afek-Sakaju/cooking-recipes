@@ -3,13 +3,13 @@ export interface IRecipe {
     creator: string;
     ingredients: string[];
     cookingTime: number;
-    difficulityLevel: string;
+    difficultyLevel: string;
 }
 
 export interface IRecipeQuery {
     name?: string;
     creator?: string;
-    difficulityLevel?: string;
+    difficultyLevel?: string;
 
     /* type: "any" is necessary in order to allow using the "+" operator inside the
     aggregation in case that the query receive numeric string such as : '1' */

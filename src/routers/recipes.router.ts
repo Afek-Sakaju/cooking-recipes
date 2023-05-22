@@ -67,10 +67,10 @@ router.get('/all', sendAllRecipesCtrl);
  *          type: string
  *          description: filter by recipe's creator name.
  *      - in: query
- *        name: difficulityLevel
+ *        name: difficultyLevel
  *        schema:
  *          type: string
- *          description: filter by recipe's difficulity level.
+ *          description: filter by recipe's difficulty level.
  *      - in: query
  *        name: maxCookingTime
  *        schema:
@@ -144,7 +144,7 @@ router.get('/', isAuthenticatedMW, filteredRecipeListCtrl);
  *                      cookingTime:
  *                          type: number
  *                          example: "45"
- *                      difficulityLevel:
+ *                      difficultyLevel:
  *                          type: string
  *                          example: "easy"
  *     responses:
@@ -221,7 +221,7 @@ router.get('/find/:recipeName', getRecipeByNameCtrl);
  *                      cookingTime:
  *                          type: number
  *                          example: 15
- *                      difficulityLevel:
+ *                      difficultyLevel:
  *                          type: string
  *                          example: "easy"
  *     responses:

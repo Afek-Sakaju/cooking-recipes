@@ -39,7 +39,7 @@ export const createRecipeCtrl = async (
         creator: req.body.creator,
         ingredients: req.body.ingredients,
         cookingTime: req.body.cookingTime,
-        difficulityLevel: req.body.difficulityLevel,
+        difficultyLevel: req.body.difficultyLevel,
     };
 
     logger.info(req.id, 'Creating new recipe', {
@@ -65,7 +65,7 @@ export const updateRecipeDataCtrl = async (
         creator: req.body.creator,
         ingredients: req.body.ingredients,
         cookingTime: req.body.cookingTime,
-        difficulityLevel: req.body.difficulityLevel,
+        difficultyLevel: req.body.difficultyLevel,
     } as unknown as IRecipe;
 
     logger.info(req.id, "Updating recipe's data", {

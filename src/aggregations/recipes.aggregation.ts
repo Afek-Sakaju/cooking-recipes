@@ -7,7 +7,7 @@ const ObjectId = (id) => new mongoose.Types.ObjectId(id);
 export function filterRecipesAggregation({
     name,
     creator,
-    difficulityLevel,
+    difficultyLevel,
     maxCookingTime,
     minCookingTime,
     page,
@@ -25,8 +25,8 @@ export function filterRecipesAggregation({
                 ...(creator !== undefined && {
                     creator: ObjectId(creator),
                 }),
-                ...(difficulityLevel !== undefined && {
-                    difficulityLevel: difficulityLevel,
+                ...(difficultyLevel !== undefined && {
+                    difficultyLevel: difficultyLevel,
                 }),
                 ...((minCookingTime !== undefined ||
                     maxCookingTime !== undefined) && {
@@ -65,7 +65,7 @@ export function filterRecipesAggregation({
                 name: 1,
                 ingredients: 1,
                 cookingTime: 1,
-                difficulityLevel: 1,
+                difficultyLevel: 1,
                 creator: '$creatorData.fullName',
             },
         },

@@ -62,7 +62,7 @@ export async function updateRecipeData(
             creator: recipeData.creator,
             ingredients: recipeData.ingredients,
             cookingTime: recipeData.cookingTime,
-            difficulityLevel: recipeData.difficulityLevel,
+            difficultyLevel: recipeData.difficultyLevel,
         },
         { new: true, omitUndefined: true, upsert: true }
     );
