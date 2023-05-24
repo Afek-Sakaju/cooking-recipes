@@ -5,6 +5,7 @@
         "ecmaVersion": 2021,
         "sourceType": "module"
     },
+    "ignorePatterns": ["logger.ts", "setup.ts", "*.js"],
     "env": {
         "node": true,
         "jest": true
@@ -31,6 +32,7 @@
             { "ignores": ["modules"] }
         ],
         "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-unused-vars": "off",
         "node/no-unpublished-import": "off",
         "node/no-missing-import": "off",
         "jest/no-standalone-expect": "off",

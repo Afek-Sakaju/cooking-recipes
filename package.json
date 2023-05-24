@@ -25,7 +25,7 @@
         "build": "tsc",
         "build:watch": "tsc -w",
         "test": "jest",
-        "lint": "eslint --ext .ts --ext .js .",
+        "lint": "eslint --ext .ts .",
         "migrateDB": "npm run migrate-mongo:up",
         "migrate-mongo:init": "migrate-mongo init",
         "migrate-mongo:up": "migrate-mongo up",
