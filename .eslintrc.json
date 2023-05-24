@@ -2,7 +2,7 @@
     "root": true,
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "ecmaVersion": 2018,
+        "ecmaVersion": 2021,
         "sourceType": "module"
     },
     "env": {
@@ -18,7 +18,6 @@
         "plugin:prettier/recommended"
     ],
     "rules": {
-        "@typescript-eslint/no-var-requires": 0,
         "@typescript-eslint/ban-types": [
             "error",
             {
@@ -27,19 +26,15 @@
                 }
             }
         ],
-        "@typescript-eslint/indent": 0,
         "node/no-unsupported-features/es-syntax": [
             "error",
             { "ignores": ["modules"] }
         ],
-        "no-prototype-builtins": 0,
-        "@typescript-eslint/no-unused-vars": 0,
-        "@typescript-eslint/no-explicit-any": 0,
-        "@typescript-eslint/ban-ts-comment": 0,
-        "node/no-unpublished-import": 0,
-        "node/no-missing-import": 0,
-        "jest/no-standalone-expect": 0,
-        "jest/no-done-callback": 0,
-        "prettier/prettier": 0
+        "@typescript-eslint/ban-ts-comment": "off",
+        "node/no-unpublished-import": "off",
+        "node/no-missing-import": "off",
+        "jest/no-standalone-expect": "off",
+        "jest/no-done-callback": "off",
+        "prettier/prettier": "off"
     }
 }
