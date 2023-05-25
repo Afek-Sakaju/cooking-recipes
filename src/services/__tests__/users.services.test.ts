@@ -20,7 +20,7 @@ describe('users services tests', () => {
     beforeAll(async () => {
         const userDoc = new UserModel(testUser);
         const resultUser = (await userDoc.save()) as unknown as IUser;
-        userId = resultUser._id;
+        userId = resultUser?._id;
 
         expect(resultUser).toBeDefined();
         expect(resultUser).toHaveProperty('_id');
