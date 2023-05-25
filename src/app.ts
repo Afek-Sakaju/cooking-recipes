@@ -12,18 +12,14 @@ import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
 import './config/passport-config';
-import mainRouter from './routers/main.router';
-import authRouter from './routers/auth.router';
-import recipesRouter from './routers/recipes.router';
+import { authRouter, mainRouter, recipesRouter } from './routers';
 import { MONGO_URL, PORT, logger, SYSTEM_REQ_ID } from './utils';
 import { connectDB } from './DB/mongoose';
 import swaggerDocument from './config/swagger-docs.json';
 import { schemas } from './models';
 import { requestID, logAPI } from './middleware';
 
-if (process.env.NODE_ENV !== 'test') {
-    connectDB(MONGO_URL);
-}
+if (process.env.NODE_ENV !== 'test') connectDB(MONGO_URL);
 
 const app = express();
 
@@ -35,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
     session({
-        secret: 'shalom!',
+        secret: '[Secret}-(^_^)-{Key]',
         resave: false,
         saveUninitialized: true,
         cookie: { secure: false },
