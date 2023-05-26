@@ -16,7 +16,6 @@ describe('recipes services tests', () => {
         cookingTime: 20,
         difficultyLevel: 'easy',
     } as unknown as IRecipe;
-
     let recipeId: string;
 
     beforeAll(async () => {
@@ -47,13 +46,37 @@ describe('recipes services tests', () => {
         const resultRecipes = (await findAllRecipe(
             SYSTEM_REQ_ID
         )) as unknown as Array<IRecipe>;
+        const exampleRecipe = resultRecipes?.[0];
 
-        expect(resultRecipes.length).toBe(0);
-        expect(resultRecipes).toHaveProperty('_id');
-        expect(resultRecipes.name).toBe(testRecipe.name);
-        expect(resultRecipes.ingredients).toEqual(testRecipe.ingredients);
-        expect(resultRecipes.cookingTime).toBe(testRecipe.cookingTime);
-        expect(resultRecipes.difficultyLevel).toBe(testRecipe.difficultyLevel);
-        expect(resultRecipes.creator).toBe(null);
+        expect(resultRecipes).toBeDefined();
+        // There are 5 recipes created from migration file and 1 at the beginning of the tests
+        expect(resultRecipes.length).toBe(6);
+        expect(exampleRecipe).toHaveProperty('_id');
+        expect(exampleRecipe).toHaveProperty('name');
+        expect(exampleRecipe).toHaveProperty('ingredients');
+        expect(exampleRecipe).toHaveProperty('cookingTime');
+        expect(exampleRecipe).toHaveProperty('difficultyLevel');
+        expect(exampleRecipe).toHaveProperty('creator');
+    });
+
+    test('service filterRecipes returns array with the filtered recipes list', async () => {
+        const query = {
+            difficultyLevel: 'hard',
+        };
+
+        const [[response]] = (await filterRecipes(query, SYSTEM_REQ_ID)) as any;
+        expect(response).toBeDefined();
+
+        const { data: resultRecipes } = response;
+        const exampleRecipe = resultRecipes?.[0];
+
+        expect(resultRecipes).toBeDefined();
+        // There are 2 recipes that match the query params
+        expect(resultRecipes.length).toBe(2);
+        expect(exampleRecipe).toHaveProperty('name');
+        expect(exampleRecipe).toHaveProperty('ingredients');
+        expect(exampleRecipe).toHaveProperty('cookingTime');
+        expect(exampleRecipe.difficultyLevel).toBe(query.difficultyLevel);
+        expect(exampleRecipe).toHaveProperty('creator');
     });
 });

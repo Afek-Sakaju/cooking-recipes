@@ -67,7 +67,7 @@ export function filterRecipesAggregation({
                 ingredients: 1,
                 cookingTime: 1,
                 difficultyLevel: 1,
-                creator: '$creatorData.fullName',
+                creator: { $ifNull: ['$creatorData.fullName', null] },
             },
         },
         {
