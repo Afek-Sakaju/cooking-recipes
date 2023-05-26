@@ -10,8 +10,8 @@ export function filterRecipesAggregation({
     difficultyLevel,
     maxCookingTime,
     minCookingTime,
-    page,
-    itemsPerPage,
+    page = 1,
+    itemsPerPage = 10,
 }: IRecipeQuery) {
     return [
         {
@@ -22,9 +22,10 @@ export function filterRecipesAggregation({
                         $options: 'i',
                     },
                 }),
-                ...(creator !== undefined && {
-                    creator: ObjectId(creator),
-                }),
+                ...(creator !== undefined &&
+                    creator !== null && {
+                        creator: ObjectId(creator),
+                    }),
                 ...(difficultyLevel !== undefined && {
                     difficultyLevel: difficultyLevel,
                 }),
@@ -58,7 +59,7 @@ export function filterRecipesAggregation({
                 ],
             },
         },
-        { $unwind: '$creatorData' },
+        { $unwind: { path: '$creatorData', preserveNullAndEmptyArrays: true } },
         {
             $project: {
                 _id: 0,
