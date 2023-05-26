@@ -9,9 +9,7 @@ export const findRecipeByName = async (
 ) => {
     logger.verbose(requestId, 'Running request to get recipe by name from DB');
 
-    const recipe = await RecipeModel.findOne({
-        name: recipeName,
-    }).exec();
+    const recipe = await RecipeModel.findOne({ name: recipeName }).exec();
 
     return recipe;
 };
