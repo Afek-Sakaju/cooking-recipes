@@ -1,15 +1,9 @@
 const ISODate = (date) => new Date(date);
 const NumberInt = (num) => num;
 
-/* Dont change\add-to this recipes data! 
-the tests built with this speciefic data */
+// Don't change\add-to this data! the tests have been built with this specific data
 module.exports = {
     async up(db, client) {
-        /* const adminUser = await db
-            .collection('users')
-            .findOne({ username: 'admin' });
-
-        const ObjectId = (id) => ownerUser._id; */
         await db.collection('recipes').insertMany([
             {
                 name: 'roasted-salmon',
@@ -26,7 +20,7 @@ module.exports = {
                 creator: null,
                 ingredients: [
                     'grinded-chicken-breast',
-                    'lattuce',
+                    'lettuce',
                     'canola-oil',
                     'salt',
                     'chilli',
@@ -58,7 +52,7 @@ module.exports = {
                 name: 'vegan-hamburger',
                 creator: null,
                 ingredients: [
-                    'portabelo-mushrooms',
+                    'mushrooms',
                     'red-pepper',
                     'olive-oil',
                     'salt',
@@ -72,7 +66,7 @@ module.exports = {
                 __v: NumberInt(0),
             },
             {
-                name: 'omlette',
+                name: 'omelette',
                 creator: null,
                 ingredients: ['eggs', 'black-pepper', 'salt', 'coconut-oil'],
                 cookingTime: 120,
