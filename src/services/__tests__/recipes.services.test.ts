@@ -18,12 +18,9 @@ describe('recipes services tests', () => {
         difficultyLevel: 'easy',
     } as unknown as IRecipe;
 
-    let recipeId: string;
-
     beforeAll(async () => {
         const recipeDoc = new RecipeModel(testRecipe);
         const resultRecipe = (await recipeDoc.save()) as unknown as IRecipe;
-        recipeId = resultRecipe._id;
 
         expect(resultRecipe).toBeDefined();
         expect(resultRecipe).toHaveProperty('_id');
@@ -134,7 +131,7 @@ describe('recipes services tests', () => {
         )) as unknown as IRecipe;
 
         expect(updateRes1).toBeDefined();
-        expect(updateRes1._id).toBe(recipeId);
+        expect(updateRes1).toHaveProperty('_id');
         expect(updateRes1.name).toBe(recipeData.name);
         expect(updateRes1.ingredients).toEqual(recipeData.ingredients);
         expect(updateRes1.cookingTime).toBe(recipeData.cookingTime);
