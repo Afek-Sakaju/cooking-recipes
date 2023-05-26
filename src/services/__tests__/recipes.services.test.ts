@@ -114,7 +114,7 @@ describe('recipes services tests', () => {
             name: recipeData.name,
         });
 
-        expect(getRecipeResponse).toBe(undefined || null);
+        expect(getRecipeResponse).toBe(null);
     });
 
     test('service updateRecipeData updates recipe and returns its updated data', async () => {
@@ -144,5 +144,14 @@ describe('recipes services tests', () => {
             SYSTEM_REQ_ID
         )) as unknown as IRecipe;
         expect(updateRes2).toBeDefined();
+    });
+
+    test('service createRecipe accepting recipe that already exists should return undefined', async () => {
+        const resultRecipe = (await createRecipe(
+            testRecipe,
+            SYSTEM_REQ_ID
+        )) as unknown as IRecipe;
+
+        expect(resultRecipe).toBeUndefined();
     });
 });
