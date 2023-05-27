@@ -2,6 +2,7 @@ import request from 'supertest';
 
 import app from '../../app';
 import { IRecipe } from '../../interfaces';
+import { RecipeModel } from '../../models';
 
 describe('recipes router tests', () => {
     let cookie: string;
@@ -80,7 +81,7 @@ describe('recipes router tests', () => {
         }
     });
 
-    test('get filtered recipes API - failure - unauthenticated user', async function () {
+    test('get filtered recipes API - failure - unauthenticated user/invalid query params', async function () {
         {
             const url = '/recipe?page=1&itemsPerPage=5&difficultyLevel=easy';
 
@@ -96,9 +97,6 @@ describe('recipes router tests', () => {
 
             await request(app).get(url).expect(401);
         }
-    });
-
-    test('get filtered recipes API - failure - invalid query params', async function () {
         {
             const url = '/recipe?page=hello&itemsPerPage=abc';
 
@@ -125,6 +123,85 @@ describe('recipes router tests', () => {
             } = await request(app).get(url).set('Cookie', [cookie]).expect(200);
 
             expect(response).toBeUndefined();
+        }
+    });
+
+    test('create new recipe API - success', async function () {
+        const body = {
+            name: 'pesto-pasta',
+            ingredients: [
+                'mixed-colors-pasta',
+                'garlic',
+                'olives',
+                'lemon',
+                'salt',
+                'oil',
+                'water',
+            ],
+            cookingTime: 70,
+            difficultyLevel: 'hard',
+        } as unknown as IRecipe;
+
+        const { body: result } = await request(app)
+            .post('/recipe/new-recipe')
+            .set('Accept', 'application/json')
+            .send(body)
+            .set('Cookie', [cookie])
+            .expect(201);
+
+        expect(result.name).toBe(body.name);
+        expect(result.creator).toBe(null);
+        expect(result.ingredients).toEqual(body.ingredients);
+        expect(result.cookingTime).toBe(body.cookingTime);
+        expect(result.difficultyLevel).toBe(body.difficultyLevel);
+
+        // Deleted to prevent unpredictable results in other tests
+        const deleteResult = await RecipeModel.findOneAndDelete({
+            name: body.name,
+        });
+        expect(deleteResult).toBeDefined();
+    });
+
+    test('create new recipe API - failure - unauthenticated user/recipe already exists', async function () {
+        {
+            const body = {
+                name: 'sweet-apple',
+                ingredients: ['red-apple', 'sugar', 'cinnamon'],
+                cookingTime: 10,
+                difficultyLevel: 'easy',
+            } as unknown as IRecipe;
+
+            const { body: result } = await request(app)
+                .post('/recipe/new-recipe')
+                .set('Accept', 'application/json')
+                .send(body)
+                .expect(401);
+
+            expect(result).toEqual({});
+        }
+        {
+            const body = {
+                name: 'vegan-hamburger',
+                ingredients: [
+                    'mushrooms',
+                    'red-pepper',
+                    'olive-oil',
+                    'salt',
+                    'egg',
+                    'bread',
+                ],
+                cookingTime: 5,
+                difficultyLevel: 'hard',
+            } as unknown as IRecipe;
+
+            const { body: result } = await request(app)
+                .post('/recipe/new-recipe')
+                .set('Accept', 'application/json')
+                .send(body)
+                .set('Cookie', [cookie])
+                .expect(500);
+
+            expect(result).toBeFalsy();
         }
     });
 });
