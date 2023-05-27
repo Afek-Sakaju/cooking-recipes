@@ -1,8 +1,6 @@
-import mongoose from 'mongoose';
+import { Types } from 'mongoose';
 
 import { IRecipeQuery } from '../interfaces';
-
-const ObjectId = (id) => new mongoose.Types.ObjectId(id);
 
 export function filterRecipesAggregation({
     name,
@@ -24,7 +22,7 @@ export function filterRecipesAggregation({
                 }),
                 ...(creator !== undefined &&
                     creator !== null && {
-                        creator: ObjectId(creator),
+                        creator: new Types.ObjectId(creator),
                     }),
                 ...(difficultyLevel !== undefined && {
                     difficultyLevel: difficultyLevel,

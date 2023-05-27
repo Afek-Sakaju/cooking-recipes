@@ -59,6 +59,20 @@ describe('auth router tests', () => {
     test('login API - failure - incorrect/missing params', async () => {
         {
             const userData = {
+                username: 'adminafek@walla.co.il',
+                password: '123',
+            };
+
+            const response = await request(app)
+                .post('/auth/login')
+                .set('Accept', 'application/json')
+                .send(userData)
+                .expect(400);
+
+            expect(response).toHaveProperty('text', 'Login failed');
+        }
+        {
+            const userData = {
                 username: 'unknown@unknown.noone',
                 password: 'unknown',
             };
