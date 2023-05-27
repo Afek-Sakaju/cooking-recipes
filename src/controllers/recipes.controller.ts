@@ -52,7 +52,7 @@ export const createRecipeCtrl = async (
         recipeData: recipe,
     });
 
-    res.sendStatus(result ? 201 : 500);
+    res.status(result ? 201 : 500).json(result);
 };
 
 export const updateRecipeDataCtrl = async (
