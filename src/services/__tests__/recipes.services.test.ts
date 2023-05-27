@@ -66,10 +66,10 @@ describe('recipes services tests', () => {
     test('service filterRecipes returns array with the filtered recipes list', async () => {
         const query = { difficultyLevel: 'hard' };
 
-        const [[response]] = (await filterRecipes(query, SYSTEM_REQ_ID)) as any;
-        expect(response).toBeDefined();
-
-        const { data: resultRecipes } = response;
+        const [[{ data: resultRecipes }]] = await filterRecipes(
+            query,
+            SYSTEM_REQ_ID
+        );
         const exampleRecipe = resultRecipes?.[0];
 
         expect(resultRecipes).toBeDefined();
@@ -119,7 +119,7 @@ describe('recipes services tests', () => {
 
     test('service updateRecipeData updates recipe and returns its updated data', async () => {
         const recipeData = {
-            name: 'sweet-potato-chips',
+            name: testRecipe.name,
             ingredients: ['sweet-potato', 'canola-oil', 'pepper'],
             cookingTime: 25,
             difficultyLevel: 'medium',
