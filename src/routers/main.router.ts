@@ -22,7 +22,7 @@ router.use((req: Request, _res: Response, next: NextFunction) => {
  *     description: Default API
  *     responses:
  *       200:
- *         description: Returns welcome message
+ *         description: Returns welcome message (string)
  */
 router.get('/', (req: Request, res: Response, _next: NextFunction) => {
     logger.debug(req.id, 'call to API', {
@@ -35,35 +35,13 @@ router.get('/', (req: Request, res: Response, _next: NextFunction) => {
 
 /**
  * @swagger
- * /success:
- *   get:
- *     tags: ['Main routers']
- *     description: Success login API
- *     security:
- *        cookieAuth:
- *          - connect.sid
- *     responses:
- *       202:
- *         description: Return login success message
- */
-router.get(
-    '/success',
-    isAuthenticatedMW,
-    (req: Request, res: Response, _next: NextFunction) => {
-        logger.info(req.id, 'User visiting login success page');
-        res.status(202).send('Logged in successfully');
-    }
-);
-
-/**
- * @swagger
  * /health:
  *   get:
  *     tags: ['Main routers']
  *     description: Get health server status
  *     responses:
  *       200:
- *         description: Returns OK
+ *         description: Returns OK message (string)
  */
 router.get('/health', (req: Request, res: Response, _next: NextFunction) => {
     logger.info(req.id, 'Server sent health status to user');

@@ -26,24 +26,6 @@ describe('main router tests', () => {
         expect(response).toHaveProperty('text', 'Welcome');
     });
 
-    test('responds success API with authorized user get status 202', async () => {
-        const response = await request(app)
-            .get('/success')
-            .set('Cookie', [cookie])
-            .expect(202);
-
-        expect(response).toHaveProperty('text', 'Logged in successfully');
-    });
-
-    test('responds success API with unauthorized user get status 401', async () => {
-        const response = await request(app).get('/success').expect(401);
-
-        expect(response).toHaveProperty(
-            'text',
-            'You must login order to complete the operation'
-        );
-    });
-
     test('responds health API with OK and status 200', async () => {
         const response = await request(app).get('/health').expect(200);
 

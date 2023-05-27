@@ -31,17 +31,15 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  *     description: Get all recipes list data
  *     responses:
  *       200:
- *         description: Returns all recipes list.
+ *         description: Found all recipes successfully, returns the recipes list
  *         content:
  *           application/json:
  *               schema:
  *                  type: array
  *                  items:
  *                      $ref: "#/components/schemas/recipe"
- *       401:
- *         description: Unauthorized user
  *       500:
- *         description: Server Error
+ *         description: Server error
  *
  */
 router.get('/all', sendAllRecipesCtrl);
@@ -98,7 +96,7 @@ router.get('/all', sendAllRecipesCtrl);
  *        description: Modify results count inside the page
  *     responses:
  *       200:
- *         description: return the recipes filtered list.
+ *         description: Found filtered list successfully, returns the filtered list
  *         content:
  *           application/json:
  *               schema:
@@ -108,8 +106,10 @@ router.get('/all', sendAllRecipesCtrl);
  *                          type: array
  *                          items:
  *                             $ref: "#/components/schemas/recipe"
+ *       401:
+ *         description: Unauthenticated user
  *       500:
- *         description: Server Error
+ *         description: Server error
  *
  */
 router.get('/', isAuthenticatedMW, filteredRecipeListCtrl);
@@ -148,16 +148,16 @@ router.get('/', isAuthenticatedMW, filteredRecipeListCtrl);
  *                          type: string
  *                          example: "easy"
  *     responses:
- *       200:
- *         description: Returns the created recipe
+ *       201:
+ *         description: Created successfully, returns the created recipe
  *         content:
  *           application/json:
  *             schema:
  *               $ref: "#/components/schemas/recipe"
  *       401:
- *         description: Unauthorized user
+ *         description: Unauthenticated user
  *       500:
- *         description: Server Error
+ *         description: Server error
  *
  */
 router.post('/new-recipe', isAuthenticatedMW, createRecipeCtrl);
@@ -176,15 +176,15 @@ router.post('/new-recipe', isAuthenticatedMW, createRecipeCtrl);
  *        description: The recipes name.
  *     responses:
  *       200:
- *         description: return the recipe's data.
+ *         description: Recipe found successfully, returns recipe's data
  *         content:
  *           application/json:
  *               schema:
  *                      $ref: "#/components/schemas/recipe"
  *       404:
- *         description: Invalid data provided, recipe not found
+ *         description: Recipe not found
  *       500:
- *         description: Server Error
+ *         description: Server error
  *
  */
 router.get('/find/:recipeName', getRecipeByNameCtrl);
@@ -226,13 +226,15 @@ router.get('/find/:recipeName', getRecipeByNameCtrl);
  *                          example: "easy"
  *     responses:
  *       200:
- *         description: Returns the updated recipe
+ *         description: Updated successfully, returns updated data
  *         content:
  *           application/json:
  *             schema:
  *               $ref: "#/components/schemas/recipe"
  *       400:
- *         description: Return message of the error that occurred in the updating process
+ *         description: Update failed
+ *       401:
+ *         description: Unauthenticated user
  *
  */
 router.put('/update', isAuthenticatedMW, updateRecipeDataCtrl);
@@ -258,9 +260,9 @@ router.put('/update', isAuthenticatedMW, updateRecipeDataCtrl);
  *       400:
  *         description: Invalid data provided
  *       401:
- *         description: Unauthorized user
+ *         description: Unauthenticated user
  *       500:
- *         description: Server Error
+ *         description: Server error
  *
  */
 router.delete('/:recipeName', isAuthenticatedMW, deleteRecipeByNameCtrl);

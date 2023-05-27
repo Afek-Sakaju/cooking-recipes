@@ -43,15 +43,15 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  *                          example: "somePassword123"
  *     responses:
  *       200:
- *         description: "Login successfully"
+ *         description: Login success, returns logged user
  *         content:
  *           application/json:
  *             schema:
  *               $ref: "#/components/schemas/user"
  *       400:
- *          description: "Login failed"
+ *          description: Login failed
  *       500:
- *          description: "Server Error"
+ *          description: Server error
  *
  */
 router.post('/login', (req: Request, res: Response, next: NextFunction) => {
@@ -59,7 +59,7 @@ router.post('/login', (req: Request, res: Response, next: NextFunction) => {
         if (!user || err) return res.status(400).send('Login failed');
 
         req.login(user, (err) => {
-            if (err) return res.status(500).send('Server Error');
+            if (err) return res.status(500).send('Server error');
             return res.status(200).send(user);
         });
     })(req, res, next);
@@ -75,11 +75,11 @@ router.post('/login', (req: Request, res: Response, next: NextFunction) => {
  *       200:
  *           description: Logout successfully
  *       500:
- *          description: Logout failed, server Error
+ *          description: Server error
  */
 router.post('/logout', (req: Request, res: Response, next: NextFunction) => {
     req.logout((err: Error) => {
-        if (err) return res.status(500).send('Logout failed, server Error');
+        if (err) return res.status(500).send('Server error');
         return res.status(200).send('Logout successfully');
     });
 });
@@ -118,7 +118,8 @@ router.post('/logout', (req: Request, res: Response, next: NextFunction) => {
  *           application/json:
  *             schema:
  *               $ref: "#/components/schemas/user"
- *
+ *       500:
+ *         description: Server error
  */
 router.post('/register', registerUserCtrl);
 
@@ -156,13 +157,15 @@ router.post('/register', registerUserCtrl);
  *                          example: "+888 88 888 8888"
  *     responses:
  *       200:
- *         description: Returns the updated user
+ *         description: Updated successfully, returns the updated data
  *         content:
  *           application/json:
  *             schema:
  *               $ref: "#/components/schemas/user"
  *       400:
- *         description: Return message of the error that occurred in the updating process
+ *         description: Update failed
+ *       401:
+ *         description: Unauthenticated user
  *
  */
 router.put('/update', isAuthenticatedMW, updateUserDataCtrl);

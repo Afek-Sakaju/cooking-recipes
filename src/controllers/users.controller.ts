@@ -28,8 +28,8 @@ export async function registerUserCtrl(
         });
 
         res.status(201).json(result);
-    } catch (e: any) {
-        next(e);
+    } catch (e) {
+        res.sendStatus(500);
     }
 }
 
