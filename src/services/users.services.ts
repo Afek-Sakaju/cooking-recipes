@@ -28,18 +28,20 @@ export async function updateUserData(
 
     logger.verbose(requestId, 'Running request to update user data in DB');
 
-    const result: any = await UserModel.findOneAndUpdate(
-        { _id: userData._id },
-        {
-            email: userData.email,
-            password: userData.password,
-            phoneNumber: userData.phoneNumber,
-            fullName: userData.fullName,
-        },
-        { new: true, omitUndefined: true, upsert: false }
-    );
-
-    return result?.toJSON();
+    try {
+        const result = (await UserModel.findOneAndUpdate(
+            { _id: userData._id },
+            {
+                email: userData.email,
+                password: userData.password,
+                phoneNumber: userData.phoneNumber,
+                fullName: userData.fullName,
+            },
+            { new: true, omitUndefined: true, upsert: false }
+        )) as unknown as IUser;
+        return result;
+        // eslint-disable-next-line no-empty
+    } catch (e) {}
 }
 
 export async function getUserWithPassword(
