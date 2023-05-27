@@ -62,10 +62,10 @@ export async function updateRecipeData(
             cookingTime: recipeData.cookingTime,
             difficultyLevel: recipeData.difficultyLevel,
         },
-        { new: true, omitUndefined: true, upsert: true }
+        { new: true, omitUndefined: true, upsert: false }
     );
 
-    return result.toJSON();
+    return result?.toJSON();
 }
 
 export const deleteRecipe = async function (

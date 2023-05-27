@@ -78,7 +78,7 @@ export const updateRecipeDataCtrl = async (
         recipe: result,
     });
 
-    res.json(result);
+    res.status(result ? 200 : 400).json(result);
 };
 
 export const deleteRecipeByNameCtrl = async (
