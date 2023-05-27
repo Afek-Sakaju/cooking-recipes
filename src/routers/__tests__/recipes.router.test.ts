@@ -190,7 +190,7 @@ describe('recipes router tests', () => {
                     'egg',
                     'bread',
                 ],
-                cookingTime: 5,
+                cookingTime: 15,
                 difficultyLevel: 'hard',
             } as unknown as IRecipe;
 
@@ -203,5 +203,33 @@ describe('recipes router tests', () => {
 
             expect(result).toBeFalsy();
         }
+    });
+
+    test('find recipe by name API - success', async function () {
+        const { body: resultRecipe } = await request(app)
+            .get('/recipe/find/vegan-hamburger')
+            .expect(200);
+
+        expect(resultRecipe).toBeDefined();
+        expect(resultRecipe.name).toBe('vegan-hamburger');
+        expect(resultRecipe.creator).toBe(null);
+        expect(resultRecipe.ingredients).toEqual([
+            'mushrooms',
+            'red-pepper',
+            'olive-oil',
+            'salt',
+            'egg',
+            'bread',
+        ]);
+        expect(resultRecipe.cookingTime).toBe(15);
+        expect(resultRecipe.difficultyLevel).toBe('hard');
+    });
+
+    test('find recipe by name API - failure - non existing recipe name', async function () {
+        const { body: resultRecipe } = await request(app)
+            .get('/recipe/find/non-existing-recipe-name')
+            .expect(404);
+
+        expect(resultRecipe).toBeFalsy();
     });
 });

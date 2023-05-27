@@ -181,8 +181,8 @@ router.post('/new-recipe', isAuthenticatedMW, createRecipeCtrl);
  *           application/json:
  *               schema:
  *                      $ref: "#/components/schemas/recipe"
- *       400:
- *         description: Invalid data provided
+ *       404:
+ *         description: Invalid data provided, recipe not found
  *       500:
  *         description: Server Error
  *

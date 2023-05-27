@@ -24,7 +24,7 @@ export const getRecipeByNameCtrl = async (
 
     logger.info(req.id, 'Recipe getting by name results', { recipe: recipe });
 
-    const status = !recipe ? 400 : 200;
+    const status = !recipe ? 404 : 200;
 
     res.status(status).json(recipe);
 };
