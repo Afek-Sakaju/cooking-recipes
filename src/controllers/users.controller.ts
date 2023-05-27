@@ -56,5 +56,5 @@ export async function updateUserDataCtrl(
         user: result,
     });
 
-    res.json(result);
+    res.status(result ? 200 : 400).json(result);
 }

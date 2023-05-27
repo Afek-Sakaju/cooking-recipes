@@ -36,10 +36,10 @@ export async function updateUserData(
             phoneNumber: userData.phoneNumber,
             fullName: userData.fullName,
         },
-        { new: true, omitUndefined: true, upsert: true }
+        { new: true, omitUndefined: true, upsert: false }
     );
 
-    return result.toJSON();
+    return result?.toJSON();
 }
 
 export async function getUserWithPassword(
