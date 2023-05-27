@@ -59,7 +59,7 @@ module.exports = {
                     'egg',
                     'bread',
                 ],
-                cookingTime: 5,
+                cookingTime: 15,
                 difficultyLevel: 'hard',
                 createdAt: ISODate('2023-01-06T17:00:45.774+0000'),
                 updatedAt: ISODate('2023-01-06T17:00:45.774+0000'),
