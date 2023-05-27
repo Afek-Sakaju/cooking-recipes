@@ -39,7 +39,7 @@ export async function updateUserDataCtrl(
     next: NextFunction
 ) {
     const userData = {
-        _id: req.body.id,
+        _id: req.body._id,
         email: req.body.email,
         password: req.body.password,
         phoneNumber: req.body.phoneNumber,

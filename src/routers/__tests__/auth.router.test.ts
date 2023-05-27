@@ -3,16 +3,17 @@ import request from 'supertest';
 import app from '../../app';
 
 describe('auth router tests', () => {
-    test('login API & update API - success', async () => {
-        const userData = {
-            username: 'adminafek@walla.co.il',
-            password: 'admin',
-        };
+    const migratedUserData = {
+        username: 'adminafek@walla.co.il',
+        password: 'admin',
+    };
+    let migratedUserId: string;
 
+    test('login API & update API - success', async () => {
         const response = await request(app)
             .post('/auth/login')
             .set('Accept', 'application/json')
-            .send(userData)
+            .send(migratedUserData)
             .expect(200);
 
         const { body: initialUser } = response;
@@ -20,9 +21,10 @@ describe('auth router tests', () => {
         expect(initialUser).toBeDefined();
         expect(initialUser).toHaveProperty('_id');
         const [cookie] = response.headers['set-cookie'];
+        migratedUserId = initialUser._id;
 
         const newData = {
-            _id: initialUser._id,
+            _id: migratedUserId,
             fullName: 'David',
             phoneNumber: '000-999-999',
         };
@@ -38,7 +40,7 @@ describe('auth router tests', () => {
         expect(updatedUser1.fullName).toBe(newData.fullName);
 
         const initialData = {
-            _id: initialUser._id,
+            _id: migratedUserId,
             fullName: 'unknown',
             phoneNumber: 'empty',
         };
@@ -154,5 +156,62 @@ describe('auth router tests', () => {
 
     test('logout API - success', async () => {
         await request(app).post('/auth/logout').expect(200);
+    });
+
+    test('update API - failure - user not exists/missing required params/unauthenticated user', async () => {
+        const response = await request(app)
+            .post('/auth/login')
+            .set('Accept', 'application/json')
+            .send(migratedUserData)
+            .expect(200);
+        const [cookie] = response.headers['set-cookie'];
+        {
+            const userData = {
+                _id: 'idontexist1s2s3s',
+                email: 'dandan31@walla.co.il',
+                password: 'dan31dan',
+                fullName: 'dan bezos',
+            };
+
+            const { body: resultUser } = await request(app)
+                .put('/auth/update')
+                .set('Accept', 'application/json')
+                .send(userData)
+                .set('Cookie', [cookie])
+                .expect(400);
+
+            expect(resultUser).toBeFalsy();
+        }
+        {
+            const userData = {
+                username: 'adminafek@walla.co.il',
+                password: 'admin',
+                fullName: 'admin bezos',
+            };
+
+            const { body: resultUser } = await request(app)
+                .put('/auth/update')
+                .set('Accept', 'application/json')
+                .send(userData)
+                .set('Cookie', [cookie])
+                .expect(400);
+
+            expect(resultUser).toBeFalsy();
+        }
+        {
+            const userData = {
+                _id: migratedUserId,
+                username: 'adminafek@walla.co.il',
+                password: 'admin',
+                fullName: 'admin bezos',
+            };
+            const { body: resultUser } = await request(app)
+                .put('/auth/update')
+                .set('Accept', 'application/json')
+                .send(userData)
+                .expect(401);
+
+            expect(resultUser).toEqual({});
+        }
     });
 });
