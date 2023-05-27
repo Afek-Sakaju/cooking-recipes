@@ -126,7 +126,7 @@ describe('recipes router tests', () => {
         }
     });
 
-    test('create new recipe API - success', async function () {
+    test('create new recipe API - success & delete it delete recipe API - success', async function () {
         const body = {
             name: 'pesto-pasta',
             ingredients: [
@@ -156,10 +156,12 @@ describe('recipes router tests', () => {
         expect(result.difficultyLevel).toBe(body.difficultyLevel);
 
         // Deleted to prevent unpredictable results in other tests
-        const deleteResult = await RecipeModel.findOneAndDelete({
-            name: body.name,
-        });
-        expect(deleteResult).toBeDefined();
+        const { body: deleteResult } = await request(app)
+            .delete(`/recipe/${body.name}`)
+            .set('Cookie', [cookie])
+            .expect(200);
+
+        expect(deleteResult).toEqual({});
     });
 
     test('create new recipe API - failure - unauthenticated user/recipe already exists', async function () {
@@ -202,6 +204,24 @@ describe('recipes router tests', () => {
                 .expect(500);
 
             expect(result).toBeFalsy();
+        }
+    });
+
+    test('delete recipe API - failure - unauthenticated user/invalid recipe name', async function () {
+        {
+            const { body: deleteResult } = await request(app)
+                .delete('/recipe/chicken-burger')
+                .expect(401);
+
+            expect(deleteResult).toEqual({});
+        }
+        {
+            const { body: deleteResult } = await request(app)
+                .delete('/recipe/4adas132sda')
+                .set('Cookie', [cookie])
+                .expect(400);
+
+            expect(deleteResult).toEqual({});
         }
     });
 
