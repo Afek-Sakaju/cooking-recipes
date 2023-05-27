@@ -232,4 +232,85 @@ describe('recipes router tests', () => {
 
         expect(resultRecipe).toBeFalsy();
     });
+
+    test('update recipe API - success', async function () {
+        const initialData = {
+            name: 'omelette',
+            ingredients: ['eggs', 'black-pepper', 'salt', 'coconut-oil'],
+            cookingTime: 120,
+            difficultyLevel: 'medium',
+        };
+
+        const newData = {
+            name: 'omelette',
+            cookingTime: 20,
+            difficultyLevel: 'easy',
+        } as unknown as IRecipe;
+
+        const { body: updateResult1 } = await request(app)
+            .put('/recipe/update')
+            .set('Accept', 'application/json')
+            .send(newData)
+            .set('Cookie', [cookie])
+            .expect(200);
+
+        expect(updateResult1.name).toBe(newData.name);
+        expect(updateResult1.creator).toBe(null);
+        expect(updateResult1.ingredients).toEqual(initialData.ingredients);
+        expect(updateResult1.cookingTime).toBe(newData.cookingTime);
+        expect(updateResult1.difficultyLevel).toBe(newData.difficultyLevel);
+
+        // Updated back to initial data, to prevent unpredictable results in other tests
+        const { body: updateResult2 } = await request(app)
+            .put('/recipe/update')
+            .set('Accept', 'application/json')
+            .send(initialData)
+            .set('Cookie', [cookie])
+            .expect(200);
+
+        expect(updateResult2.name).toBe(initialData.name);
+        expect(updateResult2.creator).toBe(null);
+        expect(updateResult2.ingredients).toEqual(initialData.ingredients);
+        expect(updateResult2.cookingTime).toBe(initialData.cookingTime);
+        expect(updateResult2.difficultyLevel).toBe(initialData.difficultyLevel);
+    });
+
+    test('update recipe API - failure - unauthenticated user/recipe not exists', async function () {
+        {
+            const body = {
+                name: 'kosher-bacon',
+                ingredients: [
+                    'holy-pig-meat',
+                    'personal-permission-from-god',
+                    'canola-oil',
+                ],
+                cookingTime: 240,
+                difficultyLevel: 'hard',
+            };
+
+            const { body: updateResult } = await request(app)
+                .put('/recipe/update')
+                .set('Accept', 'application/json')
+                .send(body)
+                .set('Cookie', [cookie])
+                .expect(400);
+
+            expect(updateResult).toBeFalsy();
+        }
+        {
+            const body = {
+                name: 'omelette',
+                cookingTime: 20,
+                difficultyLevel: 'easy',
+            };
+
+            const { body: updateResult } = await request(app)
+                .put('/recipe/update')
+                .set('Accept', 'application/json')
+                .send(body)
+                .expect(401);
+
+            expect(updateResult).toEqual({});
+        }
+    });
 });
