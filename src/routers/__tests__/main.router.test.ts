@@ -15,7 +15,7 @@ describe('main router tests', () => {
             .post('/auth/login')
             .set('Accept', 'application/json')
             .send(userData)
-            .expect(302);
+            .expect(200);
 
         [cookie] = result.headers['set-cookie'];
     });
