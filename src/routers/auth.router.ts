@@ -7,6 +7,7 @@ import {
     updateUserDataCtrl,
 } from '../controllers/users.controller';
 import { isAuthenticatedMW } from '../middleware';
+import { IUser } from '../interfaces';
 
 const router = express.Router();
 
@@ -42,22 +43,27 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  *                          example: "somePassword123"
  *     responses:
  *       200:
- *         description: Returns user that have logged in
+ *         description: "Login successfully"
  *         content:
  *           application/json:
  *             schema:
  *               $ref: "#/components/schemas/user"
+ *       400:
+ *          description: "Login failed"
  *       500:
- *          description: "Server error"
+ *          description: "Server Error"
  *
  */
-router.post(
-    '/login',
-    passport.authenticate('local', {
-        successRedirect: '/success',
-        failureRedirect: '/',
-    })
-);
+router.post('/login', (req: Request, res: Response, next: NextFunction) => {
+    passport.authenticate('local', (err: Error, user: IUser) => {
+        if (!user || err) return res.status(400).send('Login failed');
+
+        req.login(user, (err) => {
+            if (err) return res.status(500).send('Server Error');
+            return res.status(200).send(user);
+        });
+    })(req, res, next);
+});
 
 /**
  * @swagger
@@ -69,12 +75,12 @@ router.post(
  *       200:
  *           description: Logout successfully
  *       500:
- *          description: Error in the logout process
+ *          description: Logout failed, server Error
  */
-router.post('/logout', (req, res, next) => {
-    req.logout(() => {
-        logger.debug(req.id, 'Logout API request redirected to home page');
-        res.redirect('/');
+router.post('/logout', (req: Request, res: Response, next: NextFunction) => {
+    req.logout((err: Error) => {
+        if (err) return res.status(500).send('Logout failed, server Error');
+        return res.status(200).send('Logout successfully');
     });
 });
 

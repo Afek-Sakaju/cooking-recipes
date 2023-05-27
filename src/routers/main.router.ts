@@ -19,7 +19,7 @@ router.use((req: Request, _res: Response, next: NextFunction) => {
  * /:
  *   get:
  *     tags: ['Main routers']
- *     description: Default api
+ *     description: Default API
  *     responses:
  *       200:
  *         description: Returns welcome message
@@ -38,7 +38,7 @@ router.get('/', (req: Request, res: Response, _next: NextFunction) => {
  * /success:
  *   get:
  *     tags: ['Main routers']
- *     description: Success login api
+ *     description: Success login API
  *     security:
  *        cookieAuth:
  *          - connect.sid

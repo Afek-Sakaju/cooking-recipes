@@ -2,7 +2,6 @@ import request from 'supertest';
 
 import app from '../../app';
 import { IRecipe } from '../../interfaces';
-import { RecipeModel } from '../../models';
 
 describe('recipes router tests', () => {
     let cookie: string;
@@ -17,9 +16,7 @@ describe('recipes router tests', () => {
             .post('/auth/login')
             .set('Accept', 'application/json')
             .send(userData)
-            .expect(302);
-
-        expect(result).toBeDefined();
+            .expect(200);
 
         [cookie] = result.headers['set-cookie'];
     });
