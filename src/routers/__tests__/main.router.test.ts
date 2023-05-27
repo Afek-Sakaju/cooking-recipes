@@ -22,47 +22,33 @@ describe('main router tests', () => {
         [cookie] = result.headers['set-cookie'];
     });
 
-    test('responds home page API with welcome message and status 200', (done) => {
-        request(app)
-            .get('/')
-            .expect(200)
-            .end((err, res) => {
-                expect(res).toHaveProperty('text', 'Welcome');
-                done();
-            });
+    test('responds home page API with welcome message and status 200', async () => {
+        const response = await request(app).get('/').expect(200);
+
+        expect(response).toHaveProperty('text', 'Welcome');
     });
 
-    test('responds success API with unauthorized user get status 401', (done) => {
-        request(app)
-            .get('/success')
-            .expect(401)
-            .end((err, res) => {
-                expect(res).toHaveProperty(
-                    'text',
-                    'You must login order to complete the operation'
-                );
-                done();
-            });
+    test('responds success API with unauthorized user get status 401', async () => {
+        const response = await request(app).get('/success').expect(401);
+
+        expect(response).toHaveProperty(
+            'text',
+            'You must login order to complete the operation'
+        );
     });
 
-    test('responds success API with authorized user get status 202', (done) => {
-        request(app)
+    test('responds success API with authorized user get status 202', async () => {
+        const response = await request(app)
             .get('/success')
             .set('Cookie', [cookie])
-            .expect(202)
-            .end((err, res) => {
-                expect(res).toHaveProperty('text', 'Logged in successfully');
-                done();
-            });
+            .expect(202);
+
+        expect(response).toHaveProperty('text', 'Logged in successfully');
     });
 
-    test('responds health API with OK and status 200', (done) => {
-        request(app)
-            .get('/health')
-            .expect(200)
-            .end((err, res) => {
-                expect(res).toHaveProperty('text', 'OK');
-                done();
-            });
+    test('responds health API with OK and status 200', async () => {
+        const response = await request(app).get('/health').expect(200);
+
+        expect(response).toHaveProperty('text', 'OK');
     });
 });
