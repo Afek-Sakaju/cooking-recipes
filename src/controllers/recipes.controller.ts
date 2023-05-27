@@ -34,13 +34,13 @@ export const createRecipeCtrl = async (
     res: Response,
     _next: NextFunction
 ) => {
-    const recipe: IRecipe = {
+    const recipe = {
         name: req.body.name,
         creator: req.body.creator,
         ingredients: req.body.ingredients,
         cookingTime: req.body.cookingTime,
         difficultyLevel: req.body.difficultyLevel,
-    };
+    } as unknown as IRecipe;
 
     logger.info(req.id, 'Creating new recipe', {
         recipeData: recipe,

@@ -30,7 +30,7 @@ router.get('/', (req: Request, res: Response, _next: NextFunction) => {
         originalUrl: req.originalUrl,
     });
 
-    res.status(200).send('welcome my friend');
+    res.status(200).send('Welcome');
 });
 
 /**
@@ -51,7 +51,7 @@ router.get(
     isAuthenticatedMW,
     (req: Request, res: Response, _next: NextFunction) => {
         logger.info(req.id, 'User visiting login success page');
-        res.status(202).send('logged in successfully');
+        res.status(202).send('Logged in successfully');
     }
 );
 
