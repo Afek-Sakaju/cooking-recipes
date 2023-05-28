@@ -83,7 +83,7 @@ export const deleteRecipeByNameCtrl = async (
     res: Response,
     _next: NextFunction
 ) => {
-    logger.info(req.id, 'Deleting recipe by his name', {
+    logger.info(req.id, 'Deleting recipe by its name', {
         recipeName: req.params.recipeName,
     });
 

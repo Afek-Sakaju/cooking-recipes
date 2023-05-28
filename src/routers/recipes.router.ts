@@ -28,7 +28,7 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  * /recipe/all:
  *   get:
  *     tags: ['Recipes CRUD routers']
- *     description: Get all recipes list data
+ *     description: Get all recipes list
  *     responses:
  *       200:
  *         description: Found all recipes successfully, returns the recipes list
@@ -49,7 +49,7 @@ router.get('/all', sendAllRecipesCtrl);
  * /recipe/:
  *   get:
  *     tags: ['Recipes CRUD routers']
- *     description: get recipes list data by filtering with query parameters
+ *     description: Get recipes filtered list using query parameters to filter
  *     security:
  *        cookieAuth:
  *          - connect.sid
@@ -58,34 +58,34 @@ router.get('/all', sendAllRecipesCtrl);
  *        name: name
  *        schema:
  *          type: string
- *          description: filter by recipe's name.
+ *          description: Filter by recipe's name.
  *      - in: query
  *        name: creator
  *        schema:
  *          type: string
- *          description: filter by recipe's creator name.
+ *          description: Filter by recipe's creator id.
  *      - in: query
  *        name: difficultyLevel
  *        schema:
  *          type: string
- *          description: filter by recipe's difficulty level.
+ *          description: Filter by recipe's difficulty level.
  *      - in: query
  *        name: maxCookingTime
  *        schema:
  *          type: number
- *          description: filter by recipe's maximum cooking time.
+ *          description: Filter by recipe's maximum cooking time.
  *      - in: query
  *        name: minCookingTime
  *        schema:
  *          type: number
- *          description: filter by recipe's minimum cooking time.
+ *          description: Filter by recipe's minimum cooking time.
  *      - in: query
  *        name: page
  *        required: true
  *        schema:
  *          type: number
  *          minimum: 1
- *        description: Get result from specific page
+ *        description: Get results from specific page
  *      - in: query
  *        name: itemsPerPage
  *        required: true
@@ -93,7 +93,7 @@ router.get('/all', sendAllRecipesCtrl);
  *          type: number
  *          minimum: 1
  *          maximum: 100
- *        description: Modify results count inside the page
+ *        description: Modify results count of each page
  *     responses:
  *       200:
  *         description: Found filtered list successfully, returns the filtered list
@@ -119,12 +119,12 @@ router.get('/', isAuthenticatedMW, filteredRecipeListCtrl);
  * /recipe/new-recipe:
  *   post:
  *     tags: ['Recipes CRUD routers']
- *     description: create new recipe to the app
+ *     description: Create new recipe
  *     security:
  *        cookieAuth:
  *          - connect.sid
  *     requestBody:
- *        description: the recipe's information
+ *        description: The recipe's data
  *        required: true
  *        content:
  *           application/json:
@@ -149,7 +149,7 @@ router.get('/', isAuthenticatedMW, filteredRecipeListCtrl);
  *                          example: "easy"
  *     responses:
  *       201:
- *         description: Created successfully, returns the created recipe
+ *         description: Created recipe successfully, returns the created recipe
  *         content:
  *           application/json:
  *             schema:
@@ -167,16 +167,16 @@ router.post('/new-recipe', isAuthenticatedMW, createRecipeCtrl);
  * /recipe/find/{recipeName}:
  *   get:
  *     tags: ['Recipes CRUD routers']
- *     description: get recipe data by his name
+ *     description: Get recipe by its name
  *     parameters:
  *      - in: path
  *        name: recipeName
  *        required: true
  *        type: string
- *        description: The recipes name.
+ *        description: The recipe's name
  *     responses:
  *       200:
- *         description: Recipe found successfully, returns recipe's data
+ *         description: Recipe found successfully, returns recipe
  *         content:
  *           application/json:
  *               schema:
@@ -194,12 +194,12 @@ router.get('/find/:recipeName', getRecipeByNameCtrl);
  * /recipe/update:
  *   put:
  *     tags: ['Recipes CRUD routers']
- *     description: update of recipe's data by name
+ *     description: Update recipe's data by name
  *     security:
  *        cookieAuth:
  *          - connect.sid
  *     requestBody:
- *        description: the user information for updating
+ *        description: The user's data
  *        required: true
  *        content:
  *           application/json:
@@ -212,7 +212,7 @@ router.get('/find/:recipeName', getRecipeByNameCtrl);
  *                          example: "steak-angos"
  *                      creator:
  *                          type: string
- *                          example: "harry-mcguiore"
+ *                          example: "632ef3ad40c4dca948a003fc"
  *                      ingredients:
  *                          type: array
  *                          items:
@@ -226,7 +226,7 @@ router.get('/find/:recipeName', getRecipeByNameCtrl);
  *                          example: "easy"
  *     responses:
  *       200:
- *         description: Updated successfully, returns updated data
+ *         description: Updated recipe data successfully, returns updated data
  *         content:
  *           application/json:
  *             schema:
@@ -244,7 +244,7 @@ router.put('/update', isAuthenticatedMW, updateRecipeDataCtrl);
  * /recipe/{recipeName}:
  *   delete:
  *     tags: ['Recipes CRUD routers']
- *     description: Delete recipe data by his name
+ *     description: Delete recipe data by its name
  *     security:
  *        cookieAuth:
  *          - connect.sid
@@ -256,7 +256,7 @@ router.put('/update', isAuthenticatedMW, updateRecipeDataCtrl);
  *        description: The recipes name.
  *     responses:
  *       200:
- *         description: Recipe deleted successfully.
+ *         description: Recipe deleted successfully
  *       400:
  *         description: Invalid data provided
  *       401:

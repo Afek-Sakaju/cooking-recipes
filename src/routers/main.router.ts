@@ -37,7 +37,7 @@ router.get('/', (req: Request, res: Response, _next: NextFunction) => {
  * /health:
  *   get:
  *     tags: ['Main routers']
- *     description: Get health server status
+ *     description: Get the server's health status
  *     responses:
  *       200:
  *         description: Returns OK message (string)

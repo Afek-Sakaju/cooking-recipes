@@ -25,7 +25,7 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  * /auth/login:
  *   post:
  *     tags: ['Auth routers']
- *     description: login with user to the site
+ *     description: Login to the server with username(email) and password
  *     requestBody:
  *        description: the user information for logging in
  *        required: true
@@ -36,14 +36,14 @@ router.use((req: Request, res: Response, next: NextFunction) => {
  *                  required: [ "username", "password" ]
  *                  properties:
  *                      username:
- *                          type: String
+ *                          type: string
  *                          example: "tempexample@somemail.com"
  *                      password:
  *                          type: String
  *                          example: "somePassword123"
  *     responses:
  *       200:
- *         description: Login success, returns logged user
+ *         description: Login success, returns authenticated user
  *         content:
  *           application/json:
  *             schema:
@@ -70,7 +70,7 @@ router.post('/login', (req: Request, res: Response, next: NextFunction) => {
  * /auth/logout:
  *   post:
  *     tags: ['Auth routers']
- *     description: Logout from the application
+ *     description: Logout from the server
  *     responses:
  *       200:
  *           description: Logout successfully
@@ -89,9 +89,9 @@ router.post('/logout', (req: Request, res: Response, next: NextFunction) => {
  * /auth/register:
  *   post:
  *     tags: ['Auth routers']
- *     description: register of new user to the site
+ *     description: Registration of new user to the site
  *     requestBody:
- *        description: the user information for registering
+ *        description: The user's data
  *        required: true
  *        content:
  *           application/json:
@@ -113,7 +113,7 @@ router.post('/logout', (req: Request, res: Response, next: NextFunction) => {
  *                          example: "+888 88 888 8888"
  *     responses:
  *       201:
- *         description: Returns the registered user
+ *         description: Registered successfully, returns the registered user
  *         content:
  *           application/json:
  *             schema:
@@ -128,12 +128,12 @@ router.post('/register', registerUserCtrl);
  * /auth/update:
  *   put:
  *     tags: ['Auth routers']
- *     description: update of user's data by id
+ *     description: Update user's data by id
  *     security:
  *        cookieAuth:
  *          - connect.sid
  *     requestBody:
- *        description: the user information for updating
+ *        description: The user's data
  *        required: true
  *        content:
  *           application/json:

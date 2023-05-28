@@ -31,7 +31,7 @@ describe('recipes services tests', () => {
         expect(resultRecipe).toHaveProperty('creator');
     });
 
-    test('service findRecipeByName returns desired recipe by his name', async () => {
+    test('service findRecipeByName returns desired recipe by its name', async () => {
         const resultRecipe = (await findRecipeByName(
             testRecipe.name,
             SYSTEM_REQ_ID
