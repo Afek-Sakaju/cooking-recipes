@@ -277,24 +277,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "success",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:3000/success",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"success"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		}
