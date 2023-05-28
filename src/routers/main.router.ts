@@ -1,6 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
 
-import { isAuthenticatedMW } from '../middleware';
 import { logger } from '../utils';
 
 const router = express.Router();

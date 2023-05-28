@@ -106,7 +106,7 @@ describe('recipes services tests', () => {
         const deleteResponse = (await deleteRecipe(
             recipeData.name,
             SYSTEM_REQ_ID
-        )) as unknown as IRecipe;
+        )) as boolean;
 
         expect(deleteResponse).toBeTruthy();
 

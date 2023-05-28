@@ -1,13 +1,9 @@
 import { Response, Request, NextFunction } from 'express';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 import { logger } from '../utils';
 
-function generateV4UUID(_request: any) {
-    return uuidv4();
-}
-
-const ATTRIBUTE_NAME = 'id';
+const generateV4UUID = (_request: Request) => uuid();
 
 export function requestID({
     generator = generateV4UUID,
@@ -18,12 +14,8 @@ export function requestID({
         const oldValue = request.get(headerName);
         const id = oldValue === undefined ? generator(request) : oldValue;
 
-        if (setHeader) {
-            response.set(headerName, id);
-        }
-
-        request[ATTRIBUTE_NAME] = id;
-
+        if (setHeader) response.set(headerName, id);
+        request['id'] = id;
         next();
     };
 }

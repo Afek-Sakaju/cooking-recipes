@@ -71,7 +71,7 @@ export async function updateRecipeData(
 export const deleteRecipe = async function (
     recipeName: string,
     requestId: string
-) {
+): Promise<boolean> {
     logger.verbose(requestId, 'Running delete request of recipe from DB');
 
     const { deletedCount } = await RecipeModel.deleteOne({

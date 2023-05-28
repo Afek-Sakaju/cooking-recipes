@@ -7,7 +7,7 @@ import { logger } from '../utils';
 export async function registerUserCtrl(
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) {
     const user = {
         email: req.body.email,
@@ -21,13 +21,12 @@ export async function registerUserCtrl(
     });
 
     try {
-        const result = await registerUser(user, req.id);
+        const resultUser = await registerUser(user, req.id);
 
         logger.info(req.id, 'Registration of new user results', {
-            user: result,
+            user: resultUser,
         });
-
-        res.status(201).json(result);
+        res.status(201).json(resultUser);
     } catch (e) {
         res.sendStatus(500);
     }
@@ -36,7 +35,7 @@ export async function registerUserCtrl(
 export async function updateUserDataCtrl(
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) {
     const userData = {
         _id: req.body._id,
@@ -50,11 +49,10 @@ export async function updateUserDataCtrl(
         newData: userData,
     });
 
-    const result = await updateUserData(userData, req.id);
+    const resultUser = await updateUserData(userData, req.id);
 
     logger.info(req.id, "Updating of user's data results", {
-        user: result,
+        user: resultUser,
     });
-
-    res.status(result ? 200 : 400).json(result);
+    res.status(resultUser ? 200 : 400).json(resultUser);
 }

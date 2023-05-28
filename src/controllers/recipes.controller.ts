@@ -20,13 +20,12 @@ export const getRecipeByNameCtrl = async (
         recipeName: req.params.recipeName,
     });
 
-    const recipe = await findRecipeByName(req.params.recipeName, req.id);
+    const result = await findRecipeByName(req.params.recipeName, req.id);
 
-    logger.info(req.id, 'Recipe getting by name results', { recipe: recipe });
-
-    const status = !recipe ? 404 : 200;
-
-    res.status(status).json(recipe);
+    logger.info(req.id, 'Recipe getting by name results', {
+        recipe: result,
+    });
+    res.status(result ? 200 : 404).json(result);
 };
 
 export const createRecipeCtrl = async (
@@ -51,7 +50,6 @@ export const createRecipeCtrl = async (
     logger.info(req.id, 'Recipe creation results', {
         recipeData: recipe,
     });
-
     res.status(result ? 201 : 500).json(result);
 };
 
@@ -77,7 +75,6 @@ export const updateRecipeDataCtrl = async (
     logger.info(req.id, "Updating of recipe's data results", {
         recipe: result,
     });
-
     res.status(result ? 200 : 400).json(result);
 };
 
@@ -90,15 +87,15 @@ export const deleteRecipeByNameCtrl = async (
         recipeName: req.params.recipeName,
     });
 
-    const result = await deleteRecipe(req.params.recipeName, req.id);
+    const isDeleted: boolean = await deleteRecipe(
+        req.params.recipeName,
+        req.id
+    );
 
     logger.info(req.id, 'Deleting recipe results', {
-        isDeleted: result,
+        isDeleted,
     });
-
-    const status = result ? 200 : 400;
-
-    res.sendStatus(status);
+    res.sendStatus(isDeleted ? 200 : 400);
 };
 
 export const sendAllRecipesCtrl = async (
@@ -108,31 +105,30 @@ export const sendAllRecipesCtrl = async (
 ) => {
     logger.info(req.id, 'Getting all recipes list');
 
-    const allRecipes = await findAllRecipe(req.id);
+    const result = await findAllRecipe(req.id);
 
     logger.info(req.id, 'Get all recipes list results');
-
-    res.json(allRecipes);
+    res.json(result);
 };
 
 export const filteredRecipeListCtrl = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ) => {
     logger.info(req.id, 'Getting filtered recipes list by query', {
         query: req.query,
     });
 
     try {
-        const filteredList = await filterRecipes(req.query, req.id);
+        const result = await filterRecipes(req.query, req.id);
 
         logger.info(req.id, 'Get filtered recipes list results', {
-            list: filteredList,
+            list: result,
         });
 
-        res.json(filteredList);
+        res.status(200).json(result);
     } catch (e) {
-        next(e);
+        res.sendStatus(500);
     }
 };
