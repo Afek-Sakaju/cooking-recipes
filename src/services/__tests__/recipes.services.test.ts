@@ -50,7 +50,7 @@ describe('recipes services tests', () => {
         const resultRecipes = (await findAllRecipe(
             SYSTEM_REQ_ID
         )) as unknown as Array<IRecipe>;
-        const exampleRecipe = resultRecipes?.[0];
+        const exampleRecipe: IRecipe = resultRecipes?.[0];
 
         expect(resultRecipes).toBeDefined();
         // There are 5 recipes created from migration file and 1 at the beginning of the tests
@@ -70,11 +70,12 @@ describe('recipes services tests', () => {
             query,
             SYSTEM_REQ_ID
         );
-        const exampleRecipe = resultRecipes?.[0];
 
         expect(resultRecipes).toBeDefined();
-        // There are 2 recipes that match the query params
         expect(resultRecipes.length).toBe(2);
+
+        const exampleRecipe = resultRecipes[0];
+        // There are 2 recipes that match the query params
         expect(exampleRecipe).toHaveProperty('name');
         expect(exampleRecipe).toHaveProperty('ingredients');
         expect(exampleRecipe).toHaveProperty('cookingTime');
