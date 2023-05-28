@@ -20,10 +20,10 @@ describe('users services tests', () => {
     beforeAll(async () => {
         const userDoc = new UserModel(testUser);
         const resultUser = (await userDoc.save()) as unknown as IUser;
-        userId = resultUser?._id;
 
         expect(resultUser).toBeDefined();
         expect(resultUser).toHaveProperty('_id');
+        userId = resultUser._id;
     });
 
     test('service registerUser returns user data without the password', async () => {
@@ -67,7 +67,7 @@ describe('users services tests', () => {
         expect(resultUser.fullName).toBe(newData.fullName);
         expect(resultUser.phoneNumber).toBe('empty');
 
-        // Updating back to the original data
+        // Updating back to initial data to prevent unpredictable results in other tests
         const resultUser2 = (await updateUserData(
             { ...testUser, _id: userId },
             SYSTEM_REQ_ID
@@ -107,8 +107,8 @@ describe('users services tests', () => {
         expect(resultUser).toHaveProperty('password');
         expect(resultUser.email).toBe(testUser.email);
         expect(resultUser.fullName).toBeUndefined();
-        /* This time we expect the phoneNumber to return undefined and not 'empty'
-        because the data that expected to be returned is only email and password */
+        /* The data returned should contain only email and password fields 
+        so the phoneNumber is not going to be 'empty' even if its value*/
         expect(resultUser.phoneNumber).toBeUndefined();
     });
 });
