@@ -45,7 +45,7 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 -   Additional commands that are optional
     -   `npm run migrationDB`
         <br />(runs only migration)
-    -   `npm run dev`<br /> (runs _typescript_ code for developement with _nodemon_)
+    -   `npm run dev`<br /> (runs _typescript_ code for development with _nodemon_)
     -   `npm run test`<br /> (runs only tests with _jest_ + _supertest_ for APIs tests)
 
 ---
