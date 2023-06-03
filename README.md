@@ -54,7 +54,7 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 
 ## ![coverage](readme-resources/coverage.PNG)
 
-### The technologies I used for this project include:
+### The technologies used in this project include:
 
 -   [x] _**Nodejs**_ : the project is _javascript_ based.
 -   [x] _**Express**_ : used for the server side routers, middlewares, controllers, and services.
