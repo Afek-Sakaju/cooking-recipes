@@ -21,27 +21,28 @@ export async function updateUserData(
     userData: IUser,
     requestId: string
 ): Promise<IUser | undefined> {
-    if (userData.password !== undefined) {
+    if (userData?.password !== undefined) {
         const salt = bcrypt.genSaltSync(10);
         userData.password = bcrypt.hashSync(userData.password, salt);
     }
+    console.log(userData);
 
     logger.verbose(requestId, 'Running request to update user data in DB');
 
-    try {
-        const result = (await UserModel.findOneAndUpdate(
-            { _id: userData._id },
-            {
-                email: userData.email,
-                password: userData.password,
-                phoneNumber: userData.phoneNumber,
-                fullName: userData.fullName,
-            },
-            { new: true, omitUndefined: true, upsert: false }
-        )) as unknown as IUser;
-        return result;
-        // eslint-disable-next-line no-empty
-    } catch (e) {}
+    // eslint-disable-next-line no-debugger
+    debugger;
+    const result: any = await UserModel.findOneAndUpdate(
+        { _id: userData._id },
+        {
+            email: userData.email,
+            password: userData.password,
+            phoneNumber: userData.phoneNumber,
+            fullName: userData.fullName,
+        },
+        { new: true, omitUndefined: true, upsert: false }
+    );
+
+    return result?.toJSON();
 }
 
 export async function getUserWithPassword(

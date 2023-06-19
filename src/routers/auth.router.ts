@@ -141,8 +141,9 @@ router.post('/register', registerUserCtrl);
  *                  type: object
  *                  required: [ "id" ]
  *                  properties:
- *                      id:
+ *                      _id:
  *                          type: string
+ *                          example: "insertId"
  *                      email:
  *                          type: string
  *                          example: "tempexample@somemail.com"
