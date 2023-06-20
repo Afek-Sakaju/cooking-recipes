@@ -25,12 +25,10 @@ export async function updateUserData(
         const salt = bcrypt.genSaltSync(10);
         userData.password = bcrypt.hashSync(userData.password, salt);
     }
-    console.log(userData);
 
     logger.verbose(requestId, 'Running request to update user data in DB');
 
     // eslint-disable-next-line no-debugger
-    debugger;
     const result: any = await UserModel.findOneAndUpdate(
         { _id: userData._id },
         {
