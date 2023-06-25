@@ -69,6 +69,7 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 
 ### Additional technologies used as development tools include:
 
+-   [x] _**ESLINT**_ : the project adheres to the _ESLint_ guidelines and follows the best practices recommended by _airbnb_.
 -   [x] _**nodemon**_ : watches for _typescript_ file changes and compiles them in real-time.
 -   [x] _**Jest**_ : Comprehensive _typescript_ tests with extensive coverage, including password encryption, models, services, and router APIs, have been implemented using the _supertest_ package.
 -   [x] _**mongodb-memory-server**_ : running tests on an in-memory database, allowing for efficient and isolated testing.
