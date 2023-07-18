@@ -7,7 +7,7 @@
             "description": "A REST API built with Express and MongoDB. \nThis API provides cooking recipes data",
             "contact": {
                 "name": "Afek",
-                "url": "https://github.com/afekTheMiniLearner/cooking-recipes"
+                "url": "https://github.com/Afek-Sakaju/cooking-recipes"
             }
         },
         "basePath": "/swagger",
