@@ -3,11 +3,11 @@
         "openapi": "3.0.3",
         "info": {
             "version": "1.0.0",
-            "title": "Cooking-recipes REST API",
+            "title": "cooking-recipes-server REST API",
             "description": "A REST API built with Express and MongoDB. \nThis API provides cooking recipes data",
             "contact": {
                 "name": "Afek",
-                "url": "https://github.com/Afek-Sakaju/cooking-recipes"
+                "url": "https://github.com/Afek-Sakaju/cooking-recipes-server"
             }
         },
         "basePath": "/swagger",

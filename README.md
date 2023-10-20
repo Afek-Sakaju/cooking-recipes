@@ -1,4 +1,4 @@
-# cooking-recipes <img src="readme-resources/cooking.png" width=100px height=100px align="right">
+# Cooking Recipes Server <img src="readme-resources/cooking.png" width=100px height=100px align="right">
 
 ### This server-side project embodies my extensive knowledge of backend development, as it has been executed with adherence to best practices, standards, and strict guidelines. <br />
 
@@ -95,7 +95,7 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 -   [x] **HTTP Status Codes** : HTTP request responses return the appropriate and correct status codes.
 -   [x] **_Jest_** : comprehensive tests for thorough validation of all services and functions.
 -   [x] **_Postman_** : _postman_ collection for simplified testing and interaction with the project's APIs : </br>
-        `cooking-recipes-rest-api.postman_collection.json`
+        `cooking-recipes-server-rest-api.postman_collection.json`
 
 ## Author
 

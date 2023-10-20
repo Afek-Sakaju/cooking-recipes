@@ -1,8 +1,8 @@
 {
-    "name": "cooking-recipes",
+    "name": "cooking-recipes-server",
     "description": "Backend project for cook recipes site that includes a RESTful API and user authentication features",
     "author": "afek-sakaju",
-    "homepage": "https://github.com/Afek-Sakaju/cooking-recipes",
+    "homepage": "https://github.com/Afek-Sakaju/cooking-recipes-server",
     "keywords": [
         "cook-site",
         "recipes",
@@ -16,7 +16,7 @@
     "private": true,
     "repository": {
         "type": "git",
-        "url": "https://github.com/Afek-Sakaju/cooking-recipes"
+        "url": "https://github.com/Afek-Sakaju/cooking-recipes-server"
     },
     "scripts": {
         "start": "npm run migrateDB && npm run build && node dist/app.js",
