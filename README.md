@@ -75,7 +75,6 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 ### In addition, the project incorporates the following features:
 
 -   [x] **Aggregations** : a fully featured aggregate request filters recipes based on query parameters, populates the recipe by its creator, and supports data limiting, offsetting, and sorting options.
--   [ ] **Transactions** : the project does not incorporates multiple operations for a single process action, despite being aware of the concept.
 -   [x] **Server Side Pagination** : the project implements pagination for the aggregation result data, enabling fetching a limited number of items based on the provided page number and items per page parameters.<br />
 
     ```json
