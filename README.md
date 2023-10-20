@@ -56,27 +56,27 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 
 -   [x] _**Nodejs**_ : the project is _javascript_ based.
 -   [x] _**Express**_ : used for the server side routers, middlewares, controllers, and services.
--   [x] _**Typescript**_ : the project has been implemented using _typescript_ interfaces, `<filenames>.d.ts` declarations files, etc..
+-   [x] _**TypeScript**_ : the project has been implemented using _typescript_ interfaces, `<filenames>.d.ts` declarations files, etc..
 -   [x] _**DotEnv**_ : utilizes _dotenv_ files to manage environment variables, and incorporates _dotenv-expand_ to enhance flexibility in the env files.
--   [x] _**logger**_ : utilizes colorized _**Winston**_ logs with request ID (UUID) for recording server activities stored in daily rotating files (`winston-daily-rotate-file`).
+-   [x] _**Logger**_ : utilizes colorized _**Winston**_ logs with request ID (UUID) for recording server activities stored in daily rotating files (`winston-daily-rotate-file`).
 -   [x] _**Passport**_ : authentication with _passport-local_ strategy `{username, password}` for request body.
 -   [x] _**MongoDB**_ : utilized with the _**mongoose**_ library for defining schemas and models, which are then utilized in the controllers and services.
 -   [x] _**Bcrypt**_ : user passwords are securely encrypted in accordance with best practices to ensure data security.
 -   [x] _**Swagger**_ : the `/swagger` URL provides comprehensive API documentation and instructions for testing and debugging APIs,this functionality is available in non-production environments (for development), the project also utilizes _**mongoose-to-swagger**_ to transform mongoose models into Swagger schema docs.
--   [x] _**mongo-migrate**_ : the **migrations** ensure that the MongoDB database has the latest updates of the data before running the project, they also handle important database initializations, including user creation and mocked recipes.
+-   [x] _**Migrate-Mongo**_ : the **migrations** ensure that the MongoDB database has the latest updates of the data before running the project, they also handle important database initializations, including user creation and mocked recipes.
 
 ### Additional technologies used as development tools include:
 
 -   [x] _**ESLINT**_ : the project adheres to the _ESLint_ guidelines and follows the best practices recommended by _airbnb_.
--   [x] _**nodemon**_ : watches for _typescript_ file changes and compiles them in real-time.
+-   [x] _**Nodemon**_ : watches for _typescript_ file changes and compiles them in real-time.
 -   [x] _**Jest**_ : Comprehensive _typescript_ tests with extensive coverage, including password encryption, models, services, and router APIs, have been implemented using the _supertest_ package.
--   [x] _**mongodb-memory-server**_ : running tests on an in-memory database, allowing for efficient and isolated testing.
+-   [x] _**Mongodb-Memory-Server**_ : running tests on an in-memory database, allowing for efficient and isolated testing.
 
 ### In addition, the project incorporates the following features:
 
--   [x] **aggregations** : a fully featured aggregate request filters recipes based on query parameters, populates the recipe by its creator, and supports data limiting, offsetting, and sorting options.
--   [ ] **transactions** : the project does not incorporates multiple operations for a single process action, despite being aware of the concept.
--   [x] **server side pagination** : the project implements pagination for the aggregation result data, enabling fetching a limited number of items based on the provided page number and items per page parameters.<br />
+-   [x] **Aggregations** : a fully featured aggregate request filters recipes based on query parameters, populates the recipe by its creator, and supports data limiting, offsetting, and sorting options.
+-   [ ] **Transactions** : the project does not incorporates multiple operations for a single process action, despite being aware of the concept.
+-   [x] **Server Side Pagination** : the project implements pagination for the aggregation result data, enabling fetching a limited number of items based on the provided page number and items per page parameters.<br />
 
     ```json
     {
@@ -90,12 +90,12 @@ Certain APIs necessitate authentication, requiring users to log in before execut
     }
     ```
 
--   [x] **_passport_ authentication** : user authentication in the project follows best practices by comparing the encrypted password with the plaintext password provided.
--   [x] **override toJSON data** : exclude the password from the user object when it is returned as JSON.
--   [x] **_mongoose_ schema hooks** : incorporates a pre-save hook that encrypts the user's password before creating a new user.
--   [x] **status code** : HTTP request responses return the appropriate and correct status codes.
--   [x] **_jest_** : comprehensive tests for thorough validation of all services and functions.
--   [x] **_postman_** : _postman_ collection for simplified testing and interaction with the project's APIs : </br>
+-   [x] **_Passport_ authentication** : user authentication in the project follows best practices by comparing the encrypted password with the plaintext password provided.
+-   [x] **Override toJSON data** : exclude the password from the user object when it is returned as JSON.
+-   [x] **_Mongoose_ schema hooks** : incorporates a pre-save hook that encrypts the user's password before creating a new user.
+-   [x] **HTTP Status Codes** : HTTP request responses return the appropriate and correct status codes.
+-   [x] **_Jest_** : comprehensive tests for thorough validation of all services and functions.
+-   [x] **_Postman_** : _postman_ collection for simplified testing and interaction with the project's APIs : </br>
         `cooking-recipes-rest-api.postman_collection.json`
 
 ## Author
