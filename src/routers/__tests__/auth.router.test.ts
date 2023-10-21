@@ -1,4 +1,5 @@
 import request from 'supertest';
+import { Types } from 'mongoose';
 
 import app from '../../app';
 
@@ -181,7 +182,7 @@ describe('auth router tests', () => {
         const [cookie] = response.headers['set-cookie'];
         {
             const userData = {
-                _id: 'idontexist1s2s3s',
+                _id: new Types.ObjectId(),
                 email: 'dandan31@walla.co.il',
                 password: 'dan31dan',
                 fullName: 'dan bezos',

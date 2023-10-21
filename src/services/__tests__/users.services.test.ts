@@ -62,7 +62,7 @@ describe('users services tests', () => {
 
         expect(resultUser).toBeDefined();
         expect(resultUser).toHaveProperty('_id');
-        expect(resultUser).toHaveProperty('password');
+        expect(resultUser.password).toBeUndefined();
         expect(resultUser.email).toBe(newData.email);
         expect(resultUser.fullName).toBe(newData.fullName);
         expect(resultUser.phoneNumber).toBe('empty');
@@ -75,7 +75,7 @@ describe('users services tests', () => {
 
         expect(resultUser2).toBeDefined();
         expect(resultUser2).toHaveProperty('_id');
-        expect(resultUser).toHaveProperty('password');
+        expect(resultUser2.password).toBeUndefined();
         expect(resultUser2.email).toBe(testUser.email);
         expect(resultUser2.fullName).toBe(testUser.fullName);
         expect(resultUser2.phoneNumber).toBe('empty');
