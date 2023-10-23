@@ -87,10 +87,5 @@
         "ts-jest": "^29.0.3",
         "ts-node": "^10.9.1",
         "typescript": "^5.0.4"
-    },
-    "overrides": {
-        "@babel/traverse": ">=7.23.2",
-        "qs": ">=6.9.7",
-        "semver": ">=6.3.1"
     }
 }
