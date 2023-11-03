@@ -74,6 +74,7 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 
 ### In addition, the project incorporates the following features:
 
+-   [x] **RESTful APIs** : this server-side project includes RESTful APIs that follows best practices in API design , facilitate efficient data retrieval and manipulation through well-designed endpoints, promoting effective server communication.
 -   [x] **Aggregations** : a fully featured aggregate request filters recipes based on query parameters, populates the recipe by its creator, and supports data limiting, offsetting, and sorting options.
 -   [x] **Server Side Pagination** : the project implements pagination for the aggregation result data, enabling fetching a limited number of items based on the provided page number and items per page parameters.<br />
 
