@@ -55,22 +55,22 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 ### The technologies used in this project include:
 
 -   [x] _**Nodejs**_ : the project is _javascript_ based.
--   [x] _**Express**_ : used for the server side routers, middlewares, controllers, and services.
 -   [x] _**TypeScript**_ : the project has been implemented using _typescript_ interfaces, `<filenames>.d.ts` declarations files, etc..
--   [x] _**DotEnv**_ : utilizes _dotenv_ files to manage environment variables, and incorporates _dotenv-expand_ to enhance flexibility in the env files.
--   [x] _**Logger**_ : utilizes colorized _**Winston**_ logs with request ID (UUID) for recording server activities stored in daily rotating files (`winston-daily-rotate-file`).
--   [x] _**Passport**_ : authentication with _passport-local_ strategy `{username, password}` for request body.
+-   [x] _**Express**_ : used for the server side routers, middlewares, controllers, and services.
 -   [x] _**MongoDB**_ : utilized with the _**mongoose**_ library for defining schemas and models, which are then utilized in the controllers and services.
+-   [x] _**Passport**_ : authentication with _passport-local_ strategy `{username, password}` for request body.
 -   [x] _**Bcrypt**_ : user passwords are securely encrypted in accordance with best practices to ensure data security.
--   [x] _**Swagger**_ : the `/swagger` URL provides comprehensive API documentation and instructions for testing and debugging APIs,this functionality is available in non-production environments (for development), the project also utilizes _**mongoose-to-swagger**_ to transform mongoose models into Swagger schema docs.
 -   [x] _**Migrate-Mongo**_ : the **migrations** ensure that the MongoDB database has the latest updates of the data before running the project, they also handle important database initializations, including user creation and mocked recipes.
+-   [x] _**Swagger**_ : the `/swagger` URL provides comprehensive API documentation and instructions for testing and debugging APIs,this functionality is available in non-production environments (for development), the project also utilizes _**mongoose-to-swagger**_ to transform mongoose models into Swagger schema docs.
+-   [x] _**Logger**_ : utilizes colorized _**Winston**_ logs with request ID (UUID) for recording server activities stored in daily rotating files (`winston-daily-rotate-file`).
+-   [x] _**DotEnv**_ : utilizes _dotenv_ files to manage environment variables, and incorporates _dotenv-expand_ to enhance flexibility in the env files.
 
 ### Additional technologies used as development tools include:
 
 -   [x] _**ESLINT**_ : the project adheres to the _ESLint_ guidelines and follows the best practices recommended by _airbnb_.
--   [x] _**Nodemon**_ : watches for _typescript_ file changes and compiles them in real-time.
 -   [x] _**Jest**_ : Comprehensive _typescript_ tests with extensive coverage, including password encryption, models, services, and router APIs, have been implemented using the _supertest_ package.
 -   [x] _**Mongodb-Memory-Server**_ : running tests on an in-memory database, allowing for efficient and isolated testing.
+-   [x] _**Nodemon**_ : watches for _typescript_ file changes and compiles them in real-time.
 
 ### In addition, the project incorporates the following features:
 
@@ -89,12 +89,11 @@ Certain APIs necessitate authentication, requiring users to log in before execut
     }
     ```
 
--   [x] **_Passport_ authentication** : user authentication in the project follows best practices by comparing the encrypted password with the plaintext password provided.
--   [x] **Override toJSON data** : exclude the password from the user object when it is returned as JSON.
 -   [x] **_Mongoose_ schema hooks** : incorporates a pre-save hook that encrypts the user's password before creating a new user.
+-   [x] **_Full tests Coverage_** : comprehensive tests for thorough validation of all services and functions.
 -   [x] **HTTP Status Codes** : HTTP request responses return the appropriate and correct status codes.
--   [x] **_Jest_** : comprehensive tests for thorough validation of all services and functions.
--   [x] **_Postman_** : _postman_ collection for simplified testing and interaction with the project's APIs : </br>
+-   [x] **Override toJSON data** : exclude the password from the user object when it is returned as JSON.
+-   [x] **_Postman collection_** : _postman_ collection for simplified testing and interaction with the project's APIs : </br>
         `cooking-recipes-server-rest-api.postman_collection.json`
 
 ## Author
