@@ -59,24 +59,24 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 -   [x] _**Express**_ : used for the server side routers, middlewares, controllers, and services.
 -   [x] _**MongoDB**_ : utilized with the _**mongoose**_ library for defining schemas and models, which are then utilized in the controllers and services.
 -   [x] _**Passport**_ : authentication with _**passport-local**_ strategy `{username, password}` for request body.
--   [x] _**Bcrypt**_ : user passwords are securely encrypted in accordance with best practices to ensure data security.
+-   [x] _**Bcrypt**_ : user passwords are securely **encrypted** in accordance with **best practices** to ensure **data security**.
 -   [x] _**Migrate-Mongo**_ : the **migrations** ensure that the MongoDB database has the latest updates of the data before running the project, they also handle important database initializations, including user creation and mocked recipes.
--   [x] _**Swagger**_ : the `/swagger` URL provides comprehensive API documentation and instructions for testing and debugging APIs,this functionality is available in non-production environments (for development), the project also utilizes _**mongoose-to-swagger**_ to transform mongoose models into Swagger schema docs.
--   [x] _**Logger**_ : utilizes colorized _**Winston**_ logs with request ID (UUID) for recording server activities stored in daily rotating files (`winston-daily-rotate-file`).
+-   [x] _**Swagger**_ : the `/swagger` URL provides comprehensive **API documentation** and instructions for testing and debugging APIs,this functionality is available in non-production environments (for development), the project also utilizes _**mongoose-to-swagger**_ to transform mongoose models into Swagger schema docs.
+-   [x] _**Logger**_ : utilizes colorized _**Winston**_ logs with request ID (UUID) for recording server activities stored in daily rotating files (_**winston-daily-rotate-file**_).
 -   [x] _**DotEnv**_ : utilizes _**dotenv**_ files to manage environment variables, and incorporates _**dotenv-expand**_ to enhance flexibility in the env files.
 
 ### Additional technologies used as development tools include:
 
--   [x] _**ESLINT**_ : the project adheres to the _**ESLint**_ guidelines and follows the best practices recommended by _**airbnb**_.
+-   [x] _**ESLINT**_ : the project adheres to the _**ESLint**_ guidelines and follows the best practices recommended by **airbnb**.
 -   [x] _**Jest**_ : Comprehensive _**typescript**_ tests for thorough validation of all services and functions with **full tests coverage**, including password encryption, models, services, and router APIs, have been implemented using the _**supertest**_ package.
 -   [x] _**Mongodb-Memory-Server**_ : running tests on an in-memory database, allowing for efficient and isolated testing.
 -   [x] _**Nodemon**_ : watches for _**typescript**_ file changes and compiles them in real-time.
 
 ### In addition, the project incorporates the following features:
 
--   [x] **RESTful APIs** : this server-side project includes RESTful APIs that follows best practices in API design , facilitate efficient data retrieval and manipulation through well-designed endpoints, promoting effective server communication.
--   [x] **Aggregations** : a fully featured aggregate request filters recipes based on query parameters, populates the recipe by its creator, and supports data limiting, offsetting, and sorting options.
--   [x] **Server Side Pagination** : the project implements pagination for the aggregation result data, enabling fetching a limited number of items based on the provided page number and items per page parameters.<br />
+-   [x] **RESTful APIs** : this server-side project includes _**RESTful APIs**_ that follows **best practices** in API design , facilitate efficient data retrieval and manipulation through well-designed endpoints, promoting effective server communication.
+-   [x] **Aggregations** : a fully featured aggregate request filters recipes based on **query parameters**, populates the recipe by its creator, and supports **data limiting, offsetting, and sorting options**.
+-   [x] **Server Side Pagination** : the project implements **pagination** for the aggregation result data, enabling fetching a limited number of items based on the provided page number and items per page parameters.<br />
 
     ```json
     {
