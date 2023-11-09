@@ -1,6 +1,6 @@
 {
     "name": "cooking-recipes-server",
-    "description": "Backend project for cook recipes site that includes a RESTful API and user authentication features",
+    "description": "Backend project for cook recipes site that includes a RESTful API, user authentication, and more.",
     "author": "afek-sakaju",
     "homepage": "https://github.com/Afek-Sakaju/cooking-recipes-server",
     "keywords": [
