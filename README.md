@@ -50,7 +50,7 @@ Certain APIs necessitate authentication, requiring users to log in before execut
 
 ### Test Coverage:
 
-## ![coverage](readme-resources/coverage.PNG)
+## ![coverage](readme-resources/coverage.png)
 
 ### The technologies used in this project include:
 
